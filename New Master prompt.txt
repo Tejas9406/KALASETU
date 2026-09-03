@@ -1,0 +1,736 @@
+# KALA SETU — MASTER PROMPT (Focused Edition)
+
+## PS-TUR05: Local Artisan & Experience Discovery Platform
+
+---
+
+## 0. EXECUTIVE SUMMARY
+
+```
+┌─────────────────────────────────────────────────────────────────────────────────┐
+│                    KALA SETU — MASTER PROMPT (Focused Edition)                 │
+├─────────────────────────────────────────────────────────────────────────────────┤
+│                                                                                 │
+│  PROJECT: KALA SETU — Local Artisan & Experience Discovery Platform            │
+│  PROBLEM STATEMENT ID: PS-TUR05                                                │
+│  PROBLEM STATEMENT TITLE: Local Artisan and Experience Discovery Platform      │
+│  THEME: Tourism / Smart Automation                                             │
+│  PS CATEGORY: Software                                                         │
+│                                                                                 │
+│  CORE VISION:                                                                   │
+│  "Connect tourists with verified local artisans, cultural activities,          │
+│   and community experiences — making India's living heritage accessible,      │
+│   authentic, and economically empowering."                                    │
+│                                                                                 │
+│  CORE DIFFERENTIATORS:                                                          │
+│  1. Discovery & Booking of verified artisan experiences                       │
+│  2. Evidence-Based Verification & Trust                                        │
+│  3. Voice-First Inclusive Design (Women, Elderly, Low-Literacy)                │
+│  4. Government Tourism Intelligence Dashboard                                 │
+│  5. Multi-Lingual Support (Text + Voice)                                       │
+│  6. Emergency Safety System                                                    │
+│                                                                                 │
+└─────────────────────────────────────────────────────────────────────────────────┘
+```
+
+---
+
+## 1. PROBLEM STATEMENT DEEP DIVE
+
+### 1.1 Official Problem Statement
+
+> **TUR05-Local Artisan and Experience Discovery Platform — Develop a platform connecting tourists with verified local artisans, cultural activities and community experiences.**
+
+### 1.2 The Core Problem
+
+India has 7+ million artisans, with 90%+ working in the informal sector. These artisans:
+- Have no digital visibility → invisible to tourists
+- Are exploited by middlemen taking 40-60% of profits
+- Are aging (avg 55+ years) with no youth taking over → dying heritage
+- Face language, literacy, and technology barriers
+- 70%+ are women with mobility and safety constraints
+
+**Tourists (Domestic & International):**
+- Buy mass-produced "fake" souvenirs
+- Can't find authentic workshops/experiences
+- No trust/verification mechanism
+- Language barriers with local artisans
+- No way to book experiences in advance
+- Safety concerns (especially women solo travellers)
+
+**Government:**
+- No unified platform for craft tourism
+- Schemes like "One District One Product" (ODOP) lack digital reach
+- No data on artisan-tourism economic impact
+- GI-tagged products getting counterfeited
+- SDG 8 (Decent Work) & SDG 12 (Sustainable Consumption)
+
+### 1.3 Root-Cause Analysis
+
+```
+SYMPTOM: Tourists can't discover authentic local experiences
+    ↓
+WHY? Artisans have no digital visibility
+    ↓
+WHY? Low digital literacy, fragmented listings, no unified platform
+    ↓
+WHY? Existing platforms designed for commercial sellers, not artisans
+    ↓
+WHY? Local cultural experiences are heterogeneous & difficult to standardize
+    ↓
+WHY? No trusted, localized discovery + verification + booking ecosystem
+    ↓
+ROOT CAUSE: Fragmented government ecosystems + missing discovery layer
+```
+
+---
+
+## 2. EXISTING SOLUTIONS & GAP ANALYSIS
+
+### 2.1 What Already Exists in India
+
+| Platform | What It Does | Gap |
+|----------|--------------|-----|
+| **LastClues** | Digital onboarding of rural tourism stakeholders (artisans, homestays, guides) across 15 states | No unified discovery/booking; focuses on digital identity |
+| **OneTAC (Karnataka)** | Unified digital grid for tourism, arts, culture with verifiable credentials | Still in pilot; limited to Karnataka |
+| **Craftgroom (MP Tourism)** | E-commerce platform for artisans | Product-focused; no tourism experiences/booking |
+| **ODOP (One District One Product)** | Showcases district-specific products | No discovery/booking; just product showcase |
+| **Urbanaut** | Local experiences app (feni tastings, pottery workshops, etc.) | Limited to select cities; no artisan verification |
+
+### 2.2 What Already Exists Globally
+
+| Platform | What It Does | Gap |
+|----------|--------------|-----|
+| **Airbnb Experiences** | Local experiences hosted by locals | No artisan verification; not India-specific |
+| **Viator** | 400,000+ travel experiences | Mass-market tours; no artisan focus |
+| **R FINDS (Renaissance Hotels)** | Commission-free marketplace for local artisans | Hotel-only; no experiences/booking |
+| **Irish Hands** | Digital arts & crafts kiosk for discovery, booking, purchasing | Limited to Inishowen, Ireland |
+| **Florence Artisan Platform** | Maps verified artisan workshops for tourists | Still conceptual; no booking |
+
+### 2.3 The Gap We Fill
+
+**Identified Gap:**
+> "Existing solutions are fragmented. No unified platform combines **discovery + verification + booking + safety** for artisan experiences in India."
+
+**Why Existing Solutions Don't Solve This:**
+- **LastClues/OneTAC** → Digital identity but no discovery/booking
+- **Airbnb/Viator** → Experiences but no artisan verification
+- **Craftgroom/Etsy** → Products but no experiences
+- **ODOP** → Showcase but no booking
+
+**Our Opportunity:**
+> Build the "Missing Discovery Layer" that connects tourists with verified artisans through:
+> - Discovery & Booking
+> - Evidence-based verification
+> - Voice-first inclusive design
+> - Government intelligence dashboard
+
+---
+
+## 3. SOLUTION ARCHITECTURE
+
+### 3.1 Product Name & Positioning
+
+```
+┌─────────────────────────────────────────────────────────────────────────────────┐
+│                              KALA SETU                                         │
+│                    "Connecting Tourists with India's Artisans"                 │
+├─────────────────────────────────────────────────────────────────────────────────┤
+│                                                                                 │
+│  TAGLINE: "Discover India's Living Heritage"                                   │
+│                                                                                 │
+│  ONE-LINE PITCH:                                                               │
+│  "A platform connecting tourists with verified local artisans, cultural       │
+│   activities, and community experiences — making India's living heritage      │
+│   accessible, authentic, and bookable."                                       │
+│                                                                                 │
+└─────────────────────────────────────────────────────────────────────────────────┘
+```
+
+### 3.2 System Architecture Overview
+
+```
+┌─────────────────────────────────────────────────────────────────────────────────┐
+│                         KALA SETU — ECOSYSTEM                                  │
+├─────────────────────────────────────────────────────────────────────────────────┤
+│                                                                                 │
+│  ┌───────────────────────────────────────────────────────────────────────────┐  │
+│  │                          FRONTEND LAYER                                   │  │
+│  │  ┌─────────────────────────────────────────────────────────────────────┐  │  │
+│  │  │  WEB APP (React + TypeScript + Tailwind + Framer Motion)           │  │  │
+│  │  │  ├── Home (Hero + Categories + Featured Experiences)               │  │  │
+│  │  │  ├── Discover (Search + Filters + Results)                         │  │  │
+│  │  │  ├── Experience Detail (Gallery + Info + Booking)                  │  │  │
+│  │  │  ├── Artisan Profile (Story + Gallery + Experiences)               │  │  │
+│  │  │  ├── Booking Flow (Date/Time → Payment → Confirmation)             │  │  │
+│  │  │  ├── Multi-Lingual Chat                                            │  │  │
+│  │  │  └── Government Dashboard (Analytics + Heatmap)                    │  │  │
+│  │  └─────────────────────────────────────────────────────────────────────┘  │  │
+│  │  ┌─────────────────────────────────────────────────────────────────────┐  │  │
+│  │  │  MOBILE APP (Kotlin + Jetpack Compose)                             │  │  │
+│  │  │  ├── Bottom Navigation: Home | Discover | Map | Bookings | Profile │  │  │
+│  │  │  ├── SOS Button (Always visible)                                   │  │  │
+│  │  │  └── Voice Input (Microphone button)                               │  │  │
+│  │  └─────────────────────────────────────────────────────────────────────┘  │  │
+│  └───────────────────────────────────────────────────────────────────────────┘  │
+│                                                                                 │
+│  ┌───────────────────────────────────────────────────────────────────────────┐  │
+│  │                          BACKEND LAYER                                    │  │
+│  │  ├── API: Node.js + Express / Spring Boot                                │  │
+│  │  ├── Auth: JWT + OAuth + OTP                                             │  │
+│  │  ├── Services: User, Artisan, Experience, Booking, Gallery, Chat, Safety │  │
+│  │  └── AI Integration: Groq API (recommendations, chat)                   │  │
+│  └───────────────────────────────────────────────────────────────────────────┘  │
+│                                                                                 │
+│  ┌───────────────────────────────────────────────────────────────────────────┐  │
+│  │                          DATA LAYER                                       │  │
+│  │  ├── PostgreSQL (Neon): Users, Artisans, Experiences, Bookings           │  │
+│  │  ├── Redis (Upstash): Sessions, Cache                                    │  │
+│  │  ├── ChromaDB: Vector embeddings for RAG                                 │  │
+│  │  └── Cloudinary: Images + Videos                                         │  │
+│  └───────────────────────────────────────────────────────────────────────────┘  │
+│                                                                                 │
+│  ┌───────────────────────────────────────────────────────────────────────────┐  │
+│  │                          EXTERNAL SERVICES                                │  │
+│  │  ├── AI/ML: Groq API                                                     │  │
+│  │  ├── Speech: Web Speech API / Whisper                                    │  │
+│  │  ├── Payments: Razorpay                                                  │  │
+│  │  ├── Maps: MapLibre GL / Google Maps                                     │  │
+│  │  ├── SMS: Twilio (OTP, SOS alerts)                                       │  │
+│  │  └── Storage: Cloudinary                                                 │  │
+│  └───────────────────────────────────────────────────────────────────────────┘  │
+│                                                                                 │
+└─────────────────────────────────────────────────────────────────────────────────┘
+```
+
+---
+
+## 4. UNIQUE DIFFERENTIATORS
+
+### 4.1 The 5 Core Differentiators
+
+```
+┌─────────────────────────────────────────────────────────────────────────────────┐
+│                    5 CORE DIFFERENTIATORS                                      │
+├─────────────────────────────────────────────────────────────────────────────────┤
+│                                                                                 │
+│  🔍 1. DISCOVERY & BOOKING OF VERIFIED ARTISAN EXPERIENCES                     │
+│     ─────────────────────────────────────────────────────────────────────────── │
+│     • Search, filter, and book authentic artisan experiences                  │
+│     • Interactive map showing artisans and experiences                       │
+│     • Category filters (pottery, textiles, jewelry, painting, woodwork)       │
+│     • Real-time availability and pricing                                      │
+│     • Secure payments via UPI, Cards, NetBanking                             │
+│                                                                                 │
+│  🔐 2. EVIDENCE-BASED VERIFICATION & TRUST                                     │
+│     ─────────────────────────────────────────────────────────────────────────── │
+│     • Identity verified (Government ID)                                       │
+│     • Skill verified (Portfolio/Certificates)                                 │
+│     • Location verified (Geo + Community)                                     │
+│     • Trust Score (0-100) with contributing factors                          │
+│     • "Verified Artisan" badge                                                │
+│                                                                                 │
+│  🎙️ 3. VOICE-FIRST INCLUSIVE DESIGN                                           │
+│     ─────────────────────────────────────────────────────────────────────────── │
+│     • Artisans speak in native language → AI creates listing                 │
+│     • For elderly (60+) who can't type                                       │
+│     • For semi-literate artisans                                             │
+│     • For women artisans with limited tech access                            │
+│     • Real-time translation for tourist-artisan communication                │
+│                                                                                 │
+│  📊 4. GOVERNMENT TOURISM INTELLIGENCE DASHBOARD                              │
+│     ─────────────────────────────────────────────────────────────────────────── │
+│     • Artisan registry (state/district-wise)                                 │
+│     • Tourism heatmaps (overcrowded vs under-discovered)                     │
+│     • Economic impact tracking                                               │
+│     • ODOP showcase for each district                                        │
+│     • SDG progress metrics                                                   │
+│                                                                                 │
+│  🆘 5. EMERGENCY SAFETY SYSTEM                                                 │
+│     ─────────────────────────────────────────────────────────────────────────── │
+│     • SOS Button (Always visible, Red)                                       │
+│     • Auto-location capture                                                  │
+│     • SMS alert to emergency contacts                                        │
+│     • App enters "Safe Mode" (High contrast, minimal UI)                    │
+│                                                                                 │
+└─────────────────────────────────────────────────────────────────────────────────┘
+```
+
+### 4.2 The "Killer Line"
+
+> **"Don't just show tourists where to go. Help them discover who to meet, what to experience, and why they can trust it."**
+
+---
+
+## 5. FEATURE LIST
+
+### 5.1 Core Features (P0 — Must Have)
+
+```
+┌─────────────────────────────────────────────────────────────────────────────────┐
+│                         CORE FEATURES (P0)                                     │
+├─────────────────────────────────────────────────────────────────────────────────┤
+│                                                                                 │
+│  1. ARTISAN DISCOVERY                                                          │
+│     ├── Map-based discovery (interactive map of artisans)                     │
+│     ├── Category filters (pottery, textiles, jewelry, painting, woodwork)     │
+│     ├── Location-based search                                                 │
+│     └── "Near Me" feature                                                      │
+│                                                                                 │
+│  2. EXPERIENCE BOOKING                                                         │
+│     ├── Workshop booking (dates, times, availability)                         │
+│     ├── Secure payments (UPI, Cards, NetBanking)                              │
+│     ├── Booking confirmation & reminders                                      │
+│     └── Cancellation & refund policy                                          │
+│                                                                                 │
+│  3. ARTISAN VERIFICATION                                                       │
+│     ├── Government ID verification                                            │
+│     ├── Skill verification (certificates, portfolio)                          │
+│     ├── GI-tag verification (if applicable)                                   │
+│     └── "Verified Artisan" badge + Trust Score                               │
+│                                                                                 │
+│  4. USER REVIEWS & RATINGS                                                     │
+│     ├── Post-experience reviews                                               │
+│     ├── Star ratings (1-5)                                                    │
+│     ├── Photo/video reviews                                                   │
+│     └── Verified review badge                                                 │
+│                                                                                 │
+│  5. ARTISAN DASHBOARD                                                          │
+│     ├── Profile management                                                    │
+│     ├── Experience listings                                                   │
+│     ├── Booking management                                                    │
+│     └── Earnings tracking                                                      │
+│                                                                                 │
+└─────────────────────────────────────────────────────────────────────────────────┘
+```
+
+### 5.2 AI Features (P1 — Differentiators)
+
+```
+┌─────────────────────────────────────────────────────────────────────────────────┐
+│                          AI FEATURES (P1)                                       │
+├─────────────────────────────────────────────────────────────────────────────────┤
+│                                                                                 │
+│  6. AI-POWERED DISCOVERY ENGINE                                                │
+│     ├── Natural language search                                               │
+│     ├── Personalized recommendations                                          │
+│     └── "You might also like" suggestions                                     │
+│                                                                                 │
+│  7. AI TRAVEL COMPANION (Multi-Lingual Chatbot)                               │
+│     ├── 24/7 assistance                                                       │
+│     ├── Voice input & output (10+ languages)                                  │
+│     ├── Real-time translation                                                 │
+│     └── Booking assistance                                                     │
+│                                                                                 │
+│  8. VOICE-FIRST ARTISAN ONBOARDING                                             │
+│     ├── Speak in native language → AI creates listing                         │
+│     ├── Voice-based listing management                                        │
+│     └── Real-time translation for tourist-artisan communication               │
+│                                                                                 │
+└─────────────────────────────────────────────────────────────────────────────────┘
+```
+
+### 5.3 Safety & Accessibility Features (P0 — Critical)
+
+```
+┌─────────────────────────────────────────────────────────────────────────────────┐
+│                    SAFETY & ACCESSIBILITY FEATURES (P0)                         │
+├─────────────────────────────────────────────────────────────────────────────────┤
+│                                                                                 │
+│  9. VOICE-FIRST INTERFACE                                                      │
+│     ├── Voice search & discovery                                              │
+│     ├── Voice booking                                                         │
+│     ├── Real-time translation                                                 │
+│     └── Voice-based onboarding for artisans                                  │
+│                                                                                 │
+│  10. MULTI-LANGUAGE SUPPORT (10+ Languages)                                    │
+│      ├── Hindi, English, Marathi, Tamil, Telugu, Bengali, etc.                │
+│      ├── Automatic translation                                                │
+│      └── Regional language UI                                                 │
+│                                                                                 │
+│  11. "WOMEN-LED" BADGE & FILTER                                                │
+│      ├── Verified women-led experiences                                       │
+│      ├── Women-only tours (where requested)                                   │
+│      └── Safety features (share location, emergency contact)                   │
+│                                                                                 │
+│  12. ELDERLY-FRIENDLY MODE                                                     │
+│      ├── Large text & buttons                                                 │
+│      ├── High contrast                                                        │
+│      ├── Simplified navigation                                                │
+│      └── Audio/video content instead of text                                  │
+│                                                                                 │
+│  13. EMERGENCY SAFETY SYSTEM (SOS)                                             │
+│      ├── SOS Button (Always visible, Red)                                     │
+│      ├── Auto-location capture                                                │
+│      ├── SMS alert to emergency contacts                                      │
+│      └── Safe Mode (High contrast, minimal UI)                               │
+│                                                                                 │
+└─────────────────────────────────────────────────────────────────────────────────┘
+```
+
+### 5.4 Government & Analytics (P2)
+
+```
+┌─────────────────────────────────────────────────────────────────────────────────┐
+│                    GOVERNMENT FEATURES (P2)                                     │
+├─────────────────────────────────────────────────────────────────────────────────┤
+│                                                                                 │
+│  14. GOVERNMENT DASHBOARD                                                      │
+│      ├── Artisan registry (state/district-wise)                               │
+│      ├── Tourism impact analytics                                             │
+│      ├── Real-time reporting                                                  │
+│      └── Emergency incident log                                               │
+│                                                                                 │
+│  15. "ONE DISTRICT ONE PRODUCT" INTEGRATION                                   │
+│      ├── ODOP showcase for each district                             │
+│      ├── District-wise artisan clusters                                       │
+│      └── Easy discovery of district specialties                               │
+│                                                                                 │
+│  16. IMPACT DASHBOARD                                                          │
+│      ├── Economic impact (income generated)                                   │
+│      ├── Social impact (artisans onboarded)                                   │
+│      └── SDG progress tracking                                                │
+│                                                                                 │
+└─────────────────────────────────────────────────────────────────────────────────┘
+```
+
+---
+
+## 6. DATABASE SCHEMA
+
+```
+┌─────────────────────────────────────────────────────────────────────────────────┐
+│                          DATABASE SCHEMA                                        │
+├─────────────────────────────────────────────────────────────────────────────────┤
+│                                                                                 │
+│  ┌─────────────────────────────────────────────────────────────────────────┐    │
+│  │  USERS (artisans, tourists, admins)                                    │    │
+│  │  ├── id, name, email, phone, role, location, languages                │    │
+│  │  ├── emergency_contacts (JSON: [{name, phone, relation}])             │    │
+│  │  └── auth: password_hash, refresh_token, fcm_token                    │    │
+│  └─────────────────────────────────────────────────────────────────────────┘    │
+│                                                                                 │
+│  ┌─────────────────────────────────────────────────────────────────────────┐    │
+│  │  ARTISAN_PROFILES                                                       │    │
+│  │  ├── user_id (FK), craft_category, years_experience                    │    │
+│  │  ├── verification_status (pending/approved/rejected)                   │    │
+│  │  ├── trust_score (0-100), gi_tag (if applicable)                       │    │
+│  │  ├── women_led (boolean), elderly_friendly (boolean)                  │    │
+│  │  └── story (text), location (lat/lng)                                  │    │
+│  └─────────────────────────────────────────────────────────────────────────┘    │
+│                                                                                 │
+│  ┌─────────────────────────────────────────────────────────────────────────┐    │
+│  │  EXPERIENCES                                                             │    │
+│  │  ├── artisan_id (FK), name, description, category                       │    │
+│  │  ├── price, duration, max_participants                                 │    │
+│  │  ├── location (lat/lng), address, city, state                          │    │
+│  │  ├── odop_tag (boolean), gi_tag (boolean)                              │    │
+│  │  └── status (active/inactive), created_at, updated_at                  │    │
+│  └─────────────────────────────────────────────────────────────────────────┘    │
+│                                                                                 │
+│  ┌─────────────────────────────────────────────────────────────────────────┐    │
+│  │  BOOKINGS                                                               │    │
+│  │  ├── experience_id (FK), tourist_id (FK)                               │    │
+│  │  ├── date, time, participants, total_price                             │    │
+│  │  ├── status (pending/confirmed/completed/cancelled)                    │    │
+│  │  └── payment_id (FK), review_id (FK)                                  │    │
+│  └─────────────────────────────────────────────────────────────────────────┘    │
+│                                                                                 │
+│  ┌─────────────────────────────────────────────────────────────────────────┐    │
+│  │  REVIEWS                                                                │    │
+│  │  ├── booking_id (FK), tourist_id (FK), rating (1-5)                    │    │
+│  │  ├── comment, photos (Cloudinary URLs)                                 │    │
+│  │  └── verified (boolean)                                                │    │
+│  └─────────────────────────────────────────────────────────────────────────┘    │
+│                                                                                 │
+│  ┌─────────────────────────────────────────────────────────────────────────┐    │
+│  │  EMERGENCY_ALERTS                                                       │    │
+│  │  ├── user_id (FK), location (lat/lng)                                  │    │
+│  │  ├── contacts_notified (JSON)                                          │    │
+│  │  ├── status (active/resolved)                                          │    │
+│  │  └── created_at, resolved_at                                           │    │
+│  └─────────────────────────────────────────────────────────────────────────┘    │
+│                                                                                 │
+└─────────────────────────────────────────────────────────────────────────────────┘
+```
+
+---
+
+## 7. API ENDPOINTS
+
+```
+┌─────────────────────────────────────────────────────────────────────────────────┐
+│                              API ENDPOINTS                                      │
+├─────────────────────────────────────────────────────────────────────────────────┤
+│                                                                                 │
+│  AUTH                                                                           │
+│  ────────────────────────────────────────────────────────────────────────────────│
+│  POST   /auth/register         - Tourist/Artisan registration                   │
+│  POST   /auth/login            - Login with credentials                        │
+│  POST   /auth/refresh          - Refresh JWT token                             │
+│  POST   /auth/logout           - Logout                                        │
+│  POST   /auth/verify-otp       - Verify OTP for onboarding                     │
+│                                                                                 │
+│  ARTISANS                                                                       │
+│  ────────────────────────────────────────────────────────────────────────────────│
+│  POST   /artisans/profile      - Create/Update artisan profile                 │
+│  GET    /artisans/me           - Get current artisan profile                   │
+│  POST   /artisans/verify       - Submit verification documents                 │
+│  POST   /artisans/voice        - Voice-based profile creation                  │
+│  GET    /artisans/status       - Get verification status                       │
+│  GET    /artisans/trust-score  - Get trust score breakdown                     │
+│                                                                                 │
+│  EXPERIENCES                                                                    │
+│  ────────────────────────────────────────────────────────────────────────────────│
+│  POST   /experiences           - Create experience listing                     │
+│  GET    /experiences           - List experiences (with filters)               │
+│  GET    /experiences/{id}      - Get experience details                        │
+│  GET    /experiences/recommend - AI-powered recommendations                    │
+│  GET    /experiences/nearby    - Location-based discovery                      │
+│                                                                                 │
+│  BOOKINGS                                                                       │
+│  ────────────────────────────────────────────────────────────────────────────────│
+│  POST   /bookings              - Create booking                                │
+│  GET    /bookings              - List user bookings                            │
+│  GET    /bookings/{id}         - Get booking details                           │
+│  POST   /bookings/{id}/payment - Initiate payment                             │
+│                                                                                 │
+│  CHAT (Multi-Lingual + Voice)                                                   │
+│  ────────────────────────────────────────────────────────────────────────────────│
+│  POST   /chat/message          - Send text/voice message                      │
+│  POST   /chat/voice/input      - Send voice input                             │
+│  POST   /chat/translate        - Translate message                            │
+│                                                                                 │
+│  EMERGENCY SAFETY                                                               │
+│  ────────────────────────────────────────────────────────────────────────────────│
+│  POST   /emergency/sos         - Trigger SOS alert                             │
+│  POST   /emergency/contacts    - Update emergency contacts                     │
+│  GET    /emergency/status      - Get current emergency status                  │
+│  POST   /emergency/resolve     - Mark emergency as resolved                   │
+│                                                                                 │
+│  GOVERNMENT                                                                     │
+│  ────────────────────────────────────────────────────────────────────────────────│
+│  GET    /gov/dashboard         - Government analytics dashboard               │
+│  GET    /gov/artisans          - Artisan registry (admin only)                │
+│  GET    /gov/impact            - Impact metrics (SDG, economic)               │
+│  GET    /gov/heatmaps          - Tourism heatmaps                             │
+│                                                                                 │
+└─────────────────────────────────────────────────────────────────────────────────┘
+```
+
+---
+
+## 8. PERFORMANCE TARGETS
+
+| Metric | Target | Why |
+|--------|--------|-----|
+| API Response Time | < 200ms (p95) | Users expect instant feedback |
+| Search Latency | < 100ms | Discovery should be snappy |
+| LLM Inference | < 500ms (with caching) | Chat should feel conversational |
+| Database Query | < 50ms (indexed) | No bottlenecks |
+| Mobile Startup | < 2 seconds | First impression matters |
+| Memory Usage | < 150MB (mobile) | Works on budget phones |
+| SOS Response Time | < 1 second | Critical for safety |
+
+---
+
+## 9. SECURITY & PRIVACY
+
+### 9.1 Security Architecture
+
+```
+┌─────────────────────────────────────────────────────────────────────────────────┐
+│                          SECURITY ARCHITECTURE                                  │
+├─────────────────────────────────────────────────────────────────────────────────┤
+│                                                                                 │
+│  AUTHENTICATION:                                                                │
+│  ├── JWT with refresh tokens (15min expiry)                                   │
+│  ├── OAuth2 (Google)                                                          │
+│  ├── 6-digit PIN for mobile                                                  │
+│  └── Biometric (fingerprint/face) for Android                                │
+│                                                                                 │
+│  AUTHORIZATION (RBAC):                                                         │
+│  ├── Tourist: Own data only                                                   │
+│  ├── Artisan: Own listings and bookings                                       │
+│  ├── Admin: System-wide (audited)                                             │
+│  └── Government: Aggregated analytics (no PII)                               │
+│                                                                                 │
+│  DATA ENCRYPTION:                                                              │
+│  ├── TLS 1.3 in transit                                                       │
+│  ├── AES-256 at rest                                                          │
+│  └── PII encrypted (AES-256)                                                  │
+│                                                                                 │
+│  DATA CLASSIFICATION:                                                          │
+│  ├── PII (Name, Phone, Email): Encrypted, Role-based                         │
+│  ├── AI Prompts: Anonymised before sending                                    │
+│  └── Analytics Data: Anonymised, Admin only                                  │
+│                                                                                 │
+└─────────────────────────────────────────────────────────────────────────────────┘
+```
+
+---
+
+## 10. ACCESSIBILITY & INCLUSION
+
+### 10.1 Voice-First Design
+
+```
+┌─────────────────────────────────────────────────────────────────────────────────┐
+│                          VOICE-FIRST DESIGN                                     │
+├─────────────────────────────────────────────────────────────────────────────────┤
+│                                                                                 │
+│  FOR TOURISTS:                                                                  │
+│  ├── Voice search: "Find pottery workshops near Jaipur"                       │
+│  ├── Voice translation: Real-time translation between                         │
+│  │   tourist and artisan (Hindi ↔ English ↔ regional)                         │
+│  └── Voice booking: "Book a block-printing workshop for tomorrow"            │
+│                                                                                 │
+│  FOR ARTISANS (ESPECIALLY ELDERLY & WOMEN):                                    │
+│  ├── Voice-based listing creation (no typing needed)                          │
+│  ├── Voice notifications: "You have a new booking request"                    │
+│  └── Voice-first onboarding: "Tell us about your craft"                       │
+│                                                                                 │
+│  WHY THIS MATTERS:                                                             │
+│  ├── 70%+ artisans are semi-literate or have low digital literacy             │
+│  ├── Elderly artisans (60+) can't use complex interfaces                      │
+│  └── Voice-first = truly inclusive platform                                   │
+│                                                                                 │
+└─────────────────────────────────────────────────────────────────────────────────┘
+```
+
+### 10.2 Accessibility Features
+
+| Feature | Implementation |
+|---------|---------------|
+| **Voice‑first** | For low‑literacy or elderly users |
+| **Large touch targets** | Min 44px |
+| **High contrast** | WCAG 2.1 AA (4.5:1 text, 3:1 large) |
+| **Reduced motion** | Optional toggle |
+| **Screen‑reader support** | Semantic HTML, ARIA labels |
+| **Multi‑language** | Hindi + English + 10+ regional languages |
+
+---
+
+## 11. GOVERNMENT ALIGNMENT
+
+| Government Priority | How Kala Setu Delivers |
+|---------------------|------------------------|
+| **"One District One Product" (ODOP)** | Digital showcase for each district's unique craft |
+| **"Vocal for Local"** | Direct artisan-to-tourist sales, no middlemen |
+| **"Dekho Apna Desh"** | Encourages domestic tourism to craft destinations |
+| **"Digital India"** | Digital onboarding for millions of artisans |
+| **SDG 8 (Decent Work)** | Fair wages, direct income, sustainable livelihoods |
+| **SDG 12 (Sustainable Consumption)** | Authentic crafts, reduced mass-produced waste |
+
+---
+
+## 12. TECH STACK
+
+```
+┌─────────────────────────────────────────────────────────────────────────────────┐
+│                              TECH STACK                                         │
+├─────────────────────────────────────────────────────────────────────────────────┤
+│                                                                                 │
+│  FRONTEND:                                                                      │
+│  ├── Web: React 18 + TypeScript + Vite + Tailwind CSS + Framer Motion         │
+│  ├── Mobile: Kotlin + Jetpack Compose                                         │
+│  └── State: Context API / Zustand                                              │
+│                                                                                 │
+│  BACKEND:                                                                       │
+│  ├── API: Node.js + Express / Spring Boot                                     │
+│  ├── Auth: JWT + OAuth (Google) + Refresh Tokens                              │
+│  └── Cache: Redis (Upstash)                                                    │
+│                                                                                 │
+│  DATABASE:                                                                      │
+│  ├── Relational: PostgreSQL (Neon)                                             │
+│  ├── Vector: ChromaDB                                                          │
+│  └── Storage: Cloudinary (25GB free)                                           │
+│                                                                                 │
+│  AI/ML:                                                                         │
+│  ├── LLM: Groq API (fast, free)                                                │
+│  ├── Speech-to-Text: Web Speech API / Whisper                                  │
+│  └── Translation: Web Speech API / Google Translate                            │
+│                                                                                 │
+│  EXTERNAL SERVICES:                                                             │
+│  ├── Payments: Razorpay                                                        │
+│  ├── Maps: MapLibre GL                                                         │
+│  ├── SMS: Twilio (OTP, SOS alerts)                                             │
+│  └── Deployment: Vercel (frontend) + Railway/Render (backend)                 │
+│                                                                                 │
+└─────────────────────────────────────────────────────────────────────────────────┘
+```
+
+---
+
+## 13. HACKATHON IMPLEMENTATION PLAN (36-48 Hours)
+
+```
+┌─────────────────────────────────────────────────────────────────────────────────┐
+│                    HACKATHON IMPLEMENTATION (36-48 HOURS)                       │
+├─────────────────────────────────────────────────────────────────────────────────┤
+│                                                                                 │
+│  HOUR 1-4: FOUNDATION                                                          │
+│  ├── Set up repository + environment                                          │
+│  ├── Database schema (PostgreSQL + ChromaDB)                                 │
+│  └── Authentication (JWT + OAuth)                                            │
+│                                                                                 │
+│  HOUR 5-12: CORE WORKFLOW                                                      │
+│  ├── Artisan onboarding (voice-first)                                        │
+│  ├── Experience listing                                                       │
+│  ├── Tourist discovery (search + filters)                                    │
+│  └── Booking flow                                                            │
+│                                                                                 │
+│  HOUR 13-24: AI & DIFFERENTIATORS                                              │
+│  ├── AI-powered recommendations (Groq API)                                   │
+│  ├── Multi-lingual chat (Voice + Text)                                       │
+│  └── Verification system                                                     │
+│                                                                                 │
+│  HOUR 25-36: UX & INTEGRATION                                                  │
+│  ├── Mobile UI (Kotlin + Compose)                                            │
+│  ├── Web dashboard (React + Tailwind)                                        │
+│  ├── Payment integration (Razorpay)                                          │
+│  └── Government dashboard (basic analytics)                                  │
+│                                                                                 │
+│  HOUR 37-48: POLISH & DEMO                                                     │
+│  ├── Testing (core flows + emergency)                                        │
+│  ├── Performance optimization                                                │
+│  ├── Demo preparation                                                        │
+│  └── Presentation rehearsal                                                  │
+│                                                                                 │
+└─────────────────────────────────────────────────────────────────────────────────┘
+```
+
+---
+
+## 14. DELIVERABLES
+
+### 14.1 What to Build (Hackathon Scope)
+
+| Priority | Component | Description |
+|----------|-----------|-------------|
+| **P0 (Must Have)** | Authentication | JWT + OAuth + OTP verification + Multi-lingual |
+| **P0** | Artisan Onboarding | Voice-first registration + profile |
+| **P0** | Experience Listing | Create, read, search experiences |
+| **P0** | Tourist Discovery | Map view + category filters + AI recommendations |
+| **P0** | Booking Flow | Book, pay (Razorpay), confirm, manage |
+| **P0** | Verification System | ID + skill + trust score |
+| **P0** | Multi-Lingual UI | 10+ languages |
+| **P0** | Emergency SOS | SOS button + location + emergency contacts |
+| **P1 (Differentiator)** | Multi-Lingual Chatbot | Text + Voice |
+| **P1** | Voice-First Interface | Speech-to-text, translation |
+| **P1** | Government Dashboard | Real-time analytics, heatmaps |
+| **P2 (Nice to Have)** | Gallery | User-upload with moderation |
+
+---
+
+## 15. THE KILLER LINE
+
+> **"Kala Setu connects tourists with verified local artisans, cultural activities, and community experiences — making India's living heritage accessible, authentic, and bookable."**
+
+---
+
+**Kala Setu: Connecting Tourists with India's Artisans. 🇮🇳**
+
+---
+
+*End of Master Prompt (Focused Edition) — KALA SETU for PS-TUR05*

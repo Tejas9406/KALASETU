@@ -1,0 +1,58 @@
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "Playfair Display", Georgia, serif;
+  --font-sans: "Space Grotesk", system-ui, sans-serif;
+  
+  --color-heritage-cream: #FDFBF7;
+  --color-heritage-forest: #2D4A3E;
+  --color-heritage-deep-forest: #1A332A;
+  --color-heritage-terracotta: #D84315;
+  --color-heritage-warm-brown: #6D4C41;
+  --color-heritage-sage: #8B9A8B;
+  --color-heritage-gold: #C9A84C;
+  --color-heritage-parchment: #F5F0E6;
+  --color-heritage-stone: #D7CCC8;
+  --color-sos-red: #DC2626;
+  --color-sos-dark: #991B1B;
+}
+
+@layer base {
+  body {
+    font-family: var(--font-sans);
+    background-color: var(--color-heritage-cream);
+    color: #2C2420;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, .font-editorial {
+    font-family: var(--font-serif);
+  }
+}
+
+/* Custom smooth scroll and utility animations */
+html {
+  scroll-behavior: smooth;
+}
+
+@keyframes pulse-emergency {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.7), 0 0 35px rgba(220, 38, 38, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 0 20px rgba(220, 38, 38, 0), 0 0 50px rgba(220, 38, 38, 0.8);
+  }
+}
+
+.animate-pulse-sos {
+  animation: pulse-emergency 1.8s infinite;
+}
+
+/* Hide scrollbar for category sliders */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
