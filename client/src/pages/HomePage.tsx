@@ -67,120 +67,124 @@ export const HomePage: React.FC<HomePageProps> = ({
 
   return (
     <div className="min-h-screen bg-[#FDFBF7]">
-      {/* 1. Dynamic Hero Slideshow: Single Active Viewport with Zero Bleed */}
-      <section className="relative min-h-[92vh] flex items-center justify-center overflow-hidden bg-stone-900">
-        {/* Continuous Horizontal Carousel Ribbon (Translates exactly 100% per slide) */}
-        <div 
-          className="absolute inset-0 flex transition-transform duration-800 ease-[cubic-bezier(0.25,1,0.5,1)]"
-          style={{
-            transform: `translateX(-${currentSlide * 100}%)`,
-            width: `${slides.length * 100}%`
-          }}
-        >
-          {slides.map((slide, index) => {
-            const isCurrent = index === currentSlide;
-            return (
-              <div
-                key={slide.id}
-                className="relative h-full flex-none overflow-hidden"
-                style={{ width: `${100 / slides.length}%` }}
-              >
-                {slide.type === 'video' ? (
-                  <video
-                    src={slide.src}
-                    poster="/assets/images/Home%20page/Kolhapuri_Chappals_in_roadside_shop_in_Kolhapur3.jpeg"
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
-                    preload="auto"
-                    className="w-full h-full object-cover"
-                    onTimeUpdate={(e: any) => {
-                      if (e.target.currentTime >= 4) {
-                        e.target.currentTime = 0;
-                      }
-                    }}
-                  />
-                ) : (
-                  <img
-                    src={slide.src}
-                    alt={slide.craftName}
-                    className={`w-full h-full object-cover transition-transform duration-[6000ms] ease-out ${
-                      isCurrent ? 'scale-110' : 'scale-100'
-                    }`}
-                    onError={(e: any) => {
-                      e.target.src = '/assets/images/01-Hero/Kolhapuri_Chappals_in_roadside_shop_in_Kolhapur3.jpeg';
-                    }}
-                  />
-                )}
-                {/* Steady Legibility Gradient Overlays */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/35 to-black/25" />
-                <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-transparent to-black/30" />
-              </div>
-            );
-          })}
-        </div>
-
-        {/* Hero Content Overlay */}
-        <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 text-center text-white pt-24 pb-16 pointer-events-auto">
-          {/* Active Craft Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/15 backdrop-blur-md border border-white/20 text-xs font-semibold tracking-wider uppercase mb-5 text-amber-300 shadow-md">
-            <Sparkles className="w-3.5 h-3.5" />
-            <span>{activeSlide.badge} • SIH 2026</span>
-          </div>
-
-          {/* Heading */}
-          <h1 className="text-4xl sm:text-6xl md:text-7xl font-serif font-extrabold tracking-tight leading-[1.08] mb-4 text-white drop-shadow-[0_4px_16px_rgba(0,0,0,0.9)]">
-            {ui.discoverHeading} <br />
-            <span className="italic font-normal text-amber-200">
-              {activeSlide.craftName}
-            </span>
-          </h1>
-
-          {/* Tagline */}
-          <p className="text-base sm:text-lg text-stone-200 max-w-2xl mx-auto mb-8 font-light leading-relaxed drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">
-            {activeSlide.tagline}
-          </p>
-
-          {/* Search Bar */}
-          <div className="max-w-2xl mx-auto bg-white/95 backdrop-blur-md rounded-full p-2 pl-6 shadow-2xl flex items-center gap-3 border border-stone-200 mb-6">
-            <Search className="w-5 h-5 text-stone-400 shrink-0" />
-            <input
-              id="hero-search-input"
-              type="text"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder={ui.searchPlaceholder}
-              className="flex-1 bg-transparent text-stone-800 text-sm sm:text-base focus:outline-none placeholder:text-stone-400"
-            />
-            <button
-              onClick={onNavigateToDiscover}
-              className="bg-[#D84315] hover:bg-[#BF360C] text-white px-6 py-3 rounded-full text-sm font-bold shadow-md transition-transform hover:scale-105"
+      {/* 1. Dynamic Hero Slideshow — Stacked Absolute Slides */}
+      <section className="relative w-full overflow-hidden bg-stone-900" style={{ height: '92vh', minHeight: '560px' }}>
+        {/* All slides stacked, only active one is visible */}
+        {slides.map((slide, index) => {
+          const isCurrent = index === currentSlide;
+          const isPrev = index === (currentSlide - 1 + slides.length) % slides.length;
+          return (
+            <div
+              key={`${slide.id}-${index}`}
+              className="absolute inset-0 w-full h-full overflow-hidden"
+              style={{
+                transform: isCurrent ? 'translateX(0%)' : isPrev ? 'translateX(-100%)' : 'translateX(100%)',
+                transition: 'transform 900ms cubic-bezier(0.25, 1, 0.5, 1)',
+                zIndex: isCurrent ? 2 : 1,
+              }}
             >
-              {t.discover}
-            </button>
-          </div>
+              {slide.type === 'video' ? (
+                <video
+                  src={slide.src}
+                  poster="/assets/images/Home page/Kolhapuri_Chappals_in_roadside_shop_in_Kolhapur3.jpeg"
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  preload="auto"
+                  style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+                  onTimeUpdate={(e: any) => {
+                    if (e.target.currentTime >= 4) {
+                      e.target.currentTime = 0;
+                    }
+                  }}
+                />
+              ) : (
+                <img
+                  src={slide.src}
+                  alt={slide.craftName}
+                  style={{
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'cover',
+                    display: 'block',
+                    transform: isCurrent ? 'scale(1.08)' : 'scale(1)',
+                    transition: isCurrent ? 'transform 7000ms ease-out' : 'none',
+                  }}
+                  onError={(e: any) => {
+                    e.target.src = '/assets/images/Home page/Kolhapuri_Chappals_in_roadside_shop_in_Kolhapur3.jpeg';
+                  }}
+                />
+              )}
+              {/* Gradient overlays */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-black/20" />
+              <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-transparent to-black/25" />
+            </div>
+          );
+        })}
 
-          {/* Trust Badges Bar */}
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-4 text-xs sm:text-sm text-stone-300">
-            <span className="flex items-center gap-1.5 drop-shadow">
-              <ShieldCheck className="w-4 h-4 text-emerald-400" />
-              {ui.verifiedArtisansBadge}
-            </span>
-            <span className="text-white/30">•</span>
-            <span className="flex items-center gap-1.5 drop-shadow">
-              <Award className="w-4 h-4 text-amber-400" />
-              {ui.giTagBadge}
-            </span>
-            <span className="text-white/30">•</span>
-            <span className="flex items-center gap-1.5 drop-shadow">
-              <Heart className="w-4 h-4 text-rose-400" />
-              {ui.directIncomeBadge}
-            </span>
+        {/* Hero Content Overlay — always on top */}
+        <div className="absolute inset-0 z-10 flex items-center justify-center pointer-events-none">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center text-white pt-24 pb-16 pointer-events-auto">
+            {/* Active Craft Badge */}
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/15 backdrop-blur-md border border-white/20 text-xs font-semibold tracking-wider uppercase mb-5 text-amber-300 shadow-md">
+              <Sparkles className="w-3.5 h-3.5" />
+              <span>{activeSlide.badge} • SIH 2026</span>
+            </div>
+
+            {/* Heading */}
+            <h1 className="text-4xl sm:text-6xl md:text-7xl font-serif font-extrabold tracking-tight leading-[1.08] mb-4 text-white drop-shadow-[0_4px_16px_rgba(0,0,0,0.9)]">
+              {ui.discoverHeading} <br />
+              <span className="italic font-normal text-amber-200">
+                {activeSlide.craftName}
+              </span>
+            </h1>
+
+            {/* Tagline */}
+            <p className="text-base sm:text-lg text-stone-200 max-w-2xl mx-auto mb-8 font-light leading-relaxed drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">
+              {activeSlide.tagline}
+            </p>
+
+            {/* Search Bar */}
+            <div className="max-w-2xl mx-auto bg-white/95 backdrop-blur-md rounded-full p-2 pl-6 shadow-2xl flex items-center gap-3 border border-stone-200 mb-6">
+              <Search className="w-5 h-5 text-stone-400 shrink-0" />
+              <input
+                id="hero-search-input"
+                type="text"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                placeholder={ui.searchPlaceholder}
+                className="flex-1 bg-transparent text-stone-800 text-sm sm:text-base focus:outline-none placeholder:text-stone-400"
+              />
+              <button
+                onClick={onNavigateToDiscover}
+                className="bg-[#D84315] hover:bg-[#BF360C] text-white px-6 py-3 rounded-full text-sm font-bold shadow-md transition-transform hover:scale-105"
+              >
+                {t.discover}
+              </button>
+            </div>
+
+            {/* Trust Badges Bar */}
+            <div className="mt-8 flex flex-wrap items-center justify-center gap-4 text-xs sm:text-sm text-stone-300">
+              <span className="flex items-center gap-1.5 drop-shadow">
+                <ShieldCheck className="w-4 h-4 text-emerald-400" />
+                {ui.verifiedArtisansBadge}
+              </span>
+              <span className="text-white/30">•</span>
+              <span className="flex items-center gap-1.5 drop-shadow">
+                <Award className="w-4 h-4 text-amber-400" />
+                {ui.giTagBadge}
+              </span>
+              <span className="text-white/30">•</span>
+              <span className="flex items-center gap-1.5 drop-shadow">
+                <Heart className="w-4 h-4 text-rose-400" />
+                {ui.directIncomeBadge}
+              </span>
+            </div>
           </div>
         </div>
 
-        {/* Slideshow Controls (Bottom Center & Left/Right) */}
+        {/* Slideshow Controls */}
         <div className="absolute bottom-6 left-0 right-0 z-20 flex items-center justify-between px-6 sm:px-12 max-w-7xl mx-auto pointer-events-auto">
           {/* Active Location Info */}
           <div className="hidden sm:flex items-center gap-2 text-white/90 text-xs font-medium drop-shadow bg-black/40 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-white/15">
