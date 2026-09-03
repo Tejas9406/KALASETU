@@ -36,16 +36,14 @@ export const HomePage: React.FC<HomePageProps> = ({
   const ui = LOCALIZED_HOMEPAGE_UI[language] || LOCALIZED_HOMEPAGE_UI.en;
   const slides = LOCALIZED_HERO_SLIDES[language] || LOCALIZED_HERO_SLIDES.en;
 
-  // Unified auto-advance: 5s for image, 4.2s for video with single timer
+  // Auto-advance video slideshow: exactly 4 seconds per video
   useEffect(() => {
     if (!isPlaying || !slides.length) return;
-    const active = slides[currentSlide];
-    const duration = active?.type === 'image' ? 5000 : 4200;
     const timer = setTimeout(() => {
       setCurrentSlide((prev) => (prev + 1) % slides.length);
-    }, duration);
+    }, 4000);
     return () => clearTimeout(timer);
-  }, [currentSlide, isPlaying, slides]);
+  }, [currentSlide, isPlaying, slides.length]);
 
   const categories = [
     { id: 'All', label: t.filterAll || ui.allCraftsCategory, icon: '✨' },
@@ -69,68 +67,50 @@ export const HomePage: React.FC<HomePageProps> = ({
 
   return (
     <div className="min-h-screen bg-[#FDFBF7]">
-      {/* 1. Dynamic Hero Slideshow — Cinematic Dissolve */}
+      {/* 1. Dynamic Hero Slideshow — 10 Indexed Pure-Video Slides */}
       <section className="relative w-full overflow-hidden bg-stone-900" style={{ height: '92vh', minHeight: '560px' }}>
-        {/* All slides stacked, active crossfades smoothly */}
+        {/* All 10 video slides stacked, active crossfades seamlessly */}
         {slides.map((slide, index) => {
           const isCurrent = index === currentSlide;
-          // Only load/mount media for active slide and immediate neighbors to guarantee 60fps performance
-          const shouldLoad = Math.abs(index - currentSlide) <= 1 || 
-                             (currentSlide === 0 && index === slides.length - 1) || 
-                             (currentSlide === slides.length - 1 && index === 0);
+          // Preload active and next slide for 0ms lag transitions
+          const isNext = index === (currentSlide + 1) % slides.length;
+          const shouldLoad = isCurrent || isNext || Math.abs(index - currentSlide) <= 1;
 
           return (
             <div
               key={`${slide.id}-${index}`}
-              className="absolute inset-0 w-full h-full overflow-hidden"
+              className="absolute inset-0 w-full h-full overflow-hidden bg-stone-950"
               style={{
                 opacity: isCurrent ? 1 : 0,
-                transition: 'opacity 1000ms cubic-bezier(0.4, 0, 0.2, 1)',
+                transition: 'opacity 800ms ease-in-out',
                 zIndex: isCurrent ? 2 : 1,
                 pointerEvents: isCurrent ? 'auto' : 'none',
               }}
             >
               {shouldLoad && (
-                slide.type === 'video' ? (
-                  <video
-                    ref={(el) => {
-                      if (el) {
-                        if (isCurrent && isPlaying) {
-                          el.currentTime = 0;
-                          el.play().catch(() => {});
-                        } else {
-                          el.pause();
-                        }
+                <video
+                  ref={(el) => {
+                    if (el) {
+                      if (isCurrent && isPlaying) {
+                        el.play().catch(() => {});
+                      } else {
+                        el.pause();
+                        el.currentTime = 0;
                       }
-                    }}
-                    src={slide.src}
-                    poster="/assets/images/Home page/Kolhapuri_Chappals_in_roadside_shop_in_Kolhapur3.jpeg"
-                    muted
-                    playsInline
-                    preload={isCurrent ? "auto" : "metadata"}
-                    style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
-                  />
-                ) : (
-                  <img
-                    src={slide.src}
-                    alt={slide.craftName}
-                    style={{
-                      width: '100%',
-                      height: '100%',
-                      objectFit: 'cover',
-                      display: 'block',
-                      transform: isCurrent ? 'scale(1.06)' : 'scale(1)',
-                      transition: isCurrent ? 'transform 6000ms ease-out' : 'none',
-                    }}
-                    onError={(e: any) => {
-                      e.target.src = '/assets/images/Home page/Kolhapuri_Chappals_in_roadside_shop_in_Kolhapur3.jpeg';
-                    }}
-                  />
-                )
+                    }
+                  }}
+                  src={slide.src}
+                  muted
+                  loop
+                  playsInline
+                  autoPlay={isCurrent}
+                  preload={isCurrent ? "auto" : isNext ? "auto" : "metadata"}
+                  style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+                />
               )}
               {/* Cinematic legibility gradient overlays */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/35 to-black/25" />
-              <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-transparent to-black/30" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/35 to-black/25 pointer-events-none" />
+              <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-transparent to-black/30 pointer-events-none" />
             </div>
           );
         })}

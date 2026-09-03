@@ -695,769 +695,553 @@ export const LOCALIZED_HERO_SLIDES: Record<SupportedLanguage, LocalizedSlideItem
   "en": [
     {
       "id": 0,
-      "type": "image",
-      "src": "/assets/images/Home page/Kolhapuri_Chappals_in_roadside_shop_in_Kolhapur3.jpeg",
-      "craftName": "Ancestral Kolhapuri Leathercraft",
-      "tagline": "Hand-stitched vegetable-tanned Kolhapuri Chappals from 4th-generation master cobblers.",
-      "location": "Kolhapur, Maharashtra",
-      "badge": "GI Tagged • 100% Herbal Tanned"
+      "type": "video",
+      "src": "/assets/images/Home page/(1)12245591_3840_2160_30fps.mp4",
+      "craftName": "Imperial Handloom Silk & Zari Weaving",
+      "tagline": "Micro-level handcrafting of royal silk textiles on ancestral wooden looms with pure metallic zari thread.",
+      "location": "Chanderi & Varanasi",
+      "badge": "GI Royal Handloom"
     },
     {
       "id": 1,
+      "type": "video",
+      "src": "/assets/images/Home page/(2)148230-793717994.mp4",
+      "craftName": "Heritage Wheel Pottery & Terracotta",
+      "tagline": "Shaping raw earthen clay on the spinning wheel into sacred vessels and timeless decorative artifacts.",
+      "location": "Bishnupur & Kutch",
+      "badge": "Master Pottery"
+    },
+    {
+      "id": 2,
+      "type": "video",
+      "src": "/assets/images/Home page/(3)Handmade craft stall.mp4",
+      "craftName": "Living Craft Ateliers",
+      "tagline": "Experience the vibrant energy of authentic heritage stalls and master artisans at work.",
+      "location": "Bhavani Mandap Guilds, Maharashtra",
+      "badge": "Living Heritage"
+    },
+    {
+      "id": 3,
+      "type": "video",
+      "src": "/assets/images/Home page/(4)old leddy crafting.mp4",
+      "craftName": "Grandmother Weavers & Spinners",
+      "tagline": "Elders of the craft community passing down irreplaceable muscle memory and centuries of spinning wisdom.",
+      "location": "Pranpur & Rural Clusters",
+      "badge": "Living Legend"
+    },
+    {
+      "id": 4,
+      "type": "video",
+      "src": "/assets/images/Home page/(5)17_Tribes,_One_heartbeat_-_Hornbill_Festival.webm",
+      "craftName": "Hornbill Indigenous Cultural Festival",
+      "tagline": "17 indigenous tribes celebrating unity through traditional war log drums, folk attire, and sacred dances.",
+      "location": "Kisama, Nagaland",
+      "badge": "Northeast Cultural Heritage"
+    },
+    {
+      "id": 5,
+      "type": "video",
+      "src": "/assets/images/Home page/(6)Kakada_Bhajan_.webm",
+      "craftName": "Kakada Bhajan & Warkari Heritage",
+      "tagline": "Early dawn temple chants, cymbals, and devotional singing preserved across centuries of bhakti tradition.",
+      "location": "Pandharpur, Maharashtra",
+      "badge": "Spiritual Bhakti Lineage"
+    },
+    {
+      "id": 6,
+      "type": "video",
+      "src": "/assets/images/Home page/(7)15346256-hd_1920_1080_30fps.mp4",
+      "craftName": "Ancestral Metalcraft & Bell Metal Chiseling",
+      "tagline": "Master metalsmiths engraving classical folklore and intricate iconography on bronze and copper alloys.",
+      "location": "Moradabad & Bastar",
+      "badge": "GI Metal Guild"
+    },
+    {
+      "id": 7,
+      "type": "video",
+      "src": "/assets/images/Home page/(8)A_aesthetic_Fire_Pot_Dance.ogv",
+      "craftName": "Sacred Fire Pot Devotional Dance",
+      "tagline": "Spiritual temple rituals featuring fearless balance, live flame pots, and ancient rhythmic devotion.",
+      "location": "South India & Maharashtra",
+      "badge": "Sacred Ritual Custom"
+    },
+    {
+      "id": 8,
       "type": "video",
       "src": "/assets/images/Home page/local artist.mp4",
       "craftName": "Master Artisan at Work",
       "tagline": "Watch hereditary artisans hand-paint intricate heritage motifs and live brushstrokes.",
       "location": "Living Atelier, India",
-      "badge": "Master Artisan Video"
+      "badge": "Master Artisan Live"
     },
     {
-      "id": 2,
-      "type": "image",
-      "src": "/assets/images/Home page/Making_of_bamboo_and_palm_leaf_handicarft_products.jpg",
-      "craftName": "Bamboo & Palm Leaf Crafts",
-      "tagline": "Indigenous artisans hand-weave intricate bamboo and palm-leaf eco-friendly handicraft products.",
-      "location": "Majuli Island, Assam",
-      "badge": "UNESCO Heritage Contender"
-    },
-    {
-      "id": 3,
-      "type": "video",
-      "src": "/assets/images/Home page/Handmade craft stall.mp4",
-      "craftName": "Living Craft Ateliers",
-      "tagline": "Experience the vibrant energy of authentic heritage stalls and master artisans at work.",
-      "location": "Bhavani Mandap Guilds, Maharashtra",
-      "badge": "Living Heritage Video"
-    },
-    {
-      "id": 4,
-      "type": "image",
-      "src": "/assets/images/Home page/Bharud.jpg",
-      "craftName": "Bharud — Sacred Folk Tradition",
-      "tagline": "A vibrant traditional folk art form of Maharashtra blending music, theatrical expression and spiritual awakening.",
-      "location": "Rural Maharashtra",
-      "badge": "Living Intangible Heritage"
-    },
-    {
-      "id": 5,
-      "type": "video",
-      "src": "/assets/images/Home page/Craft shop.mp4",
-      "craftName": "Heritage Craft Ateliers & Bazaar",
-      "tagline": "Step inside time-honored craft shops where handmade artifacts preserve generations of cultural identity.",
-      "location": "Jaipur & Western India",
-      "badge": "Artisan Heritage Video"
-    },
-    {
-      "id": 6,
+      "id": 9,
       "type": "video",
       "src": "/assets/images/Home page/Bamboo_basket_making.ogv",
       "craftName": "Ancestral Bamboo Basket Weaving",
       "tagline": "Watch the hypnotic slicing of green bamboo culms and dexterous hand-interlacing of storage baskets.",
       "location": "Western Ghats & Majuli",
-      "badge": "Bamboo Heritage Video"
-    },
-    {
-      "id": 7,
-      "type": "video",
-      "src": "/assets/images/Home page/old leddy crafting.mp4",
-      "craftName": "Grandmother Weavers & Spinners",
-      "tagline": "Elders of the craft community passing down irreplaceable muscle memory and centuries of spinning wisdom.",
-      "location": "Pranpur & Rural Clusters",
-      "badge": "Living Legend Video"
-    },
-    {
-      "id": 8,
-      "type": "video",
-      "src": "/assets/images/Home page/17_Tribes,_One_heartbeat_-_Hornbill_Festival.webm",
-      "craftName": "Hornbill Indigenous Cultural Festival",
-      "tagline": "17 indigenous tribes celebrating unity through traditional war log drums, folk attire, and sacred dances.",
-      "location": "Kisama, Nagaland",
-      "badge": "Northeast Cultural Video"
-    },
-    {
-      "id": 9,
-      "type": "video",
-      "src": "/assets/images/Home page/A_aesthetic_Fire_Pot_Dance.ogv",
-      "craftName": "Sacred Fire Pot Devotional Dance",
-      "tagline": "Spiritual temple rituals featuring fearless balance, live flame pots, and ancient rhythmic devotion.",
-      "location": "South India & Maharashtra",
-      "badge": "Sacred Ritual Video"
-    },
-    {
-      "id": 10,
-      "type": "video",
-      "src": "/assets/images/Home page/Kakada_Bhajan_(3).webm",
-      "craftName": "Kakada Bhajan & Warkari Heritage",
-      "tagline": "Early dawn temple chants, cymbals, and devotional singing preserved across centuries of bhakti tradition.",
-      "location": "Pandharpur, Maharashtra",
-      "badge": "Spiritual Heritage Video"
-    },
-    {
-      "id": 11,
-      "type": "video",
-      "src": "/assets/images/Home page/12245591_3840_2160_30fps.mp4",
-      "craftName": "Imperial Handloom Silk & Zari Weaving",
-      "tagline": "Micro-level handcrafting of royal silk textiles on ancestral wooden looms with pure metallic zari thread.",
-      "location": "Chanderi & Varanasi",
-      "badge": "GI Royal Handloom Video"
-    },
-    {
-      "id": 12,
-      "type": "video",
-      "src": "/assets/images/Home page/148230-793717994.mp4",
-      "craftName": "Heritage Wheel Pottery & Terracotta",
-      "tagline": "Shaping raw earthen clay on the spinning wheel into sacred vessels and timeless decorative artifacts.",
-      "location": "Bishnupur & Kutch",
-      "badge": "Master Pottery Video"
-    },
-    {
-      "id": 13,
-      "type": "video",
-      "src": "/assets/images/Home page/15346256-hd_1920_1080_30fps.mp4",
-      "craftName": "Ancestral Metalcraft & Bell Metal Chiseling",
-      "tagline": "Master metalsmiths engraving classical folklore and intricate iconography on bronze and copper alloys.",
-      "location": "Moradabad & Bastar",
-      "badge": "GI Metal Guild Video"
+      "badge": "Bamboo Heritage Lineage"
     }
   ],
   "hi": [
     {
       "id": 0,
-      "type": "image",
-      "src": "/assets/images/Home page/Kolhapuri_Chappals_in_roadside_shop_in_Kolhapur3.jpeg",
-      "craftName": "पारंपरिक कोल्हापुरी चर्मशिल्प",
-      "tagline": "चौथी पीढ़ी के सिद्ध हस्तशिल्पियों द्वारा बबूल की छाल और हरड़ से तैयार प्राकृतिक कोल्हापुरी चप्पलें।",
-      "location": "कोल्हापुर, महाराष्ट्र",
-      "badge": "जीआई टैग प्रमाणित"
+      "type": "video",
+      "src": "/assets/images/Home page/(1)12245591_3840_2160_30fps.mp4",
+      "craftName": "शाही हथकरघा सिल्क व जरी बुनाई",
+      "tagline": "लकड़ी के प्राचीन करघों पर शुद्ध जरी के तारों से बुने जाने वाले उत्कृष्ट रेशमी वस्त्र।",
+      "location": "चंदेरी व वाराणसी",
+      "badge": "शाही हथकरघा"
     },
     {
       "id": 1,
+      "type": "video",
+      "src": "/assets/images/Home page/(2)148230-793717994.mp4",
+      "craftName": "कुम्हार का चाक — मिट्टी व टेराकोटा कला",
+      "tagline": "घूमते चाक पर गीली मिट्टी को दिव्य आकार देकर पारंपरिक बर्तन व कलाकृतियां गढ़ना।",
+      "location": "विष्णुपुर व कच्छ",
+      "badge": "मास्टर मिट्टी शिल्प"
+    },
+    {
+      "id": 2,
+      "type": "video",
+      "src": "/assets/images/Home page/(3)Handmade craft stall.mp4",
+      "craftName": "जीवंत शिल्प हाट व कारीगर",
+      "tagline": "पारंपरिक कारीगरों के प्रामाणिक शिल्प स्टॉल और कार्यशालाओं की जीवंत ऊर्जा का अनुभव करें।",
+      "location": "भवानी मंडप, महाराष्ट्र",
+      "badge": "सजीव धरोहर"
+    },
+    {
+      "id": 3,
+      "type": "video",
+      "src": "/assets/images/Home page/(4)old leddy crafting.mp4",
+      "craftName": "बुजुर्ग शिल्पकारों की परंपरा",
+      "tagline": "पीढ़ियों के अनुभव और चरखे के कौशल को नई पीढ़ी तक पहुंचाती वृद्ध उस्ताद बुनकर।",
+      "location": "प्राणपुर व ग्रामीण भारत",
+      "badge": "जीवंत किंवदंती"
+    },
+    {
+      "id": 4,
+      "type": "video",
+      "src": "/assets/images/Home page/(5)17_Tribes,_One_heartbeat_-_Hornbill_Festival.webm",
+      "craftName": "हॉर्नबिल उत्सव — नागालैंड की जनजातीय संस्कृति",
+      "tagline": "17 जनजातियों का पवित्र संगम, पारंपरिक ढोल की थाप और रंगारंग लोक नृत्यों का अद्वितीय दृश्य।",
+      "location": "किसामा, नागालैंड",
+      "badge": "पूर्वोत्तर धरोहर"
+    },
+    {
+      "id": 5,
+      "type": "video",
+      "src": "/assets/images/Home page/(6)Kakada_Bhajan_.webm",
+      "craftName": "काकड़ आरती व वारकरी भजन",
+      "tagline": "भोर के समय मंजीरे और पखावज की धुन पर गाया जाने वाला सदियों पुराना भक्ति रस का अमृत।",
+      "location": "पंढरपुर, महाराष्ट्र",
+      "badge": "आध्यात्मिक वारकरी परंपरा"
+    },
+    {
+      "id": 6,
+      "type": "video",
+      "src": "/assets/images/Home page/(7)15346256-hd_1920_1080_30fps.mp4",
+      "craftName": "कांस्य व पीतल धातु शिल्प",
+      "tagline": "तांबे और कांस्य की धातुओं पर हथौड़ी और छेनी से बारीक पौराणिक नक्काशी उकेरते उस्ताद धातुशिल्पी।",
+      "location": "मुरादाबाद व बस्तर",
+      "badge": "जीआई धातु शिल्प"
+    },
+    {
+      "id": 7,
+      "type": "video",
+      "src": "/assets/images/Home page/(8)A_aesthetic_Fire_Pot_Dance.ogv",
+      "craftName": "अग्नि घट नृत्य — पवित्र मंदिर अनुष्ठान",
+      "tagline": "सिर पर प्रज्वलित अग्नि घट रखकर किया जाने वाला प्राचीन भक्ति और शक्ति का विस्मयकारी नृत्य।",
+      "location": "दक्षिण भारत व महाराष्ट्र",
+      "badge": "पवित्र अनुष्ठान"
+    },
+    {
+      "id": 8,
       "type": "video",
       "src": "/assets/images/Home page/local artist.mp4",
       "craftName": "सजीव कार्यशाला में उस्ताद कारीगर",
       "tagline": "पारंपरिक सिद्धहस्त शिल्पकारों को लाइव बारीक धरोहर आकृतियां बनाते देखें।",
       "location": "जीवंत कार्यशाला, भारत",
-      "badge": "उस्ताद कारीगर वीडियो"
+      "badge": "उस्ताद कारीगर"
     },
     {
-      "id": 2,
-      "type": "image",
-      "src": "/assets/images/Home page/Making_of_bamboo_and_palm_leaf_handicarft_products.jpg",
-      "craftName": "बांस व ताड़पत्र हस्तशिल्प",
-      "tagline": "स्थानीय कारीगर हाथ से बांस और ताड़पत्र से पर्यावरण-अनुकूल बेशकीमती हस्तशिल्प बनाते हैं।",
-      "location": "माजुली द्वीप, असम",
-      "badge": "यूनेस्को धरोहर दावेदार"
-    },
-    {
-      "id": 3,
-      "type": "video",
-      "src": "/assets/images/Home page/Handmade craft stall.mp4",
-      "craftName": "जीवंत शिल्प हाट व कारीगर",
-      "tagline": "पारंपरिक कारीगरों के प्रामाणिक शिल्प स्टॉल और कार्यशालाओं की जीवंत ऊर्जा का अनुभव करें।",
-      "location": "भवानी मंडप, महाराष्ट्र",
-      "badge": "सजीव धरोहर वीडियो"
-    },
-    {
-      "id": 4,
-      "type": "image",
-      "src": "/assets/images/Home page/Bharud.jpg",
-      "craftName": "भारुड — महाराष्ट्र की पवित्र लोक परंपरा",
-      "tagline": "महाराष्ट्र की जीवंत लोक कला जिसमें संगीत, नाट्य और आध्यात्मिक जागृति का अनूठा संगम है।",
-      "location": "ग्रामीण महाराष्ट्र",
-      "badge": "जीवंत अमूर्त विरासत"
-    },
-    {
-      "id": 5,
-      "type": "video",
-      "src": "/assets/images/Home page/Craft shop.mp4",
-      "craftName": "विरासत शिल्प बाजार और दुकानें",
-      "tagline": "समय के पार बसी प्रामाणिक शिल्प दुकानों में हस्तनिर्मित कलाकृतियों की समृद्ध परंपरा देखें।",
-      "location": "जयपुर व पश्चिमी भारत",
-      "badge": "शिल्प धरोहर वीडियो"
-    },
-    {
-      "id": 6,
+      "id": 9,
       "type": "video",
       "src": "/assets/images/Home page/Bamboo_basket_making.ogv",
       "craftName": "पारंपरिक बांस टोकरी निर्माण",
       "tagline": "हरे बांस की पत्तियों को तराशकर हाथ से मजबूत और सुंदर टोकरी बुनने का जीवंत प्रदर्शन।",
       "location": "पश्चिमी घाट व माजुली",
-      "badge": "बांस शिल्प वीडियो"
-    },
-    {
-      "id": 7,
-      "type": "video",
-      "src": "/assets/images/Home page/old leddy crafting.mp4",
-      "craftName": "बुजुर्ग शिल्पकारों की परंपरा",
-      "tagline": "पीढ़ियों के अनुभव और चरखे के कौशल को नई पीढ़ी तक पहुंचाती वृद्ध उस्ताद बुनकर।",
-      "location": "प्राणपुर व ग्रामीण भारत",
-      "badge": "जीवंत किंवदंती वीडियो"
-    },
-    {
-      "id": 8,
-      "type": "video",
-      "src": "/assets/images/Home page/17_Tribes,_One_heartbeat_-_Hornbill_Festival.webm",
-      "craftName": "हॉर्नबिल उत्सव — नागालैंड की जनजातीय संस्कृति",
-      "tagline": "17 जनजातियों का पवित्र संगम, पारंपरिक ढोल की थाप और रंगारंग लोक नृत्यों का अद्वितीय दृश्य।",
-      "location": "किसामा, नागालैंड",
-      "badge": "पूर्वोत्तर धरोहर वीडियो"
-    },
-    {
-      "id": 9,
-      "type": "video",
-      "src": "/assets/images/Home page/A_aesthetic_Fire_Pot_Dance.ogv",
-      "craftName": "अग्नि घट नृत्य — पवित्र मंदिर अनुष्ठान",
-      "tagline": "सिर पर प्रज्वलित अग्नि घट रखकर किया जाने वाला प्राचीन भक्ति और शक्ति का विस्मयकारी नृत्य।",
-      "location": "दक्षिण भारत व महाराष्ट्र",
-      "badge": "पवित्र अनुष्ठान वीडियो"
-    },
-    {
-      "id": 10,
-      "type": "video",
-      "src": "/assets/images/Home page/Kakada_Bhajan_(3).webm",
-      "craftName": "काकड़ आरती व वारकरी भजन",
-      "tagline": "भोर के समय मंजीरे और पखावज की धुन पर गाया जाने वाला सदियों पुराना भक्ति रस का अमृत।",
-      "location": "पंढरपुर, महाराष्ट्र",
-      "badge": "आध्यात्मिक धरोहर वीडियो"
-    },
-    {
-      "id": 11,
-      "type": "video",
-      "src": "/assets/images/Home page/12245591_3840_2160_30fps.mp4",
-      "craftName": "शाही हथकरघा सिल्क व जरी बुनाई",
-      "tagline": "लकड़ी के प्राचीन करघों पर शुद्ध जरी के तारों से बुने जाने वाले उत्कृष्ट रेशमी वस्त्र।",
-      "location": "चंदेरी व वाराणसी",
-      "badge": "शाही हथकरघा वीडियो"
-    },
-    {
-      "id": 12,
-      "type": "video",
-      "src": "/assets/images/Home page/148230-793717994.mp4",
-      "craftName": "कुम्हार का चाक — मिट्टी व टेराकोटा कला",
-      "tagline": "घूमते चाक पर गीली मिट्टी को दिव्य आकार देकर पारंपरिक बर्तन व कलाकृतियां गढ़ना।",
-      "location": "विष्णुपुर व कच्छ",
-      "badge": "मिट्टी कला वीडियो"
-    },
-    {
-      "id": 13,
-      "type": "video",
-      "src": "/assets/images/Home page/15346256-hd_1920_1080_30fps.mp4",
-      "craftName": "कांस्य व पीतल धातु शिल्प",
-      "tagline": "तांबे और कांस्य की धातुओं पर हथौड़ी और छेनी से बारीक पौराणिक नक्काशी उकेरते उस्ताद धातुशिल्पी।",
-      "location": "मुरादाबाद व बस्तर",
-      "badge": "धातु शिल्प वीडियो"
+      "badge": "बांस शिल्प"
     }
   ],
   "mr": [
     {
       "id": 0,
-      "type": "image",
-      "src": "/assets/images/Home page/Kolhapuri_Chappals_in_roadside_shop_in_Kolhapur3.jpeg",
-      "craftName": "अभिजात कोल्हापुरी चर्मकला",
-      "tagline": "चौथ्या पिढीतील कसबी कारागिरांनी बाभळीच्या सालीच्या नैसर्गिक टॅनिंगने हाताने शिवलेली चप्पल.",
-      "location": "कोल्हापूर, महाराष्ट्र",
-      "badge": "जीआई मानांकन"
+      "type": "video",
+      "src": "/assets/images/Home page/(1)12245591_3840_2160_30fps.mp4",
+      "craftName": "शाही हातमाग रेशीम आणि जरीकाम",
+      "tagline": "लाकडी हातमागांवर अस्सल जरीच्या धाग्यांनी अलवार विणले जाणारे राजेशाही रेशमी वस्त्र.",
+      "location": "चंदेरी आणि वाराणसी",
+      "badge": "शाही हातमाग"
     },
     {
       "id": 1,
+      "type": "video",
+      "src": "/assets/images/Home page/(2)148230-793717994.mp4",
+      "craftName": "कुंभाराचे चाक — जिवंत मातीकाम",
+      "tagline": "फिरत्या चाकावर ओल्या मातीला हाताच्या स्पर्शाने सुंदर आकार देण्याची पुरातन कला.",
+      "location": "विष्णुपूर आणि कच्छ",
+      "badge": "मास्टर मातीकला"
+    },
+    {
+      "id": 2,
+      "type": "video",
+      "src": "/assets/images/Home page/(3)Handmade craft stall.mp4",
+      "craftName": "पारंपरिक कारागीर स्टॉल्स",
+      "tagline": "भवानी मंडपातील कारागिरांचा थेट उत्साह आणि अस्सल हस्तकलेची ऊर्जा अनुभवा.",
+      "location": "भवानी मंडप, कोल्हापूर",
+      "badge": "जिवंत वारसा"
+    },
+    {
+      "id": 3,
+      "type": "video",
+      "src": "/assets/images/Home page/(4)old leddy crafting.mp4",
+      "craftName": "ज्येष्ठ कारागिरांचा वारसा",
+      "tagline": "वर्षानुवर्षे चरख्यावर सूत कातणाऱ्या आजीबाईंच्या हातातील जादुई कौशल्य प्रत्यक्ष पहा.",
+      "location": "प्राणपूर आणि ग्रामीण भाग",
+      "badge": "जिवंत वारसा"
+    },
+    {
+      "id": 4,
+      "type": "video",
+      "src": "/assets/images/Home page/(5)17_Tribes,_One_heartbeat_-_Hornbill_Festival.webm",
+      "craftName": "हॉर्नबिल महोत्सव — नागालँडची संस्कृती",
+      "tagline": "१७ आदिवासी जमातींचे एकत्र येणे, पारंपरिक वाद्ये आणि लोकनृत्याचा अद्वितीय संगम.",
+      "location": "किसामा, नागालँड",
+      "badge": "ईशान्य वारसा"
+    },
+    {
+      "id": 5,
+      "type": "video",
+      "src": "/assets/images/Home page/(6)Kakada_Bhajan_.webm",
+      "craftName": "काकड आरती आणि वारकरी भजन",
+      "tagline": "पहाटेच्या मंगल समयी टाळ-मृदुंगाच्या गजरात गुंजणारा वारकरी संप्रदायाचा अमूल्य भक्ती वारसा.",
+      "location": "पंढरपूर, महाराष्ट्र",
+      "badge": "वारकरी भक्ती संप्रदाय"
+    },
+    {
+      "id": 6,
+      "type": "video",
+      "src": "/assets/images/Home page/(7)15346256-hd_1920_1080_30fps.mp4",
+      "craftName": "अभिजात धातूकाम आणि नक्षीकाम",
+      "tagline": "कांस्य आणि पितळेच्या भांड्यांवर छिन्नी-हातोड्याने बारीक नक्षी कोरण्याची पिढीजात कला.",
+      "location": "मुरादाबाद आणि बस्तर",
+      "badge": "जीआय धातूकाम"
+    },
+    {
+      "id": 7,
+      "type": "video",
+      "src": "/assets/images/Home page/(8)A_aesthetic_Fire_Pot_Dance.ogv",
+      "craftName": "अग्नि घट नृत्य — मंदिरातील धार्मिक विधी",
+      "tagline": "डोक्यावर धगधगता अग्निघट घेऊन भक्तीभावाने सादर होणारे थरारक आणि पवित्र लोकनृत्य.",
+      "location": "महाराष्ट्र व दक्षिण भारत",
+      "badge": "धार्मिक विधी"
+    },
+    {
+      "id": 8,
       "type": "video",
       "src": "/assets/images/Home page/local artist.mp4",
       "craftName": "कार्यरत ज्येष्ठ हस्तकलाकार",
       "tagline": "पारंपरिक कारागिरांना जिवंत कलेचे नक्षीकाम आणि कुंचल्याचे फटकारे मारताना प्रत्यक्ष पहा.",
       "location": "प्रत्यक्ष कार्यशाळा, भारत",
-      "badge": "मास्टर आर्टिसन व्हिडिओ"
+      "badge": "मास्टर आर्टिसन"
     },
     {
-      "id": 2,
-      "type": "image",
-      "src": "/assets/images/Home page/Making_of_bamboo_and_palm_leaf_handicarft_products.jpg",
-      "craftName": "बांबू व ताडपत्र हस्तकला",
-      "tagline": "स्थानिक कारागीर हाताने बांबू व ताडपत्राच्या पर्यावरणपूरक अमूल्य हस्तकलावस्तू घडवतात.",
-      "location": "माजुली बेट, आसाम",
-      "badge": "युनेस्को वारसा दावेदार"
-    },
-    {
-      "id": 3,
-      "type": "video",
-      "src": "/assets/images/Home page/Handmade craft stall.mp4",
-      "craftName": "पारंपरिक कारागीर स्टॉल्स",
-      "tagline": "भवानी मंडपातील कारागिरांचा थेट उत्साह आणि अस्सल हस्तकलेची ऊर्जा अनुभवा.",
-      "location": "भवानी मंडप, कोल्हापूर",
-      "badge": "वारसा व्हिडिओ"
-    },
-    {
-      "id": 4,
-      "type": "image",
-      "src": "/assets/images/Home page/Bharud.jpg",
-      "craftName": "भारुड — महाराष्ट्राची लोककला",
-      "tagline": "महाराष्ट्राची ही जिवंत लोककला संगीत, नाट्य आणि समाज प्रबोधनाचा एक अनोखा आविष्कार आहे.",
-      "location": "ग्रामीण महाराष्ट्र",
-      "badge": "जिवंत अमूर्त वारसा"
-    },
-    {
-      "id": 5,
-      "type": "video",
-      "src": "/assets/images/Home page/Craft shop.mp4",
-      "craftName": "वारसा हस्तकला दालन",
-      "tagline": "पिढ्यानपिढ्या चालत आलेल्या हस्तकलेच्या दालनात अस्सल भारतीय संस्कृतीची ओळख अनुभवा.",
-      "location": "जयपूर आणि पश्चिम भारत",
-      "badge": "वारसा दालन व्हिडिओ"
-    },
-    {
-      "id": 6,
+      "id": 9,
       "type": "video",
       "src": "/assets/images/Home page/Bamboo_basket_making.ogv",
       "craftName": "पारंपरिक बांबू विणकाम कला",
       "tagline": "बांबूच्या काड्या कुशलतेने कापून हाताने सुबक टोपल्या विणण्याची पारंपरिक पद्धत प्रत्यक्ष पहा.",
       "location": "पश्चिम घाट आणि माजुली",
-      "badge": "बांबू कला व्हिडिओ"
-    },
-    {
-      "id": 7,
-      "type": "video",
-      "src": "/assets/images/Home page/old leddy crafting.mp4",
-      "craftName": "ज्येष्ठ कारागिरांचा वारसा",
-      "tagline": "वर्षानुवर्षे चरख्यावर सूत कातणाऱ्या आजीबाईंच्या हातातील जादुई कौशल्य प्रत्यक्ष पहा.",
-      "location": "प्राणपूर आणि ग्रामीण भाग",
-      "badge": "जिवंत वारसा व्हिडिओ"
-    },
-    {
-      "id": 8,
-      "type": "video",
-      "src": "/assets/images/Home page/17_Tribes,_One_heartbeat_-_Hornbill_Festival.webm",
-      "craftName": "हॉर्नबिल महोत्सव — नागालँडची संस्कृती",
-      "tagline": "१७ आदिवासी जमातींचे एकत्र येणे, पारंपरिक वाद्ये आणि लोकनृत्याचा अद्वितीय संगम.",
-      "location": "किसामा, नागालँड",
-      "badge": "ईशान्य वारसा व्हिडिओ"
-    },
-    {
-      "id": 9,
-      "type": "video",
-      "src": "/assets/images/Home page/A_aesthetic_Fire_Pot_Dance.ogv",
-      "craftName": "अग्नि घट नृत्य — मंदिरातील धार्मिक विधी",
-      "tagline": "डोक्यावर धगधगता अग्निघट घेऊन भक्तीभावाने सादर होणारे थरारक आणि पवित्र लोकनृत्य.",
-      "location": "महाराष्ट्र व दक्षिण भारत",
-      "badge": "धार्मिक विधी व्हिडिओ"
-    },
-    {
-      "id": 10,
-      "type": "video",
-      "src": "/assets/images/Home page/Kakada_Bhajan_(3).webm",
-      "craftName": "काकड आरती आणि वारकरी भजन",
-      "tagline": "पहाटेच्या मंगल समयी टाळ-मृदुंगाच्या गजरात गुंजणारा वारकरी संप्रदायाचा अमूल्य भक्ती वारसा.",
-      "location": "पंढरपूर, महाराष्ट्र",
-      "badge": "अमूर्त वारसा व्हिडिओ"
-    },
-    {
-      "id": 11,
-      "type": "video",
-      "src": "/assets/images/Home page/12245591_3840_2160_30fps.mp4",
-      "craftName": "शाही हातमाग रेशीम आणि जरीकाम",
-      "tagline": "लाकडी हातमागांवर अस्सल जरीच्या धाग्यांनी अलवार विणले जाणारे राजेशाही रेशमी वस्त्र.",
-      "location": "चंदेरी आणि वाराणसी",
-      "badge": "शाही हातमाग व्हिडिओ"
-    },
-    {
-      "id": 12,
-      "type": "video",
-      "src": "/assets/images/Home page/148230-793717994.mp4",
-      "craftName": "कुंभाराचे चाक — जिवंत मातीकाम",
-      "tagline": "फिरत्या चाकावर ओल्या मातीला हाताच्या स्पर्शाने सुंदर आकार देण्याची पुरातन कला.",
-      "location": "विष्णुपूर आणि कच्छ",
-      "badge": "मातीकला व्हिडिओ"
-    },
-    {
-      "id": 13,
-      "type": "video",
-      "src": "/assets/images/Home page/15346256-hd_1920_1080_30fps.mp4",
-      "craftName": "अभिजात धातूकाम आणि नक्षीकाम",
-      "tagline": "कांस्य आणि पितळेच्या भांड्यांवर छिन्नी-हातोड्याने बारीक नक्षी कोरण्याची पिढीजात कला.",
-      "location": "मुरादाबाद आणि बस्तर",
-      "badge": "धातूकाम व्हिडिओ"
+      "badge": "बांबू कला"
     }
   ],
   "ta": [
     {
       "id": 0,
-      "type": "image",
-      "src": "/assets/images/Home page/Kolhapuri_Chappals_in_roadside_shop_in_Kolhapur3.jpeg",
-      "craftName": "பழங்கால கோலாப்பூரி தோல் கைவினை",
-      "tagline": "4வது தலைமுறை கைவினைஞர்களின் இயற்கை தோல் பதனிடுதல் முறையில் தைக்கப்பட்ட கோலாப்பூரி செருப்புகள்.",
-      "location": "கோலாப்பூர், மகாராஷ்டிரா",
-      "badge": "GI சான்றிதழ் பெற்றது"
+      "type": "video",
+      "src": "/assets/images/Home page/(1)12245591_3840_2160_30fps.mp4",
+      "craftName": "பாரம்பரிய பட்டு & ஜரிகை நெசவு",
+      "tagline": "பாரம்பரிய மரத்தறி நெசவில் தூய ஜரிகை நூல்களால் நுணுக்கமாக நெய்யப்படும் அரச பட்டு ஆடைகள்.",
+      "location": "வாரணாசி & காஞ்சிபுரம்",
+      "badge": "அரச பட்டு நெசவு"
     },
     {
       "id": 1,
+      "type": "video",
+      "src": "/assets/images/Home page/(2)148230-793717994.mp4",
+      "craftName": "பாரம்பரிய மண்பாண்ட சக்கர கலை",
+      "tagline": "சுழலும் சக்கரத்தில் ஈர மண்ணை கொண்டு கலைநயமிக்க பானைகள் மற்றும் சிலைகள் செய்யும் அற்புத கலை.",
+      "location": "பிஷ்ணுபூர் & கட்ச்",
+      "badge": "மண்பாண்ட கலை"
+    },
+    {
+      "id": 2,
+      "type": "video",
+      "src": "/assets/images/Home page/(3)Handmade craft stall.mp4",
+      "craftName": "பாரம்பரிய கைவினை அங்காடி",
+      "tagline": "பாரம்பரிய கைவினைஞர்களின் நேரடி விற்பனை ஸ்டால்கள் மற்றும் வாழும் கலைக்கூடங்களை அனுபவியுங்கள்.",
+      "location": "பவானி மண்டபம், மகாராஷ்டிரா",
+      "badge": "வாழும் பாரம்பரியம்"
+    },
+    {
+      "id": 3,
+      "type": "video",
+      "src": "/assets/images/Home page/(4)old leddy crafting.mp4",
+      "craftName": "முதியோர் கைவினைப் பாரம்பரியம்",
+      "tagline": "நூற்றாண்டுகளின் ஞானத்தை அடுத்த தலைமுறைக்கு வழங்கும் முதிய கைவினைஞர்களின் சுழலும் சக்கரம்.",
+      "location": "கிராமப்புற இந்தியா",
+      "badge": "வாழும் மரபு"
+    },
+    {
+      "id": 4,
+      "type": "video",
+      "src": "/assets/images/Home page/(5)17_Tribes,_One_heartbeat_-_Hornbill_Festival.webm",
+      "craftName": "ஹார்ன்பில் பழங்குடி திருவிழா",
+      "tagline": "17 பழங்குடி இனங்களின் பாரம்பரிய நடனங்கள், இசைக் கருவிகள் மற்றும் உடைகளின் கண்கவர் திருவிழா.",
+      "location": "நாகாலாந்து",
+      "badge": "வடகிழக்கு பாரம்பரியம்"
+    },
+    {
+      "id": 5,
+      "type": "video",
+      "src": "/assets/images/Home page/(6)Kakada_Bhajan_.webm",
+      "craftName": "காக்கட பஜனை — பக்தி பாரம்பரியம்",
+      "tagline": "அதிகாலை வேளையில் தாளங்கள் முழங்க பாடப்படும் பல நூற்றாண்டுகள் பழமையான பக்தி கீர்த்தனைகள்.",
+      "location": "பண்டரிபுரம்",
+      "badge": "பக்தி மரபு"
+    },
+    {
+      "id": 6,
+      "type": "video",
+      "src": "/assets/images/Home page/(7)15346256-hd_1920_1080_30fps.mp4",
+      "craftName": "பாரம்பரிய உலோக சிற்ப வேலைப்பாடு",
+      "tagline": "வெண்கலம் மற்றும் பித்தளை உலோகங்களில் உளி கொண்டு நுணுக்கமான தெய்வ உருவங்களை செதுக்கும் கலை.",
+      "location": "மொராதாபாத் & பஸ்தர்",
+      "badge": "உலோக கைவினை"
+    },
+    {
+      "id": 7,
+      "type": "video",
+      "src": "/assets/images/Home page/(8)A_aesthetic_Fire_Pot_Dance.ogv",
+      "craftName": "அக்னி சட்டி நடனம் — ஆன்மீக சடங்கு",
+      "tagline": "தலையில் எரியும் தீச்சட்டியுடன் பக்தி பரவசத்துடன் ஆடப்படும் பண்டைய கோவில் சடங்கு நடனம்.",
+      "location": "தென்னிந்தியா",
+      "badge": "புனித சடங்கு"
+    },
+    {
+      "id": 8,
       "type": "video",
       "src": "/assets/images/Home page/local artist.mp4",
       "craftName": "கைவினைஞர் நேரடி படைப்பு பணி",
       "tagline": "பாரம்பரிய கைவினைஞர்கள் நுணுக்கமான கலை நயங்களை நேரடியாக உருவாக்குவதை காணுங்கள்.",
       "location": "நேரடி பணிமனை, இந்தியா",
-      "badge": "கைவினைஞர் நேரடி வீடியோ"
+      "badge": "கைவினைஞர் நேரடி"
     },
     {
-      "id": 2,
-      "type": "image",
-      "src": "/assets/images/Home page/Making_of_bamboo_and_palm_leaf_handicarft_products.jpg",
-      "craftName": "மூங்கில் & பனை ஓலை கைவினை",
-      "tagline": "உள்ளூர் கைவினைஞர்கள் பாரம்பரிய முறையில் மூங்கில் மற்றும் பனை ஓலையில் இயற்கை கைவினைப்பொருட்கள் செய்கிறார்கள்.",
-      "location": "மாஜுலி தீவு, அசாம்",
-      "badge": "யுனெஸ்கோ பாரம்பரியம்"
-    },
-    {
-      "id": 3,
-      "type": "video",
-      "src": "/assets/images/Home page/Handmade craft stall.mp4",
-      "craftName": "பாரம்பரிய கைவினை அங்காடி",
-      "tagline": "பாரம்பரிய கைவினைஞர்களின் நேரடி விற்பனை ஸ்டால்கள் மற்றும் வாழும் கலைக்கூடங்களை அனுபவியுங்கள்.",
-      "location": "பவானி மண்டபம், மகாராஷ்டிரா",
-      "badge": "பாரம்பரிய கைவினை வீடியோ"
-    },
-    {
-      "id": 4,
-      "type": "image",
-      "src": "/assets/images/Home page/Bharud.jpg",
-      "craftName": "பாரத் — ஆன்மீக நாட்டுப்புற கலை",
-      "tagline": "மகாராஷ்டிராவின் இசை, நாடக நடிப்பு மற்றும் பக்தியை இணைக்கும் உயிரோட்டமான நாட்டுப்புற கலை.",
-      "location": "கிராமப்புற மகாராஷ்டிரா",
-      "badge": "உயிரோட்டமான பாரம்பரியம்"
-    },
-    {
-      "id": 5,
-      "type": "video",
-      "src": "/assets/images/Home page/Craft shop.mp4",
-      "craftName": "பாரம்பரிய கைவினை கடைவீதி",
-      "tagline": "தலைமுறைகளாக தொடரும் கைவினைப் பொருட்களின் உண்மையான கடைகள் மற்றும் கலை நயத்தை உணருங்கள்.",
-      "location": "ஜெய்ப்பூர், இந்தியா",
-      "badge": "கைவினை மரபு வீடியோ"
-    },
-    {
-      "id": 6,
+      "id": 9,
       "type": "video",
       "src": "/assets/images/Home page/Bamboo_basket_making.ogv",
       "craftName": "பாரம்பரிய மூங்கில் கூடை நெசவு",
       "tagline": "பச்சை மூங்கிலை அறுத்து கைகளால் உறுதியான மற்றும் அழகான கூடைகள் முடையும் காட்சியை பாருங்கள்.",
       "location": "மேற்கு தொடர்ச்சி மலை",
-      "badge": "மூங்கில் கலை வீடியோ"
-    },
-    {
-      "id": 7,
-      "type": "video",
-      "src": "/assets/images/Home page/old leddy crafting.mp4",
-      "craftName": "முதியோர் கைவினைப் பாரம்பரியம்",
-      "tagline": "நூற்றாண்டுகளின் ஞானத்தை அடுத்த தலைமுறைக்கு வழங்கும் முதிய கைவினைஞர்களின் சுழலும் சக்கரம்.",
-      "location": "கிராமப்புற இந்தியா",
-      "badge": "வாழும் மரபு வீடியோ"
-    },
-    {
-      "id": 8,
-      "type": "video",
-      "src": "/assets/images/Home page/17_Tribes,_One_heartbeat_-_Hornbill_Festival.webm",
-      "craftName": "ஹார்ன்பில் பழங்குடி திருவிழா",
-      "tagline": "17 பழங்குடி இனங்களின் பாரம்பரிய நடனங்கள், இசைக் கருவிகள் மற்றும் உடைகளின் கண்கவர் திருவிழா.",
-      "location": "நாகாலாந்து",
-      "badge": "வடகிழக்கு பண்பாட்டு வீடியோ"
-    },
-    {
-      "id": 9,
-      "type": "video",
-      "src": "/assets/images/Home page/A_aesthetic_Fire_Pot_Dance.ogv",
-      "craftName": "அக்னி சட்டி நடனம் — ஆன்மீக சடங்கு",
-      "tagline": "தலையில் எரியும் தீச்சட்டியுடன் பக்தி பரவசத்துடன் ஆடப்படும் பண்டைய கோவில் சடங்கு நடனம்.",
-      "location": "தென்னிந்தியா",
-      "badge": "புனித சடங்கு வீடியோ"
-    },
-    {
-      "id": 10,
-      "type": "video",
-      "src": "/assets/images/Home page/Kakada_Bhajan_(3).webm",
-      "craftName": "காக்கட பஜனை — பக்தி பாரம்பரியம்",
-      "tagline": "அதிகாலை வேளையில் தாளங்கள் முழங்க பாடப்படும் பல நூற்றாண்டுகள் பழமையான பக்தி கீர்த்தனைகள்.",
-      "location": "பண்டரிபுரம்",
-      "badge": "பக்தி மரபு வீடியோ"
-    },
-    {
-      "id": 11,
-      "type": "video",
-      "src": "/assets/images/Home page/12245591_3840_2160_30fps.mp4",
-      "craftName": "பாரம்பரிய பட்டு & ஜரிகை நெசவு",
-      "tagline": "பாரம்பரிய மரத்தறி நெசவில் தூய ஜரிகை நூல்களால் நுணுக்கமாக நெய்யப்படும் அரச பட்டு ஆடைகள்.",
-      "location": "வாரணாசி & காஞ்சிபுரம்",
-      "badge": "பட்டு நெசவு வீடியோ"
-    },
-    {
-      "id": 12,
-      "type": "video",
-      "src": "/assets/images/Home page/148230-793717994.mp4",
-      "craftName": "பாரம்பரிய மண்பாண்ட சக்கர கலை",
-      "tagline": "சுழலும் சக்கரத்தில் ஈர மண்ணை கொண்டு கலைநயமிக்க பானைகள் மற்றும் சிலைகள் செய்யும் அற்புத கலை.",
-      "location": "பிஷ்ணுபூர் & கட்ச்",
-      "badge": "மண்பாண்ட கலை வீடியோ"
-    },
-    {
-      "id": 13,
-      "type": "video",
-      "src": "/assets/images/Home page/15346256-hd_1920_1080_30fps.mp4",
-      "craftName": "பாரம்பரிய உலோக சிற்ப வேலைப்பாடு",
-      "tagline": "வெண்கலம் மற்றும் பித்தளை உலோகங்களில் உளி கொண்டு நுணுக்கமான தெய்வ உருவங்களை செதுக்கும் கலை.",
-      "location": "மொராதாபாத் & பஸ்தர்",
-      "badge": "உலோக கைவினை வீடியோ"
+      "badge": "மூங்கில் கலை"
     }
   ],
   "te": [
     {
       "id": 0,
-      "type": "image",
-      "src": "/assets/images/Home page/Kolhapuri_Chappals_in_roadside_shop_in_Kolhapur3.jpeg",
-      "craftName": "వారసత్వ కోల్హాపూరి తోలు కళ",
-      "tagline": "4వ తరం కళాకారుల ప్రకృతి సిద్ధమైన పద్ధతిలో చేతితో కుట్టిన కోల్హాపూరి చెప్పులు.",
-      "location": "కోల్హాపూర్, మహారాష్ట్ర",
-      "badge": "GI ట్యాగ్ సర్టిఫైడ్"
+      "type": "video",
+      "src": "/assets/images/Home page/(1)12245591_3840_2160_30fps.mp4",
+      "craftName": "రాజవంశ చేనేత పట్టు & జరీ నేత",
+      "tagline": "పురాతన చెక్క మగ్గాలపై స్వచ్ఛమైన జరీ దారాలతో రూపొందించే అద్భుతమైన పట్టు వస్త్రాలు.",
+      "location": "చందేరి & వారణాసి",
+      "badge": "చేనేత వారసత్వం"
     },
     {
       "id": 1,
+      "type": "video",
+      "src": "/assets/images/Home page/(2)148230-793717994.mp4",
+      "craftName": "కుమ్మరి చక్రం — మట్టి కళాఖండాలు",
+      "tagline": "గిర్రున తిరిగే చక్రంపై తడి మట్టిని అద్భుత ఆకారాలుగా తీర్చిదిద్దే పురాతన కుమ్మరి కళ.",
+      "location": "కచ్ & బిష్ణుపూర్",
+      "badge": "కుమ్మరి కళ"
+    },
+    {
+      "id": 2,
+      "type": "video",
+      "src": "/assets/images/Home page/(3)Handmade craft stall.mp4",
+      "craftName": "సజీవ హస్తకళా కేంద్రాలు",
+      "tagline": "సాంప్రదాయ కళాకారుల స్టాళ్లు మరియు ప్రామాణికమైన హస్తకళల ప్రత్యక్ష అనుభూతిని పొందండి.",
+      "location": "భవాని మండపం, మహారాష్ట్ర",
+      "badge": "సజీవ వారసత్వం"
+    },
+    {
+      "id": 3,
+      "type": "video",
+      "src": "/assets/images/Home page/(4)old leddy crafting.mp4",
+      "craftName": "వయోవృద్ధ కళాకారుల నేర్పు",
+      "tagline": "తరతరాల అనుభవంతో రాట్నంపై దారాలు తీస్తూ జ్ఞానాన్ని అందించే వృద్ధ నేత కళాకారిణులు.",
+      "location": "గ్రామీణ ప్రాంతాలు",
+      "badge": "సజీవ లెజెండ్"
+    },
+    {
+      "id": 4,
+      "type": "video",
+      "src": "/assets/images/Home page/(5)17_Tribes,_One_heartbeat_-_Hornbill_Festival.webm",
+      "craftName": "హార్న్‌బిల్ గిరిజన ఉత్సవం",
+      "tagline": "17 స్థానిక తెగల సమ్మేళనం, సాంప్రదాయ వాయిద్యాలు మరియు రంగురంగుల నృత్యాల అద్భుత ప్రదర్శన.",
+      "location": "నాగాలాండ్",
+      "badge": "ఈశాన్య సంస్కృతి"
+    },
+    {
+      "id": 5,
+      "type": "video",
+      "src": "/assets/images/Home page/(6)Kakada_Bhajan_.webm",
+      "craftName": "కాకడ భజన & వార్కరీ భక్తి గానం",
+      "tagline": "వేకువజామున తాళాలు, మృదంగ నాదాలతో ఆలపించే శతాబ్దాల పురాతన పవిత్ర భక్తి సంకీర్తన.",
+      "location": "పండరీపురం",
+      "badge": "వార్కరీ భక్తి సంప్రదాయం"
+    },
+    {
+      "id": 6,
+      "type": "video",
+      "src": "/assets/images/Home page/(7)15346256-hd_1920_1080_30fps.mp4",
+      "craftName": "పురాతన లోహ కళ & కాంస్య చెక్కడాలు",
+      "tagline": "కాంస్యం మరియు రాగి పాత్రలపై ఉలితో పౌరాణిక బొమ్మలను చెక్కే వంశపారంపర్య లోహ కళాకారులు.",
+      "location": "మొరాదాబాద్ & బస్తర్",
+      "badge": "లోహ కళా విభాగం"
+    },
+    {
+      "id": 7,
+      "type": "video",
+      "src": "/assets/images/Home page/(8)A_aesthetic_Fire_Pot_Dance.ogv",
+      "craftName": "అగ్ని కుండ నృత్యం — పవిత్ర ఆలయ ఆచారం",
+      "tagline": "తల పై అగ్ని కుండాలు ధరించి భక్తి శ్రద్ధలతో ప్రదర్శించే పురాతన ఆలయ నృత్య విన్యాసం.",
+      "location": "దక్షిణ భారతదేశం",
+      "badge": "పవిత్ర ఆచారం"
+    },
+    {
+      "id": 8,
       "type": "video",
       "src": "/assets/images/Home page/local artist.mp4",
       "craftName": "పనిలో నిమగ్నమైన మాస్టర్ కళాకారుడు",
       "tagline": "వంశపారంపర్య కళాకారులు అద్భుతమైన సాంప్రదాయ నమూనాలను గీస్తుండగా ప్రత్యక్షంగా వీక్షించండి.",
       "location": "కళా శాల, భారతదేశం",
-      "badge": "మాస్టర్ కళాకారుడు వీడియో"
+      "badge": "మాస్టర్ కళాకారుడు"
     },
     {
-      "id": 2,
-      "type": "image",
-      "src": "/assets/images/Home page/Making_of_bamboo_and_palm_leaf_handicarft_products.jpg",
-      "craftName": "వెదురు & తాటాకు పర్యావరణ హస్తకళ",
-      "tagline": "స్థానిక కళాకారులు చేతితో వెదురు మరియు తాటాకుతో ప్రకృతిసిద్ధమైన అద్భుత హస్తకళలు రూపొందిస్తారు.",
-      "location": "మజులి ద్వీపం, అస్సాం",
-      "badge": "యునెస్కో వారసత్వ అభ్యర్థి"
-    },
-    {
-      "id": 3,
-      "type": "video",
-      "src": "/assets/images/Home page/Handmade craft stall.mp4",
-      "craftName": "సజీవ హస్తకళా కేంద్రాలు",
-      "tagline": "సాంప్రదాయ కళాకారుల స్టాళ్లు మరియు ప్రామాణికమైన హస్తకళల ప్రత్యక్ష అనుభూతిని పొందండి.",
-      "location": "భవాని మండపం, మహారాష్ట్ర",
-      "badge": "సజీవ వారసత్వ వీడియో"
-    },
-    {
-      "id": 4,
-      "type": "image",
-      "src": "/assets/images/Home page/Bharud.jpg",
-      "craftName": "భారుద్ — పవిత్ర జానపద కళారూపం",
-      "tagline": "మహారాష్ట్ర యొక్క జీవంతమైన జానపద కళ సంగీతం, నాటకం మరియు భక్తి సందేశాల మేళవింపు.",
-      "location": "గ్రామీణ మహారాష్ట్ర",
-      "badge": "జీవంతమైన అమూర్త వారసత్వం"
-    },
-    {
-      "id": 5,
-      "type": "video",
-      "src": "/assets/images/Home page/Craft shop.mp4",
-      "craftName": "వారసత్వ హస్తకళా కేంద్రాలు",
-      "tagline": "తరతరాల సాంస్కృతిక విశిష్టతను చాటే చేతితో చేసిన కళాఖండాల దుకాణాలను సందర్శించండి.",
-      "location": "జైపూర్, భారతదేశం",
-      "badge": "హస్తకళా వారసత్వ వీడియో"
-    },
-    {
-      "id": 6,
+      "id": 9,
       "type": "video",
       "src": "/assets/images/Home page/Bamboo_basket_making.ogv",
       "craftName": "సాంప్రదాయ వెదురు బుట్టల అల్లిక",
       "tagline": "పచ్చి వెదురును చీల్చి అద్భుతమైన నైపుణ్యంతో ధాన్యపు బుట్టలను అల్లే ప్రత్యక్ష దృశ్యం.",
       "location": "పశ్చిమ కనుమలు & మజులి",
-      "badge": "వెదురు కళ వీడియో"
-    },
-    {
-      "id": 7,
-      "type": "video",
-      "src": "/assets/images/Home page/old leddy crafting.mp4",
-      "craftName": "వయోవృద్ధ కళాకారుల నేర్పు",
-      "tagline": "తరతరాల అనుభవంతో రాట్నంపై దారాలు తీస్తూ జ్ఞానాన్ని అందించే వృద్ధ నేత కళాకారిణులు.",
-      "location": "గ్రామీణ ప్రాంతాలు",
-      "badge": "సజీవ లెజెండ్ వీడియో"
-    },
-    {
-      "id": 8,
-      "type": "video",
-      "src": "/assets/images/Home page/17_Tribes,_One_heartbeat_-_Hornbill_Festival.webm",
-      "craftName": "హార్న్‌బిల్ గిరిజన ఉత్సవం",
-      "tagline": "17 స్థానిక తెగల సమ్మేళనం, సాంప్రదాయ వాయిద్యాలు మరియు రంగురంగుల నృత్యాల అద్భుత ప్రదర్శన.",
-      "location": "నాగాలాండ్",
-      "badge": "ఈశాన్య సంస్కృతి వీడియో"
-    },
-    {
-      "id": 9,
-      "type": "video",
-      "src": "/assets/images/Home page/A_aesthetic_Fire_Pot_Dance.ogv",
-      "craftName": "అగ్ని కుండ నృత్యం — పవిత్ర ఆలయ ఆచారం",
-      "tagline": "తల పై అగ్ని కుండాలు ధరించి భక్తి శ్రద్ధలతో ప్రదర్శించే పురాతన ఆలయ నృత్య విన్యాసం.",
-      "location": "దక్షిణ భారతదేశం",
-      "badge": "పవిత్ర ఆచార వీడియో"
-    },
-    {
-      "id": 10,
-      "type": "video",
-      "src": "/assets/images/Home page/Kakada_Bhajan_(3).webm",
-      "craftName": "కాకడ భజన & వార్కరీ భక్తి గానం",
-      "tagline": "వేకువజామున తాళాలు, మృదంగ నాదాలతో ఆలపించే శతాబ్దాల పురాతన పవిత్ర భక్తి సంకీర్తన.",
-      "location": "పండరీపురం",
-      "badge": "ఆధ్యాత్మిక వారసత్వ వీడియో"
-    },
-    {
-      "id": 11,
-      "type": "video",
-      "src": "/assets/images/Home page/12245591_3840_2160_30fps.mp4",
-      "craftName": "రాజవంశ చేనేత పట్టు & జరీ నేత",
-      "tagline": "పురాతన చెక్క మగ్గాలపై స్వచ్ఛమైన జరీ దారాలతో రూపొందించే అద్భుతమైన పట్టు వస్త్రాలు.",
-      "location": "చందేరి & వారణాసి",
-      "badge": "చేనేత వారసత్వ వీడియో"
-    },
-    {
-      "id": 12,
-      "type": "video",
-      "src": "/assets/images/Home page/148230-793717994.mp4",
-      "craftName": "కుమ్మరి చక్రం — మట్టి కళాఖండాలు",
-      "tagline": "గిర్రున తిరిగే చక్రంపై తడి మట్టిని అద్భుత ఆకారాలుగా తీర్చిదిద్దే పురాతన కుమ్మరి కళ.",
-      "location": "కచ్ & బిష్ణుపూర్",
-      "badge": "కుమ్మరి కళ వీడియో"
-    },
-    {
-      "id": 13,
-      "type": "video",
-      "src": "/assets/images/Home page/15346256-hd_1920_1080_30fps.mp4",
-      "craftName": "పురాతన లోహ కళ & కాంస్య చెక్కడాలు",
-      "tagline": "కాంస్యం మరియు రాగి పాత్రలపై ఉలితో పౌరాణిక బొమ్మలను చెక్కే వంశపారంపర్య లోహ కళాకారులు.",
-      "location": "మొరాదాబాద్ & బస్తర్",
-      "badge": "లోహ కళా వీడియో"
+      "badge": "వెదురు కళ"
     }
   ],
   "bn": [
     {
       "id": 0,
-      "type": "image",
-      "src": "/assets/images/Home page/Kolhapuri_Chappals_in_roadside_shop_in_Kolhapur3.jpeg",
-      "craftName": "ঐতিহ্যবাহী কোলহাপুরী চামড়াশিল্প",
-      "tagline": "চতুর্থ প্রজন্মের অভিজ্ঞ কারিগরদের বাবলা ছাল ও হরিতকী দিয়ে সম্পূর্ণ ভেষজ পদ্ধতিতে তৈরি কোলহাপুরী চটি।",
-      "location": "কোলহাপুর, মহারাষ্ট্র",
-      "badge": "জিআই ট্যাগ প্রাপ্ত • ১০০% ভেষজ ট্যানিং"
+      "type": "video",
+      "src": "/assets/images/Home page/(1)12245591_3840_2160_30fps.mp4",
+      "craftName": "রাজকীয় হস্তচালিত রেশম ও জরি বয়ন",
+      "tagline": "কাঠের তাঁতে খাঁটি জরি সুতো দিয়ে সূক্ষ্ম কারুকার্যে বোনা রাজকীয় সিল্ক বস্ত্রের ঐতিহ্য।",
+      "location": "চন্দেরী ও বারাণসী",
+      "badge": "হস্তচালিত তাঁত"
     },
     {
       "id": 1,
       "type": "video",
-      "src": "/assets/images/Home page/local artist.mp4",
-      "craftName": "কর্মরত প্রধান কারিগর",
-      "tagline": "বংশপরম্পরা কারিগরদের সরাসরি ঐতিহ্যবাহী নকশা ও তুলির ছোঁয়ায় শিল্পকর্ম তৈরি দেখুন।",
-      "location": "সরাসরি কর্মশালা, ভারত",
-      "badge": "মাস্টার আর্টিসান ভিডিও"
+      "src": "/assets/images/Home page/(2)148230-793717994.mp4",
+      "craftName": "কুমোরের চাকে জীবন্ত পোড়ামাটি শিল্প",
+      "tagline": "ঘূর্ণায়মান চাকে কাঁচা মাটিকে নিপুণ স্পর্শে অপরূপ দেবপাত্র ও মৃৎশিল্পে রূপ দেওয়ার দৃশ্য।",
+      "location": "বিষ্ণুপুর ও কচ্ছ",
+      "badge": "মাস্টার মৃৎশিল্প"
     },
     {
       "id": 2,
-      "type": "image",
-      "src": "/assets/images/Home page/Making_of_bamboo_and_palm_leaf_handicarft_products.jpg",
-      "craftName": "বাঁশ ও তালপাতার পরিবেশবান্ধব শিল্প",
-      "tagline": "স্থানীয় কারিগররা পরম যত্নে বাঁশ ও তালপাতা দিয়ে অপূর্ব হস্তশিল্প সামগ্রী তৈরি করেন।",
-      "location": "মাজুলী দ্বীপ, আসাম",
-      "badge": "ইউনেস্কো ঐতিহ্য দাবিদার"
+      "type": "video",
+      "src": "/assets/images/Home page/(3)Handmade craft stall.mp4",
+      "craftName": "সরাসরি হস্তশিল্প হাট",
+      "tagline": "ঐতিহ্যবাহী কারিগরদের খাঁটি স্টল ও কাজের প্রাণবন্ত পরিবেশ উপভোগ করুন।",
+      "location": "ভবানী মণ্ডপ, মহারাষ্ট্র",
+      "badge": "জীবন্ত ঐতিহ্য"
     },
     {
       "id": 3,
       "type": "video",
-      "src": "/assets/images/Home page/Handmade craft stall.mp4",
-      "craftName": "সরাসরি হস্তশিল্প হাট",
-      "tagline": "ঐতিহ্যবাহী কারিগরদের খাঁটি স্টল ও কাজের প্রাণবন্ত পরিবেশ উপভোগ করুন।",
-      "location": "ভবানী মণ্ডপ, মহারাষ্ট্র",
-      "badge": "জীবন্ত ঐতিহ্য ভিডিও"
+      "src": "/assets/images/Home page/(4)old leddy crafting.mp4",
+      "craftName": "প্রবীণ কারিগরদের চিরন্তন সাধনা",
+      "tagline": "চরকায় সুতো কেটে প্রাচীন ঐতিহ্যকে বাঁচিয়ে রাখা গ্রামীণ প্রবীণ শিল্পীদের স্নেহস্পর্শ।",
+      "location": "প্রাণপুর ও গ্রামীণ ভারত",
+      "badge": "জীবন্ত ঐতিহ্য"
     },
     {
       "id": 4,
-      "type": "image",
-      "src": "/assets/images/Home page/Bharud.jpg",
-      "craftName": "ভারুড — লোক নাট্য ও সঙ্গীত",
-      "tagline": "মহারাষ্ট্রের এই জীবন্ত লোকশিল্পে সঙ্গীত, অভিনয় ও আধ্যাত্মিক চেতনার অপূর্ব মিশ্রণ।",
-      "location": "গ্রামীণ মহারাষ্ট্র",
-      "badge": "জীবন্ত অমূর্ত ঐতিহ্য"
+      "type": "video",
+      "src": "/assets/images/Home page/(5)17_Tribes,_One_heartbeat_-_Hornbill_Festival.webm",
+      "craftName": "হর্নবিল উৎসব — নাগাল্যান্ডের আদিবাসী ঐতিহ্য",
+      "tagline": "১৭টি আদিবাসী উপজাতির মিলনমেলা, ঐতিহ্যবাহী যুদ্ধবাদ্য ও বর্ণাঢ্য লোকনৃত্যের মহোৎসব।",
+      "location": "কিসামা, নাগাল্যান্ড",
+      "badge": "উত্তর-পূর্ব ঐতিহ্য"
     },
     {
       "id": 5,
       "type": "video",
-      "src": "/assets/images/Home page/Craft shop.mp4",
-      "craftName": "ঐতিহ্যবাহী হস্তশিল্পের হাট",
-      "tagline": "বংশপরম্পরায় সংরক্ষিত হাতে তৈরি শিল্পপণ্যের খাঁটি ভারতীয় বাজারের অভিজ্ঞতা নিন।",
-      "location": "জয়পুর ও পশ্চিম ভারত",
-      "badge": "হস্তশিল্প ঐতিহ্য ভিডিও"
+      "src": "/assets/images/Home page/(6)Kakada_Bhajan_.webm",
+      "craftName": "কাকড়া ভজন — ওয়ারকারী ভক্তিগীতি",
+      "tagline": "ভোরের আলো ফোটার সময় কাঁসর ও পাখোয়াজের সুরে নিবেদিত শতাব্দী প্রাচীন ভক্তিগীতি।",
+      "location": "পন্ধরপুর, মহারাষ্ট্র",
+      "badge": "আধ্যাত্মিক ঐতিহ্য"
     },
     {
       "id": 6,
+      "type": "video",
+      "src": "/assets/images/Home page/(7)15346256-hd_1920_1080_30fps.mp4",
+      "craftName": "ঐতিহ্যবাহী কাঁসা ও পেতল ধাতুশিল্প",
+      "tagline": "তামা ও ব্রোঞ্জের পাতে ছেনি-হাতুড়ি দিয়ে পৌরাণিক নকশা খোদাই করার অনুপম ধাতব শিল্প।",
+      "location": "মোরাদাবাদ ও বস্তার",
+      "badge": "ধাতুশিল্প"
+    },
+    {
+      "id": 7,
+      "type": "video",
+      "src": "/assets/images/Home page/(8)A_aesthetic_Fire_Pot_Dance.ogv",
+      "craftName": "অগ্নি পাত্র নৃত্য — আধ্যাত্মিক আচার",
+      "tagline": "মাথায় জ্বলন্ত মাটির অগ্নিকুণ্ড নিয়ে প্রাচীন মন্দিরের ভক্তি ও শক্তির অপূর্ব আত্মনিবেদন।",
+      "location": "দক্ষিণ ভারত ও মহারাষ্ট্র",
+      "badge": "পবিত্র আচার"
+    },
+    {
+      "id": 8,
+      "type": "video",
+      "src": "/assets/images/Home page/local artist.mp4",
+      "craftName": "কর্মরত প্রধান কারিগর",
+      "tagline": "বংশপরম্পরা কারিগরদের সরাসরি ঐতিহ্যবাহী নকশা ও তুলির ছোঁয়ায় শিল্পকর্ম তৈরি দেখুন।",
+      "location": "সরাসরি কর্মশাला, ভারত",
+      "badge": "মাস্টার কারিগর"
+    },
+    {
+      "id": 9,
       "type": "video",
       "src": "/assets/images/Home page/Bamboo_basket_making.ogv",
       "craftName": "বাঁশের ঐতিহ্যবাহী খাঁটি বয়ন",
       "tagline": "বাঁশের কাঠি নিখুঁতভাবে চিরে হাতে মজবুত ঝুড়ি বোনার অসাধারণ দৃশ্য প্রত্যক্ষ করুন।",
       "location": "পশ্চিমঘাট ও মাজুলী",
-      "badge": "বাঁশ বয়ন ভিডিও"
-    },
-    {
-      "id": 7,
-      "type": "video",
-      "src": "/assets/images/Home page/old leddy crafting.mp4",
-      "craftName": "প্রবীণ কারিগরদের চিরন্তন সাধনা",
-      "tagline": "চরকায় সুতো কেটে প্রাচীন ঐতিহ্যকে বাঁচিয়ে রাখা গ্রামীণ প্রবীণ শিল্পীদের স্নেহস্পর্শ।",
-      "location": "প্রাণপুর ও গ্রামীণ ভারত",
-      "badge": "জীবন্ত ঐতিহ্য ভিডিও"
-    },
-    {
-      "id": 8,
-      "type": "video",
-      "src": "/assets/images/Home page/17_Tribes,_One_heartbeat_-_Hornbill_Festival.webm",
-      "craftName": "হর্নবিল উৎসব — নাগাল্যান্ডের আদিবাসী ঐতিহ্য",
-      "tagline": "১৭টি আদিবাসী উপজাতির মিলনমেলা, ঐতিহ্যবাহী যুদ্ধবাদ্য ও বর্ণাঢ্য লোকনৃত্যের মহোৎসব।",
-      "location": "কিসামা, নাগাল্যান্ড",
-      "badge": "উত্তর-পূর্ব ঐতিহ্য ভিডিও"
-    },
-    {
-      "id": 9,
-      "type": "video",
-      "src": "/assets/images/Home page/A_aesthetic_Fire_Pot_Dance.ogv",
-      "craftName": "অগ্নি পাত্র নৃত্য — আধ্যাত্মিক আচার",
-      "tagline": "মাথায় জ্বলন্ত মাটির অগ্নিকুণ্ড নিয়ে প্রাচীন মন্দিরের ভক্তি ও শক্তির অপূর্ব আত্মনিবেদন।",
-      "location": "দক্ষিণ ভারত ও মহারাষ্ট্র",
-      "badge": "পবিত্র আচার ভিডিও"
-    },
-    {
-      "id": 10,
-      "type": "video",
-      "src": "/assets/images/Home page/Kakada_Bhajan_(3).webm",
-      "craftName": "কাকড়া ভজন — ওয়ারকারী ভক্তিগীতি",
-      "tagline": "ভোরের আলো ফোটার সময় কাঁসর ও পাখোয়াজের সুরে নিবেদিত শতাব্দী প্রাচীন ভক্তিগীতি।",
-      "location": "পন্ধরপুর, মহারাষ্ট্র",
-      "badge": "আধ্যাত্মিক ঐতিহ্য ভিডিও"
-    },
-    {
-      "id": 11,
-      "type": "video",
-      "src": "/assets/images/Home page/12245591_3840_2160_30fps.mp4",
-      "craftName": "রাজকীয় হস্তচালিত রেশম ও জরি বয়ন",
-      "tagline": "কাঠের তাঁতে খাঁটি জরি সুতো দিয়ে সূক্ষ্ম কারুকার্যে বোনা রাজকীয় সিল্ক বস্ত্রের ঐতিহ্য।",
-      "location": "চন্দেরী ও বারাণসী",
-      "badge": "হস্তচালিত তাঁত ভিডিও"
-    },
-    {
-      "id": 12,
-      "type": "video",
-      "src": "/assets/images/Home page/148230-793717994.mp4",
-      "craftName": "কুমোরের চাকে জীবন্ত পোড়ামাটি শিল্প",
-      "tagline": "ঘূর্ণায়মান চাকে কাঁচা মাটিকে নিপুণ স্পর্শে অপরূপ দেবপাত্র ও মৃৎশিল্পে রূপ দেওয়ার দৃশ্য।",
-      "location": "বিষ্ণুপুর ও কচ্ছ",
-      "badge": "মৃৎশিল্প ভিডিও"
-    },
-    {
-      "id": 13,
-      "type": "video",
-      "src": "/assets/images/Home page/15346256-hd_1920_1080_30fps.mp4",
-      "craftName": "ঐতিহ্যবাহী কাঁসা ও পেতল ধাতুশিল্প",
-      "tagline": "তামা ও ব্রোঞ্জের পাতে ছেনি-হাতুড়ি দিয়ে পৌরাণিক নকশা খোদাই করার অনুপম ধাতব শিল্প।",
-      "location": "মোরাদাবাদ ও বস্তার",
-      "badge": "ধাতুশিল্প ভিডিও"
+      "badge": "বাঁশ বয়ন শিল্প"
     }
   ]
 };
