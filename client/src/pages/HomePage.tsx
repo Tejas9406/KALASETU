@@ -88,12 +88,18 @@ export const HomePage: React.FC<HomePageProps> = ({
                 {slide.type === 'video' ? (
                   <video
                     src={slide.src}
+                    poster="/assets/images/Home%20page/Kolhapuri_Chappals_in_roadside_shop_in_Kolhapur3.jpeg"
                     autoPlay
                     loop
                     muted
                     playsInline
                     preload="auto"
                     className="w-full h-full object-cover"
+                    onTimeUpdate={(e: any) => {
+                      if (e.target.currentTime >= 4) {
+                        e.target.currentTime = 0;
+                      }
+                    }}
                   />
                 ) : (
                   <img

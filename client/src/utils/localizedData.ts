@@ -723,7 +723,7 @@ export const LOCALIZED_HERO_SLIDES: Record<SupportedLanguage, LocalizedSlideItem
     {
       id: 3,
       type: 'video',
-      src: '/assets/images/Home%20page/Bamboo_basket_making.ogv',
+      src: '/assets/images/Home%20page/Craft%20shop.mp4',
       craftName: "Bamboo Basketry & Weaving",
       tagline: "Live demonstration of traditional bamboo split stripping and flexible grain basket weaving.",
       location: "Majuli & Western Ghats",
@@ -806,7 +806,7 @@ export const LOCALIZED_HERO_SLIDES: Record<SupportedLanguage, LocalizedSlideItem
     {
       id: 3,
       type: 'video',
-      src: '/assets/images/Home%20page/Bamboo_basket_making.ogv',
+      src: '/assets/images/Home%20page/Craft%20shop.mp4',
       craftName: "बांस टोकरी निर्माण व नक्काशी",
       tagline: "पारंपरिक बांस की पट्टियों की छिलाई और हस्तनिर्मित टोकरी बुनाई का जीवंत प्रदर्शन।",
       location: "माजुली व पश्चिमी घाट",
@@ -889,7 +889,7 @@ export const LOCALIZED_HERO_SLIDES: Record<SupportedLanguage, LocalizedSlideItem
     {
       id: 3,
       type: 'video',
-      src: '/assets/images/Home%20page/Bamboo_basket_making.ogv',
+      src: '/assets/images/Home%20page/Craft%20shop.mp4',
       craftName: "बांबू टोपली विणकाम व कला",
       tagline: "पारंपरिक बांबूच्या कामट्या काढणे आणि मजबूत टोपल्या विणण्याचे थेट प्रात्यक्षिक.",
       location: "माजुली व सह्याद्री पट्टा",
