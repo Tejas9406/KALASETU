@@ -196,108 +196,20 @@ export const Navbar: React.FC<NavbarProps> = ({
             )}
           </div>
 
-          {/* Role Switcher */}
-          <div className="relative">
-            <button
-              onClick={() => setRoleMenuOpen(!roleMenuOpen)}
-              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider transition-all shadow-sm ${
-                currentRole === 'govt'
-                  ? 'bg-amber-700 text-white'
-                  : currentRole === 'artisan'
-                  ? 'bg-[#2D4A3E] text-white'
-                  : 'bg-[#D84315] text-white'
-              }`}
-            >
-              <UserCheck className="w-3.5 h-3.5" />
-              <span>{currentRole}</span>
-              <ChevronDown className="w-3 h-3" />
-            </button>
-
-            {roleMenuOpen && (
-              <div className="absolute right-0 mt-2 w-52 bg-white rounded-xl shadow-xl border border-stone-200 py-1.5 z-50 text-stone-800">
-                <div className="px-3 py-1 text-[10px] uppercase font-bold text-stone-400 tracking-wider">
-                  Select User View
-                </div>
-                <button
-                  onClick={() => {
-                    setCurrentRole('tourist');
-                    setRoleMenuOpen(false);
-                    setCurrentTab('home');
-                  }}
-                  className={`w-full text-left px-4 py-2 text-xs flex items-center justify-between hover:bg-stone-50 ${
-                    currentRole === 'tourist' ? 'font-bold text-[#D84315]' : ''
-                  }`}
-                >
-                  <span>Tourist View</span>
-                  <span className="text-[10px] bg-orange-100 text-orange-800 px-1.5 py-0.5 rounded">Discovery</span>
-                </button>
-                <button
-                  onClick={() => {
-                    setCurrentRole('artisan');
-                    setRoleMenuOpen(false);
-                    setCurrentTab('artisan-studio');
-                  }}
-                  className={`w-full text-left px-4 py-2 text-xs flex items-center justify-between hover:bg-stone-50 ${
-                    currentRole === 'artisan' ? 'font-bold text-[#2D4A3E]' : ''
-                  }`}
-                >
-                  <span>Artisan View</span>
-                  <span className="text-[10px] bg-emerald-100 text-emerald-800 px-1.5 py-0.5 rounded">My Studio</span>
-                </button>
-                <button
-                  onClick={() => {
-                    setCurrentRole('govt');
-                    setRoleMenuOpen(false);
-                    setCurrentTab('govt');
-                  }}
-                  className={`w-full text-left px-4 py-2 text-xs flex items-center justify-between hover:bg-stone-50 ${
-                    currentRole === 'govt' ? 'font-bold text-amber-800' : ''
-                  }`}
-                >
-                  <span>Govt Admin</span>
-                  <span className="text-[10px] bg-amber-100 text-amber-800 px-1.5 py-0.5 rounded">ODOP/SDG</span>
-                </button>
-
-                {/* Join as Artisan option inside Artisan View menu */}
-                <div className="pt-1.5 border-t border-stone-100 mt-1 space-y-1">
-                  <button
-                    onClick={() => {
-                      setRoleMenuOpen(false);
-                      onOpenRegisterModal();
-                    }}
-                    className="w-full text-left px-4 py-2 text-xs font-bold text-[#2D4A3E] hover:bg-emerald-50 flex items-center justify-between"
-                  >
-                    <span>+ Register as Artisan</span>
-                    <span className="text-[10px] text-emerald-700 font-semibold">Join Hub</span>
-                  </button>
-                  {onOpenAuthModal && (
-                    <button
-                      onClick={() => {
-                        setRoleMenuOpen(false);
-                        onOpenAuthModal();
-                      }}
-                      className="w-full text-left px-4 py-1.5 text-[11px] font-bold text-[#D84315] hover:bg-orange-50 flex items-center justify-between"
-                    >
-                      <span>🔒 Sign In with Firebase</span>
-                      <span className="text-[9px] text-orange-600">Switch Auth</span>
-                    </button>
-                  )}
-                </div>
-              </div>
-            )}
-          </div>
-
-          {/* Quick Sign In / User Status Badge */}
+          {/* Quick Sign In / User Status Badge (Opens AuthModal with 1-Click Demo Switcher) */}
           {onOpenAuthModal && (
             <button
               onClick={onOpenAuthModal}
-              className={`hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold border transition-colors ${
-                isScrolled
-                  ? 'border-[#2D4A3E] text-[#2D4A3E] hover:bg-[#2D4A3E] hover:text-white'
-                  : 'border-white/40 text-white bg-black/20 hover:bg-white hover:text-stone-900'
+              className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-bold transition-all shadow-sm ${
+                authenticatedUser
+                  ? 'bg-[#2D4A3E] text-white hover:bg-[#1A332A]'
+                  : isScrolled
+                  ? 'bg-[#D84315] text-white hover:bg-[#BF360C]'
+                  : 'bg-white/20 backdrop-blur-md text-white hover:bg-white hover:text-stone-900 border border-white/30'
               }`}
             >
-              <span>{authenticatedUser ? (authenticatedUser.name?.split(' ')[0] || 'Profile') : 'Sign In'}</span>
+              <UserCheck className="w-3.5 h-3.5" />
+              <span>{authenticatedUser ? (authenticatedUser.name?.split(' ')[0] || 'My Account') : 'Sign In / Register'}</span>
             </button>
           )}
         </div>

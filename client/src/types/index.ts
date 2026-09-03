@@ -61,6 +61,24 @@ export interface Experience {
 }
 
 
+export interface CulturalExperience {
+  id: string;
+  title: string;
+  tradition_name: string;
+  description: string;
+  category: 'Folk Heritage' | 'Sacred Rituals' | 'Community Medicine' | 'Seasonal Festival' | 'Tribal Customs';
+  location_name: string;
+  district: string;
+  state: string;
+  lat: number;
+  lng: number;
+  cover_image: string;
+  season?: string;
+  community_custodians?: string;
+  trust_score?: number;
+  significance: string;
+}
+
 export interface Review {
   id: string;
   tourist_id: string;

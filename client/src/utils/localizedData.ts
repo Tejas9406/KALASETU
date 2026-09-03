@@ -1,4 +1,4 @@
-import { Experience, Artisan } from '../types';
+import { Experience, Artisan, CulturalExperience } from '../types';
 import { SupportedLanguage } from './translations';
 
 export const LOCALIZED_EXPERIENCES: Record<SupportedLanguage, Experience[]> = {
@@ -7,7 +7,7 @@ export const LOCALIZED_EXPERIENCES: Record<SupportedLanguage, Experience[]> = {
       id: 'exp_kolhapur_01',
       artisan_id: 'art_kolhapur_01',
       artisan_name: 'Santosh Kamble',
-      artisan_avatar: '/assets/images/01-Hero/Kolhapuri_Chappals_in_roadside_shop_in_Kolhapur3.jpeg',
+      artisan_avatar: '/assets/images/Home%20page/Kolhapuri_Chappals_in_roadside_shop_in_Kolhapur3.jpeg',
       trust_score: 98,
       title: 'Heritage Kolhapuri Chappal Crafting Masterclass',
       description: 'Learn ancestral vegetable tanning using myrobalan and babool bark. Sit alongside 4th-generation master cobblers, shape traditional wooden lasts, hand-punch intricate motifs, and braid genuine leather straps.',
@@ -20,7 +20,7 @@ export const LOCALIZED_EXPERIENCES: Record<SupportedLanguage, Experience[]> = {
       location_name: 'Shivaji Market, Kolhapur',
       district: 'Kolhapur',
       state: 'Maharashtra',
-      cover_image: '/assets/images/01-Hero/Kolhapuri_Chappals_in_roadside_shop_in_Kolhapur3.jpeg',
+      cover_image: '/assets/images/Home%20page/Kolhapuri_Chappals_in_roadside_shop_in_Kolhapur3.jpeg',
       odop_tag: 'ODOP-MH-KOLHAPUR-LEATHER',
       women_friendly: true,
       elderly_friendly: true
@@ -120,7 +120,7 @@ export const LOCALIZED_EXPERIENCES: Record<SupportedLanguage, Experience[]> = {
       id: 'exp_kolhapur_01',
       artisan_id: 'art_kolhapur_01',
       artisan_name: 'संतोष कांबले',
-      artisan_avatar: '/assets/images/01-Hero/Kolhapuri_Chappals_in_roadside_shop_in_Kolhapur3.jpeg',
+      artisan_avatar: '/assets/images/Home%20page/Kolhapuri_Chappals_in_roadside_shop_in_Kolhapur3.jpeg',
       trust_score: 98,
       title: 'पारंपरिक कोल्हापुरी चप्पल हस्तशिल्प मास्टरक्लास',
       description: 'बबूल की छाल और हरड़ से प्राकृतिक चमड़ा पकाना सीखें। चौथी पीढ़ी के मास्टर कारीगरों के साथ बैठकर पारंपरिक लकड़ी के सांचों पर अपने हाथों से असली कोल्हापुरी चप्पल बनाएं।',
@@ -133,7 +133,7 @@ export const LOCALIZED_EXPERIENCES: Record<SupportedLanguage, Experience[]> = {
       location_name: 'शिवाजी मार्केट, कोल्हापुर',
       district: 'कोल्हापुर',
       state: 'महाराष्ट्र',
-      cover_image: '/assets/images/01-Hero/Kolhapuri_Chappals_in_roadside_shop_in_Kolhapur3.jpeg',
+      cover_image: '/assets/images/Home%20page/Kolhapuri_Chappals_in_roadside_shop_in_Kolhapur3.jpeg',
       odop_tag: 'ODOP-MH-कोल्हापुरी-चप्पल',
       women_friendly: true,
       elderly_friendly: true
@@ -233,7 +233,7 @@ export const LOCALIZED_EXPERIENCES: Record<SupportedLanguage, Experience[]> = {
       id: 'exp_kolhapur_01',
       artisan_id: 'art_kolhapur_01',
       artisan_name: 'संतोष कांबळे',
-      artisan_avatar: '/assets/images/01-Hero/Kolhapuri_Chappals_in_roadside_shop_in_Kolhapur3.jpeg',
+      artisan_avatar: '/assets/images/Home%20page/Kolhapuri_Chappals_in_roadside_shop_in_Kolhapur3.jpeg',
       trust_score: 98,
       title: 'अस्सल कोल्हापुरी चप्पल हस्तकला प्रत्यक्ष कार्यशाळा',
       description: 'बाभळीची साल आणि नैसर्गिक वनस्पती पद्धतीने चामडे प्रक्रिया शिकून स्वतःच्या हाताने अस्सल कोल्हापुरी चप्पल तयार करा.',
@@ -246,7 +246,7 @@ export const LOCALIZED_EXPERIENCES: Record<SupportedLanguage, Experience[]> = {
       location_name: 'शिवाजी मार्केट, कोल्हापूर',
       district: 'कोल्हापूर',
       state: 'महाराष्ट्र',
-      cover_image: '/assets/images/01-Hero/Kolhapuri_Chappals_in_roadside_shop_in_Kolhapur3.jpeg',
+      cover_image: '/assets/images/Home%20page/Kolhapuri_Chappals_in_roadside_shop_in_Kolhapur3.jpeg',
       odop_tag: 'ODOP-MH-कोल्हापूर-चप्पल',
       women_friendly: true,
       elderly_friendly: true
@@ -346,7 +346,7 @@ export const LOCALIZED_EXPERIENCES: Record<SupportedLanguage, Experience[]> = {
       id: 'exp_kolhapur_01',
       artisan_id: 'art_kolhapur_01',
       artisan_name: 'சந்தோஷ் காம்ப்ளே',
-      artisan_avatar: '/assets/images/01-Hero/Kolhapuri_Chappals_in_roadside_shop_in_Kolhapur3.jpeg',
+      artisan_avatar: '/assets/images/Home%20page/Kolhapuri_Chappals_in_roadside_shop_in_Kolhapur3.jpeg',
       trust_score: 98,
       title: 'பாரம்பரிய கோலாப்பூரி செருப்பு கைவினைப் பயிற்சி',
       description: 'பாரம்பரிய முறையில் தோல் பதனிடுதல் மற்றும் கைவினை செருப்பு தயாரிக்கும் பயிற்சி.',
@@ -359,7 +359,7 @@ export const LOCALIZED_EXPERIENCES: Record<SupportedLanguage, Experience[]> = {
       location_name: 'சிவாஜி மார்க்கெட், கோலாப்பூர்',
       district: 'கோலாப்பூர்',
       state: 'மகாராஷ்டிரா',
-      cover_image: '/assets/images/01-Hero/Kolhapuri_Chappals_in_roadside_shop_in_Kolhapur3.jpeg',
+      cover_image: '/assets/images/Home%20page/Kolhapuri_Chappals_in_roadside_shop_in_Kolhapur3.jpeg',
       odop_tag: 'ODOP-MH-LEATHER',
       women_friendly: true,
       elderly_friendly: true
@@ -459,7 +459,7 @@ export const LOCALIZED_EXPERIENCES: Record<SupportedLanguage, Experience[]> = {
       id: 'exp_kolhapur_01',
       artisan_id: 'art_kolhapur_01',
       artisan_name: 'సంతోష్ కాంబ్లే',
-      artisan_avatar: '/assets/images/01-Hero/Kolhapuri_Chappals_in_roadside_shop_in_Kolhapur3.jpeg',
+      artisan_avatar: '/assets/images/Home%20page/Kolhapuri_Chappals_in_roadside_shop_in_Kolhapur3.jpeg',
       trust_score: 98,
       title: 'కొల్హాపూర్ సాంప్రదాయ తోలు చెప్పుల వర్క్‌షాప్',
       description: 'సహజసిద్ధంగా తోలును సిద్ధం చేసి సంప్రదాయ చెప్పులు తయారు చేసే కళను నేర్చుకోండి.',
@@ -472,7 +472,7 @@ export const LOCALIZED_EXPERIENCES: Record<SupportedLanguage, Experience[]> = {
       location_name: 'కొల్హాపూర్',
       district: 'కొల్హాపూర్',
       state: 'మహారాష్ట్ర',
-      cover_image: '/assets/images/01-Hero/Kolhapuri_Chappals_in_roadside_shop_in_Kolhapur3.jpeg',
+      cover_image: '/assets/images/Home%20page/Kolhapuri_Chappals_in_roadside_shop_in_Kolhapur3.jpeg',
       odop_tag: 'ODOP-MH-LEATHER',
       women_friendly: true,
       elderly_friendly: true
@@ -572,7 +572,7 @@ export const LOCALIZED_EXPERIENCES: Record<SupportedLanguage, Experience[]> = {
       id: 'exp_kolhapur_01',
       artisan_id: 'art_kolhapur_01',
       artisan_name: 'সন্তোষ কাম্বলে',
-      artisan_avatar: '/assets/images/01-Hero/Kolhapuri_Chappals_in_roadside_shop_in_Kolhapur3.jpeg',
+      artisan_avatar: '/assets/images/Home%20page/Kolhapuri_Chappals_in_roadside_shop_in_Kolhapur3.jpeg',
       trust_score: 98,
       title: 'ঐতিহ্যবাহী কোলহাপুরী চটি চামড়া শিল্প কর্মশালা',
       description: 'বাবলা গাছের ছাল দিয়ে প্রাকৃতিক চামড়া প্রক্রিয়াকরণ ও হাতে তৈরি কোলহাপুরী চটি বানানোর প্রশিক্ষণ।',
@@ -585,7 +585,7 @@ export const LOCALIZED_EXPERIENCES: Record<SupportedLanguage, Experience[]> = {
       location_name: 'কোলহাপুর',
       district: 'কোলহাপুর',
       state: 'মহারাষ্ট্র',
-      cover_image: '/assets/images/01-Hero/Kolhapuri_Chappals_in_roadside_shop_in_Kolhapur3.jpeg',
+      cover_image: '/assets/images/Home%20page/Kolhapuri_Chappals_in_roadside_shop_in_Kolhapur3.jpeg',
       odop_tag: 'ODOP-MH-LEATHER',
       women_friendly: true,
       elderly_friendly: true
@@ -696,7 +696,7 @@ export const LOCALIZED_HERO_SLIDES: Record<SupportedLanguage, LocalizedSlideItem
     {
       id: 0,
       type: 'image',
-      src: '/assets/images/01-Hero/Kolhapuri_Chappals_in_roadside_shop_in_Kolhapur3.jpeg',
+      src: '/assets/images/Home%20page/Kolhapuri_Chappals_in_roadside_shop_in_Kolhapur3.jpeg',
       craftName: "Ancestral Leathercraft",
       tagline: "Hand-stitched vegetable-tanned Kolhapuri Chappals from 4th-generation master cobblers.",
       location: "Kolhapur, Maharashtra",
@@ -705,7 +705,7 @@ export const LOCALIZED_HERO_SLIDES: Record<SupportedLanguage, LocalizedSlideItem
     {
       id: 1,
       type: 'video',
-      src: '/assets/images/08-Videos/local%20artist.mp4',
+      src: '/assets/images/Home%20page/local%20artist.mp4',
       craftName: "Master Artisan at Work",
       tagline: "Watch hereditary artisans hand-paint intricate heritage motifs and live brushstrokes.",
       location: "Living Atelier, India",
@@ -723,7 +723,7 @@ export const LOCALIZED_HERO_SLIDES: Record<SupportedLanguage, LocalizedSlideItem
     {
       id: 3,
       type: 'video',
-      src: '/assets/images/08-Videos/Bamboo_basket_making.ogv',
+      src: '/assets/images/Home%20page/Bamboo_basket_making.ogv',
       craftName: "Bamboo Basketry & Weaving",
       tagline: "Live demonstration of traditional bamboo split stripping and flexible grain basket weaving.",
       location: "Majuli & Western Ghats",
@@ -741,7 +741,7 @@ export const LOCALIZED_HERO_SLIDES: Record<SupportedLanguage, LocalizedSlideItem
     {
       id: 5,
       type: 'video',
-      src: '/assets/images/08-Videos/Handmade%20craft%20stall.mp4',
+      src: '/assets/images/Home%20page/Handmade%20craft%20stall.mp4',
       craftName: "Living Craft Ateliers",
       tagline: "Experience the vibrant energy of authentic heritage stalls and master artisans at work.",
       location: "Bhavani Mandap Guilds, Maharashtra",
@@ -759,7 +759,7 @@ export const LOCALIZED_HERO_SLIDES: Record<SupportedLanguage, LocalizedSlideItem
     {
       id: 7,
       type: 'video',
-      src: '/assets/images/08-Videos/old%20leddy%20crafting.mp4',
+      src: '/assets/images/Home%20page/old%20leddy%20crafting.mp4',
       craftName: "Master Weavers of India",
       tagline: "Watch living legends hand-spin peace-silk yarns and warp traditional wooden looms.",
       location: "Pranpur & Majuli Clusters",
@@ -779,7 +779,7 @@ export const LOCALIZED_HERO_SLIDES: Record<SupportedLanguage, LocalizedSlideItem
     {
       id: 0,
       type: 'image',
-      src: '/assets/images/01-Hero/Kolhapuri_Chappals_in_roadside_shop_in_Kolhapur3.jpeg',
+      src: '/assets/images/Home%20page/Kolhapuri_Chappals_in_roadside_shop_in_Kolhapur3.jpeg',
       craftName: "पारंपरिक कोल्हापुरी चर्मशिल्प",
       tagline: "चौथी पीढ़ी के सिद्ध हस्तशिल्पियों द्वारा बबूल की छाल और हरड़ से तैयार प्राकृतिक कोल्हापुरी चप्पलें।",
       location: "कोल्हापुर, महाराष्ट्र",
@@ -788,7 +788,7 @@ export const LOCALIZED_HERO_SLIDES: Record<SupportedLanguage, LocalizedSlideItem
     {
       id: 1,
       type: 'video',
-      src: '/assets/images/08-Videos/local%20artist.mp4',
+      src: '/assets/images/Home%20page/local%20artist.mp4',
       craftName: "सजीव कार्यशाला में उस्ताद कारीगर",
       tagline: "पारंपरिक सिद्धहस्त शिल्पकारों को लाइव बारीक धरोहर आकृतियां और कलाकृतियां बनाते देखें।",
       location: "जीवंत कार्यशाला, भारत",
@@ -806,7 +806,7 @@ export const LOCALIZED_HERO_SLIDES: Record<SupportedLanguage, LocalizedSlideItem
     {
       id: 3,
       type: 'video',
-      src: '/assets/images/08-Videos/Bamboo_basket_making.ogv',
+      src: '/assets/images/Home%20page/Bamboo_basket_making.ogv',
       craftName: "बांस टोकरी निर्माण व नक्काशी",
       tagline: "पारंपरिक बांस की पट्टियों की छिलाई और हस्तनिर्मित टोकरी बुनाई का जीवंत प्रदर्शन।",
       location: "माजुली व पश्चिमी घाट",
@@ -824,7 +824,7 @@ export const LOCALIZED_HERO_SLIDES: Record<SupportedLanguage, LocalizedSlideItem
     {
       id: 5,
       type: 'video',
-      src: '/assets/images/08-Videos/Handmade%20craft%20stall.mp4',
+      src: '/assets/images/Home%20page/Handmade%20craft%20stall.mp4',
       craftName: "जीवंत शिल्प हाट व कारीगर",
       tagline: "पारंपरिक कारीगरों के प्रामाणिक शिल्प स्टॉल और कार्यशालाओं की जीवंत ऊर्जा का अनुभव करें।",
       location: "भवानी मंडप, महाराष्ट्र",
@@ -842,7 +842,7 @@ export const LOCALIZED_HERO_SLIDES: Record<SupportedLanguage, LocalizedSlideItem
     {
       id: 7,
       type: 'video',
-      src: '/assets/images/08-Videos/old%20leddy%20crafting.mp4',
+      src: '/assets/images/Home%20page/old%20leddy%20crafting.mp4',
       craftName: "भारत के महान बुनकर",
       tagline: "जीवंत किंवदंतियों को पारंपरिक लकड़ी के करघों पर रेशम के धागों को बुनते हुए देखें।",
       location: "प्राणपुर व माजुली क्लस्टर",
@@ -862,7 +862,7 @@ export const LOCALIZED_HERO_SLIDES: Record<SupportedLanguage, LocalizedSlideItem
     {
       id: 0,
       type: 'image',
-      src: '/assets/images/01-Hero/Kolhapuri_Chappals_in_roadside_shop_in_Kolhapur3.jpeg',
+      src: '/assets/images/Home%20page/Kolhapuri_Chappals_in_roadside_shop_in_Kolhapur3.jpeg',
       craftName: "अभिजात कोल्हापुरी चर्मकला",
       tagline: "चौथ्या पिढीतील कसबी कारागिरांनी बाभळीच्या सालीच्या नैसर्गिक टॅनिंगने हाताने शिवलेली चप्पल.",
       location: "कोल्हापूर, महाराष्ट्र",
@@ -871,7 +871,7 @@ export const LOCALIZED_HERO_SLIDES: Record<SupportedLanguage, LocalizedSlideItem
     {
       id: 1,
       type: 'video',
-      src: '/assets/images/08-Videos/local%20artist.mp4',
+      src: '/assets/images/Home%20page/local%20artist.mp4',
       craftName: "कार्यरत ज्येष्ठ हस्तकलाकार",
       tagline: "पारंपरिक कारागिरांना जिवंत कलेचे नक्षीकाम आणि कुंचल्याचे फटकारे मारताना प्रत्यक्ष पहा.",
       location: "प्रत्यक्ष कार्यशाळा, भारत",
@@ -889,7 +889,7 @@ export const LOCALIZED_HERO_SLIDES: Record<SupportedLanguage, LocalizedSlideItem
     {
       id: 3,
       type: 'video',
-      src: '/assets/images/08-Videos/Bamboo_basket_making.ogv',
+      src: '/assets/images/Home%20page/Bamboo_basket_making.ogv',
       craftName: "बांबू टोपली विणकाम व कला",
       tagline: "पारंपरिक बांबूच्या कामट्या काढणे आणि मजबूत टोपल्या विणण्याचे थेट प्रात्यक्षिक.",
       location: "माजुली व सह्याद्री पट्टा",
@@ -907,7 +907,7 @@ export const LOCALIZED_HERO_SLIDES: Record<SupportedLanguage, LocalizedSlideItem
     {
       id: 5,
       type: 'video',
-      src: '/assets/images/08-Videos/Handmade%20craft%20stall.mp4',
+      src: '/assets/images/Home%20page/Handmade%20craft%20stall.mp4',
       craftName: "पारंपरिक कारागीर स्टॉल्स",
       tagline: "भवानी मंडपातील कारागिरांचा थेट उत्साह आणि अस्सल हस्तकलेची ऊर्जा अनुभवा.",
       location: "भवानी मंडप, कोल्हापूर",
@@ -925,7 +925,7 @@ export const LOCALIZED_HERO_SLIDES: Record<SupportedLanguage, LocalizedSlideItem
     {
       id: 7,
       type: 'video',
-      src: '/assets/images/08-Videos/old%20leddy%20crafting.mp4',
+      src: '/assets/images/Home%20page/old%20leddy%20crafting.mp4',
       craftName: "भारतातील ज्येष्ठ विणकर",
       tagline: "पारंपरिक लाकडी हातमागांवर रेशमाचे धागे विणणाऱ्या ज्येष्ठ विणकरांची कला पहा.",
       location: "प्राणपूर व माजुली क्लस्टर",
@@ -945,7 +945,7 @@ export const LOCALIZED_HERO_SLIDES: Record<SupportedLanguage, LocalizedSlideItem
     {
       id: 0,
       type: 'image',
-      src: '/assets/images/01-Hero/Kolhapuri_Chappals_in_roadside_shop_in_Kolhapur3.jpeg',
+      src: '/assets/images/Home%20page/Kolhapuri_Chappals_in_roadside_shop_in_Kolhapur3.jpeg',
       craftName: "பழங்கால கோலாப்பூரி தோல் கைவினை",
       tagline: "4வது தலைமுறை கைவினைஞர்களின் இயற்கை தோல் பதனிடுதல் முறையில் தைக்கப்பட்ட கோலாப்பூரி செருப்புகள்.",
       location: "கோலாப்பூர், மகாராஷ்டிரா",
@@ -954,7 +954,7 @@ export const LOCALIZED_HERO_SLIDES: Record<SupportedLanguage, LocalizedSlideItem
     {
       id: 1,
       type: 'video',
-      src: '/assets/images/08-Videos/local%20artist.mp4',
+      src: '/assets/images/Home%20page/local%20artist.mp4',
       craftName: "பணியில் உள்ள முதன்மை கைவினைஞர்",
       tagline: "பாரம்பரிய கலைஞர்கள் நுணுக்கமான ஓவியங்களை வரையும் நேரலை காட்சியை காண்க.",
       location: "நேரலை பட்டறை, இந்தியா",
@@ -972,7 +972,7 @@ export const LOCALIZED_HERO_SLIDES: Record<SupportedLanguage, LocalizedSlideItem
     {
       id: 3,
       type: 'video',
-      src: '/assets/images/08-Videos/Bamboo_basket_making.ogv',
+      src: '/assets/images/Home%20page/Bamboo_basket_making.ogv',
       craftName: "மூங்கில் கூடை முடைதல்",
       tagline: "பாரம்பரிய மூங்கில் கீற்றுகள் மற்றும் கைவினை கூடைகள் தயாரிக்கும் நேரலை செயல்முறை.",
       location: "மஜூலி & மேற்கு தொடர்ச்சி மலை",
@@ -990,7 +990,7 @@ export const LOCALIZED_HERO_SLIDES: Record<SupportedLanguage, LocalizedSlideItem
     {
       id: 5,
       type: 'video',
-      src: '/assets/images/08-Videos/Handmade%20craft%20stall.mp4',
+      src: '/assets/images/Home%20page/Handmade%20craft%20stall.mp4',
       craftName: "கைவினை மையங்கள்",
       tagline: "பாரம்பரிய கைவினைஞர்களின் பட்டறைகள் மற்றும் நேரலை கலை உருவாக்கத்தை அனுபவிக்கவும்.",
       location: "பவானி மண்டபம், மகாராஷ்டிரா",
@@ -1008,7 +1008,7 @@ export const LOCALIZED_HERO_SLIDES: Record<SupportedLanguage, LocalizedSlideItem
     {
       id: 7,
       type: 'video',
-      src: '/assets/images/08-Videos/old%20leddy%20crafting.mp4',
+      src: '/assets/images/Home%20page/old%20leddy%20crafting.mp4',
       craftName: "இந்தியாவின் தலைசிறந்த நெசவாளர்கள்",
       tagline: "மரத்தறிகளில் பட்டு நூல்களை நெய்யும் பாரம்பரிய நெசவாளர்களை காண்க.",
       location: "பிரான்பூர் & மஜூலி",
@@ -1028,7 +1028,7 @@ export const LOCALIZED_HERO_SLIDES: Record<SupportedLanguage, LocalizedSlideItem
     {
       id: 0,
       type: 'image',
-      src: '/assets/images/01-Hero/Kolhapuri_Chappals_in_roadside_shop_in_Kolhapur3.jpeg',
+      src: '/assets/images/Home%20page/Kolhapuri_Chappals_in_roadside_shop_in_Kolhapur3.jpeg',
       craftName: "సాంప్రదాయ కొల్హాపూరి తోలు కళ",
       tagline: "4వ తరం నైపుణ్యం కలిగిన కళాకారులచే చేతితో కుట్టబడిన సహజ తోలు చెప్పులు.",
       location: "కొల్హాపూర్, మహారాష్ట్ర",
@@ -1037,7 +1037,7 @@ export const LOCALIZED_HERO_SLIDES: Record<SupportedLanguage, LocalizedSlideItem
     {
       id: 1,
       type: 'video',
-      src: '/assets/images/08-Videos/local%20artist.mp4',
+      src: '/assets/images/Home%20page/local%20artist.mp4',
       craftName: "పనిలో ఉన్న ప్రముఖ కళాకారుడు",
       tagline: "వంశపారంపర్య కళాకారులు అందమైన కళాఖండాలను తీర్చిదిద్దే ప్రత్యక్ష దృశ్యం.",
       location: "ప్రత్యక్ష వర్క్‌షాప్, భారతదేశం",
@@ -1055,7 +1055,7 @@ export const LOCALIZED_HERO_SLIDES: Record<SupportedLanguage, LocalizedSlideItem
     {
       id: 3,
       type: 'video',
-      src: '/assets/images/08-Videos/Bamboo_basket_making.ogv',
+      src: '/assets/images/Home%20page/Bamboo_basket_making.ogv',
       craftName: "వెదురు బుట్టల అల్లిక & కళ",
       tagline: "సాంప్రదాయ వెదురు బద్దల తయారీ మరియు చేతితో బుట్టల అల్లిక ప్రత్యక్ష ప్రదర్శన.",
       location: "మజులి & పశ్చిమ కనుమలు",
@@ -1073,7 +1073,7 @@ export const LOCALIZED_HERO_SLIDES: Record<SupportedLanguage, LocalizedSlideItem
     {
       id: 5,
       type: 'video',
-      src: '/assets/images/08-Videos/Handmade%20craft%20stall.mp4',
+      src: '/assets/images/Home%20page/Handmade%20craft%20stall.mp4',
       craftName: "ప్రత్యక్ష హస్తకళా కేంద్రాలు",
       tagline: "సాంప్రదాయ కళాకారుల స్టాళ్లు మరియు ప్రామాణికమైన హస్తకళల ప్రత్యక్ష అనుభూతి.",
       location: "భవాని మండపం, మహారాష్ట్ర",
@@ -1091,7 +1091,7 @@ export const LOCALIZED_HERO_SLIDES: Record<SupportedLanguage, LocalizedSlideItem
     {
       id: 7,
       type: 'video',
-      src: '/assets/images/08-Videos/old%20leddy%20crafting.mp4',
+      src: '/assets/images/Home%20page/old%20leddy%20crafting.mp4',
       craftName: "భారతదేశ ప్రముఖ చేనేతకారులు",
       tagline: "చెక్క మగ్గాలపై పట్టు దారాలను నేసే వంశపారంపర్య నేత కళాకారులను వీక్షించండి.",
       location: "ప్రాణ్‌పూర్ & మజులి",
@@ -1111,7 +1111,7 @@ export const LOCALIZED_HERO_SLIDES: Record<SupportedLanguage, LocalizedSlideItem
     {
       id: 0,
       type: 'image',
-      src: '/assets/images/01-Hero/Kolhapuri_Chappals_in_roadside_shop_in_Kolhapur3.jpeg',
+      src: '/assets/images/Home%20page/Kolhapuri_Chappals_in_roadside_shop_in_Kolhapur3.jpeg',
       craftName: "ঐতিহ্যবাহী কোলহাপুরী চামড়াশিল্প",
       tagline: "চতুর্থ প্রজন্মের অভিজ্ঞ কারিগরদের বাবলা ছাল ও হরিতকী দিয়ে সম্পূর্ণ ভেষজ পদ্ধতিতে তৈরি কোলহাপুরী চটি।",
       location: "কোলহাপুর, মহারাষ্ট্র",
@@ -1120,7 +1120,7 @@ export const LOCALIZED_HERO_SLIDES: Record<SupportedLanguage, LocalizedSlideItem
     {
       id: 1,
       type: 'video',
-      src: '/assets/images/08-Videos/local%20artist.mp4',
+      src: '/assets/images/Home%20page/local%20artist.mp4',
       craftName: "কর্মরত প্রধান কারিগর",
       tagline: "বংশপরম্পরা কারিগরদের সরাসরি ঐতিহ্যবাহী নকশা ও তুলির ছোঁয়ায় শিল্পকর্ম তৈরি দেখুন।",
       location: "সরাসরি কর্মশালা, ভারত",
@@ -1138,7 +1138,7 @@ export const LOCALIZED_HERO_SLIDES: Record<SupportedLanguage, LocalizedSlideItem
     {
       id: 3,
       type: 'video',
-      src: '/assets/images/08-Videos/Bamboo_basket_making.ogv',
+      src: '/assets/images/Home%20page/Bamboo_basket_making.ogv',
       craftName: "বাঁশের ঝুড়ি তৈরি ও বয়ন",
       tagline: "বাঁশের ঐতিহ্যবাহী চ্যাঁটাই কাটা ও মজবুত ঝুড়ি বোনার সরাসরি প্রদর্শনী।",
       location: "মাজুলী ও পশ্চিমঘাট",
@@ -1156,7 +1156,7 @@ export const LOCALIZED_HERO_SLIDES: Record<SupportedLanguage, LocalizedSlideItem
     {
       id: 5,
       type: 'video',
-      src: '/assets/images/08-Videos/Handmade%20craft%20stall.mp4',
+      src: '/assets/images/Home%20page/Handmade%20craft%20stall.mp4',
       craftName: "সরাসরি হস্তশিল্প হাট",
       tagline: "ঐতিহ্যবাহী কারিগরদের খাঁটি স্টল ও কাজের প্রাণবন্ত পরিবেশ উপভোগ করুন।",
       location: "ভবানী মণ্ডপ, মহারাষ্ট্র",
@@ -1174,7 +1174,7 @@ export const LOCALIZED_HERO_SLIDES: Record<SupportedLanguage, LocalizedSlideItem
     {
       id: 7,
       type: 'video',
-      src: '/assets/images/08-Videos/old%20leddy%20crafting.mp4',
+      src: '/assets/images/Home%20page/old%20leddy%20crafting.mp4',
       craftName: "ভারতের শ্রেষ্ঠ তাঁতশিল্পী",
       tagline: "ঐতিহ্যবাহী কাঠের তাঁতে রেশমের সুতো বুনতে থাকা বর্ষীয়ান তাঁতিদের দেখুন।",
       location: "প্রাণপুর ও মাজুলী",
@@ -1306,3 +1306,143 @@ export const LOCALIZED_HOMEPAGE_UI: Record<SupportedLanguage, {
   }
 };
 
+
+
+export const CULTURAL_EXPERIENCES: CulturalExperience[] = [
+  {
+    id: 'cult_01',
+    title: 'Traditional Marma & Indigenous Bone-Setting Lineage',
+    tradition_name: 'Marma Chikitsa & Herbal Poultices',
+    description: 'Centuries-old hereditary orthopedic healing and joint alignment practiced through botanical oils, bamboo splints, and generational touch techniques.',
+    category: 'Community Medicine',
+    location_name: 'Puttur & Malabar Belt',
+    district: 'Chittoor',
+    state: 'Andhra Pradesh',
+    lat: 13.4418,
+    lng: 79.5539,
+    cover_image: '/assets/images/Culture/Traditional_Bone_Setting.jpg',
+    season: 'Year-round traditional consultations',
+    community_custodians: 'Vaidya Kshatriya & Marma Guilds',
+    trust_score: 99,
+    significance: 'Recognized under Ministry of AYUSH traditional indigenous medicine repositories.'
+  },
+  {
+    id: 'cult_02',
+    title: 'Bodo-Kachari Indigenous Loom Songs & Spring Customs',
+    tradition_name: 'Bagurumba Dance & Dokhona Silk Rites',
+    description: 'Ancestral butterfly-movement spring rituals accompanied by Kham drums, Sifung flutes, and hand-spun floral Dokhona ceremonial weaving.',
+    category: 'Tribal Customs',
+    location_name: 'Kokrajhar Bodoland',
+    district: 'Kokrajhar',
+    state: 'Assam',
+    lat: 26.4014,
+    lng: 90.2716,
+    cover_image: '/assets/images/Culture/Bodo-Kachari_2.jpg',
+    season: 'Bwisagu Spring Festival (April)',
+    community_custodians: 'Bodo Women Weaving & Cultural Guild',
+    trust_score: 97,
+    significance: 'UNESCO Intangible Folk Heritage Documentation.'
+  },
+  {
+    id: 'cult_03',
+    title: 'Dhunuchi Naach & Kumartuli Clay Deity Invocation',
+    tradition_name: 'Sacred Dhunuchi Aarti with Dhak Rhythm',
+    description: 'Ecstatic clay-censer devotional dance with burning coconut husk and camphor, celebrating the living artisan deity sculpted from holy Ganges clay.',
+    category: 'Sacred Rituals',
+    location_name: 'Kumartuli Ghats, Kolkata',
+    district: 'Kolkata',
+    state: 'West Bengal',
+    lat: 22.5986,
+    lng: 88.3639,
+    cover_image: '/assets/images/Culture/Dancing_mood_of_Durga_Puja.jpg',
+    season: 'Sharadotsav (September – October)',
+    community_custodians: 'Kumartuli Sculptors Guild & Dhakis',
+    trust_score: 98,
+    significance: 'UNESCO Representative List of the Intangible Cultural Heritage of Humanity.'
+  },
+  {
+    id: 'cult_04',
+    title: 'Kokan Shimga Palakhi Nrutya (Village Deities Palanquin Dance)',
+    tradition_name: 'Shimagotsav Ancestral Palanquin Swaying',
+    description: 'Spectacular village gathering where hereditary bearers dance through narrow betel-nut groves carrying sacred wooden palanquins of gram-daivatas.',
+    category: 'Seasonal Festival',
+    location_name: 'Konkan Coastal Villages',
+    district: 'Ratnagiri',
+    state: 'Maharashtra',
+    lat: 16.9902,
+    lng: 73.3120,
+    cover_image: '/assets/images/Culture/Palakhinrutya_-_Dance_of_Palanquin_of_Village_Dities_-_Shimagotsav_in_Kokan_-_Maharashtra.jpg',
+    season: 'Holi / Shimga (March)',
+    community_custodians: 'Kokan Gramstha & Tarang Custodians',
+    trust_score: 96,
+    significance: '400-year-old coastal Konkan agrarian community cohesion ritual.'
+  },
+  {
+    id: 'cult_05',
+    title: 'Bhil & Bhilala Bhagoria Haat Festival of Colors',
+    tradition_name: 'Tribal Harvest Courtship & Dhol Assemblies',
+    description: 'Vibrant tribal carnival of giant dhol drums, brass ornaments, gulal celebrations, and community bonding across the Vindhyan hills.',
+    category: 'Seasonal Festival',
+    location_name: 'Jhabua Tribal Belt',
+    district: 'Jhabua',
+    state: 'Madhya Pradesh',
+    lat: 22.7699,
+    lng: 74.5936,
+    cover_image: '/assets/images/Culture/The_Bhagoria_festival.jpg',
+    season: 'Week preceding Holi (March)',
+    community_custodians: 'Bhil & Bhilala Tribal Elders',
+    trust_score: 97,
+    significance: 'Ancient indigenous harvest Thanksgiving and agrarian matchmaking fair.'
+  },
+  {
+    id: 'cult_06',
+    title: 'Chhath Mahaparv — Vedic Riverbank Solar Worship',
+    tradition_name: 'Riverbed Arghya with Handmade Bamboo Soop',
+    description: 'Austerity festival honoring Surya and Chhathi Maiya on the banks of holy rivers, using 100% organic offerings and bamboo woven winnowing baskets.',
+    category: 'Sacred Rituals',
+    location_name: 'Ganga Ghats, Patna',
+    district: 'Patna',
+    state: 'Bihar',
+    lat: 25.6120,
+    lng: 85.1440,
+    cover_image: '/assets/images/Culture/Devotees_offer_prayers_on_the_occasion_of_the_Chhath_Puja_festival.jpg',
+    season: 'Kartik Shukla Shashthi (November)',
+    community_custodians: 'Ganga Ghat Parvatis & Bamboo Guilds',
+    trust_score: 99,
+    significance: 'Vedic solar science and ecological reverence unchanged for over 3,000 years.'
+  },
+  {
+    id: 'cult_07',
+    title: 'Gond & Baiga Forest Storytelling with Bana Strings',
+    tradition_name: 'Pardhan Bardic Oral Epics of Mahua Groves',
+    description: 'Mystical musical epics played on the two-stringed Bana instrument, recounting creation myths and sacred relationships with the Narmada valley flora.',
+    category: 'Folk Heritage',
+    location_name: 'Maikal Hills, Dindori',
+    district: 'Dindori',
+    state: 'Madhya Pradesh',
+    lat: 22.9520,
+    lng: 81.0820,
+    cover_image: '/assets/images/Culture/Folk_Artist.jpg',
+    season: 'Autumn Forest Gatherings',
+    community_custodians: 'Pardhan Gond Bards & Elders',
+    trust_score: 98,
+    significance: 'National Oral Heritage preservation and indigenous tribal mythology.'
+  },
+  {
+    id: 'cult_08',
+    title: 'Theyyam Sacred Grove Invocation & Poliyanthram',
+    tradition_name: 'Living Deity Embodiment & Fire Walking',
+    description: 'Ancestral temple ritual where hereditary performers don massive headdresses and red turmeric body paint to channel protective ancestral spirits.',
+    category: 'Sacred Rituals',
+    location_name: 'North Malabar Sacred Groves',
+    district: 'Kannur',
+    state: 'Kerala',
+    lat: 11.8745,
+    lng: 75.3704,
+    cover_image: '/assets/images/Culture/Poliyanthram_podavadukkam.jpg',
+    season: 'November to May (Kavu Rituals)',
+    community_custodians: 'Vannar & Malayan Hereditary Custodians',
+    trust_score: 99,
+    significance: 'Over 1,500 years of unbroken sacred grove conservation and spiritual dance.'
+  }
+];

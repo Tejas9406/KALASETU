@@ -6,8 +6,9 @@ import {
 } from 'lucide-react';
 import { Experience, Artisan } from '../types';
 import { MapLibreView } from '../components/map/MapLibreView';
+import { CulturalActivitiesSection } from '../components/culture/CulturalActivitiesSection';
 import { SupportedLanguage, translations } from '../utils/translations';
-import { LOCALIZED_HERO_SLIDES, LOCALIZED_HOMEPAGE_UI } from '../utils/localizedData';
+import { LOCALIZED_HERO_SLIDES, LOCALIZED_HOMEPAGE_UI, CULTURAL_EXPERIENCES } from '../utils/localizedData';
 
 interface HomePageProps {
   experiences: Experience[];
@@ -351,7 +352,13 @@ export const HomePage: React.FC<HomePageProps> = ({
         </div>
       </section>
 
-      {/* 4. Interactive Heritage Map Component */}
+      {/* 4. Cultural Activities & Community Experiences (PS-TUR05) */}
+      <CulturalActivitiesSection
+        culturalExperiences={CULTURAL_EXPERIENCES}
+        language={language}
+      />
+
+      {/* 5. Interactive Heritage Map Component (Artisan Ateliers in Green, Cultural Activities in Orange) */}
       <section className="py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
         <div className="bg-[#F5F0E6] rounded-3xl p-6 sm:p-10 border border-stone-200">
           <div className="mb-6 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
@@ -364,15 +371,16 @@ export const HomePage: React.FC<HomePageProps> = ({
                 {t.livingHeritageMap}
               </h2>
               <p className="text-xs sm:text-sm text-stone-600 mt-1 max-w-xl">
-                Explore 17+ verified craft custodians spanning Maharashtra, Madhya Pradesh, Assam, Kashmir, and Bengal on our interactive vector map.
+                Explore 17+ verified craft custodians (Green) & authentic living cultural traditions (Orange) on our interactive vector map.
               </p>
             </div>
           </div>
 
           <MapLibreView
             experiences={experiences}
+            culturalExperiences={CULTURAL_EXPERIENCES}
             onSelectExperience={onSelectExperience}
-            height="480px"
+            height="500px"
           />
         </div>
       </section>

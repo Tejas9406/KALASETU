@@ -1,17 +1,21 @@
 import React, { useEffect, useRef } from 'react';
 import * as maplibregl from 'maplibre-gl';
-import { Experience } from '../../types';
+import { Experience, CulturalExperience } from '../../types';
 
 interface MapLibreViewProps {
   experiences: Experience[];
+  culturalExperiences?: CulturalExperience[];
   onSelectExperience?: (exp: Experience) => void;
+  onSelectCulturalExperience?: (cult: CulturalExperience) => void;
   selectedExperienceId?: string;
   height?: string;
 }
 
 export const MapLibreView: React.FC<MapLibreViewProps> = ({
   experiences,
+  culturalExperiences = [],
   onSelectExperience,
+  onSelectCulturalExperience,
   selectedExperienceId,
   height = '500px'
 }) => {
@@ -55,7 +59,7 @@ export const MapLibreView: React.FC<MapLibreViewProps> = ({
     map.current.on('load', () => {
       if (!map.current) return;
 
-      // 1. Inspect actual loaded MapLibre style layers dynamically (no hardcoded assumed IDs)
+      // 1. Inspect actual loaded MapLibre style layers dynamically
       const style = map.current.getStyle();
       if (style && style.layers) {
         style.layers.forEach((layer) => {
@@ -72,9 +76,7 @@ export const MapLibreView: React.FC<MapLibreViewProps> = ({
           if (isDisputedOrAdmin && layer.type === 'line') {
             try {
               map.current?.setLayoutProperty(layer.id, 'visibility', 'none');
-            } catch (e) {
-              // Ignore layout errors on raster-only styles
-            }
+            } catch (e) {}
           }
         });
       }
@@ -86,7 +88,7 @@ export const MapLibreView: React.FC<MapLibreViewProps> = ({
           data: '/assets/maps/india_soi_boundary.geojson'
         });
 
-        // Landmass Territory Fill Accent (Covers complete official sovereign extent of India)
+        // Landmass Territory Fill Accent
         map.current.addLayer({
           id: 'soi-boundary-fill',
           type: 'fill',
@@ -165,13 +167,24 @@ export const MapLibreView: React.FC<MapLibreViewProps> = ({
       return '🎨';
     };
 
+    // Helper to get compact art name
+    const getArtName = (exp: Experience) => {
+      const cat = exp.category.toLowerCase();
+      if (cat.includes('leather')) return 'Kolhapuri Leather';
+      if (cat.includes('handloom') || cat.includes('silk')) return 'Chanderi Silk';
+      if (cat.includes('bamboo')) return 'Mukha Mask';
+      if (cat.includes('wood')) return 'Walnut Woodwork';
+      if (cat.includes('pottery') || cat.includes('terracotta')) return 'Terracotta Clay';
+      return exp.category;
+    };
+
+    // 1. Render Artisan Experience Markers (Green Boxes)
     experiences.forEach((exp) => {
       if (!exp.lat || !exp.lng) return;
 
       hasCoords = true;
       bounds.extend([exp.lng, exp.lat]);
 
-      // Custom marker container with generous click target (44px+)
       const el = document.createElement('div');
       el.className = 'custom-craft-pin-container cursor-pointer';
       el.style.pointerEvents = 'auto';
@@ -179,13 +192,14 @@ export const MapLibreView: React.FC<MapLibreViewProps> = ({
 
       const icon = getCraftIcon(exp.category);
       const isSelected = selectedExperienceId === exp.id;
+      const artName = getArtName(exp);
 
       el.innerHTML = `
         <div style="
           display: flex;
           align-items: center;
           gap: 6px;
-          background: ${isSelected ? '#D84315' : '#2D4A3E'};
+          background: #2D4A3E;
           color: white;
           padding: 6px 12px;
           border-radius: 9999px;
@@ -195,14 +209,13 @@ export const MapLibreView: React.FC<MapLibreViewProps> = ({
           box-shadow: 0 4px 15px rgba(0,0,0,0.35);
           border: 2px solid white;
           transform: ${isSelected ? 'scale(1.15)' : 'scale(1)'};
-          transition: transform 0.2s ease, background 0.2s ease;
+          transition: transform 0.2s ease;
         ">
           <span style="font-size: 14px;">${icon}</span>
-          <span style="white-space: nowrap;">${exp.artisan_name ? exp.artisan_name.split(' ')[0] : exp.district}</span>
+          <span style="white-space: nowrap;">${artName}</span>
         </div>
       `;
 
-      // Popup with Artisan info, Trust Score, Craft Category, Price, and direct Book button
       const popupContent = `
         <div style="font-family: system-ui, -apple-system, sans-serif; padding: 12px; max-width: 240px; color: #2C2420;">
           <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
@@ -258,7 +271,6 @@ export const MapLibreView: React.FC<MapLibreViewProps> = ({
               font-size: 11px;
               font-weight: 700;
               cursor: pointer;
-              transition: background 0.2s;
             "
           >
             View Atelier & Book →
@@ -272,22 +284,16 @@ export const MapLibreView: React.FC<MapLibreViewProps> = ({
         closeOnClick: false 
       }).setHTML(popupContent);
 
-      // Attach click event directly to marker container
       el.addEventListener('click', (e) => {
         e.stopPropagation();
-        if (onSelectExperience) {
-          onSelectExperience(exp);
-        }
+        if (onSelectExperience) onSelectExperience(exp);
       });
 
-      // Hook up button in popup DOM once opened
       popup.on('open', () => {
         const btn = document.getElementById(`map-popup-btn-${exp.id}`);
         if (btn) {
           btn.addEventListener('click', () => {
-            if (onSelectExperience) {
-              onSelectExperience(exp);
-            }
+            if (onSelectExperience) onSelectExperience(exp);
           });
         }
       });
@@ -303,22 +309,99 @@ export const MapLibreView: React.FC<MapLibreViewProps> = ({
       markersRef.current[exp.id] = marker;
     });
 
+    // 2. Render Cultural/Community Activities Markers (Orange Boxes)
+    culturalExperiences.forEach((cult) => {
+      if (!cult.lat || !cult.lng) return;
+
+      hasCoords = true;
+      bounds.extend([cult.lng, cult.lat]);
+
+      const el = document.createElement('div');
+      el.className = 'custom-culture-pin-container cursor-pointer';
+      el.style.pointerEvents = 'auto';
+      el.style.zIndex = '15';
+
+      el.innerHTML = `
+        <div style="
+          display: flex;
+          align-items: center;
+          gap: 6px;
+          background: #D84315;
+          color: white;
+          padding: 6px 12px;
+          border-radius: 9999px;
+          font-family: system-ui, -apple-system, sans-serif;
+          font-weight: 700;
+          font-size: 11px;
+          box-shadow: 0 4px 15px rgba(216,67,21,0.4);
+          border: 2px solid white;
+        ">
+          <span style="font-size: 14px;">🪔</span>
+          <span style="white-space: nowrap;">${cult.tradition_name.split(' ')[0]} ${cult.tradition_name.split(' ')[1] || ''}</span>
+        </div>
+      `;
+
+      const popupContent = `
+        <div style="font-family: system-ui, -apple-system, sans-serif; padding: 12px; max-width: 240px; color: #2C2420;">
+          <div style="font-weight: 700; font-size: 13px; color: #D84315; line-height: 1.2; margin-bottom: 4px;">
+            🪔 ${cult.title}
+          </div>
+          <div style="font-size: 10px; color: #6D4C41; font-weight: 600; margin-bottom: 6px;">
+            ${cult.category} • ${cult.district}, ${cult.state}
+          </div>
+          <div style="font-size: 11px; color: #555; line-height: 1.3; margin-bottom: 8px;">
+            ${cult.description.substring(0, 95)}...
+          </div>
+          <div style="font-size: 10px; color: #D84315; font-weight: bold;">
+            Custodians: ${cult.community_custodians || 'Local Guild'}
+          </div>
+        </div>
+      `;
+
+      const popup = new maplibregl.Popup({ 
+        offset: 25, 
+        closeButton: true,
+        closeOnClick: false 
+      }).setHTML(popupContent);
+
+      el.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (onSelectCulturalExperience) onSelectCulturalExperience(cult);
+      });
+
+      const marker = new maplibregl.Marker({ 
+        element: el,
+        anchor: 'bottom'
+      })
+        .setLngLat([cult.lng, cult.lat])
+        .setPopup(popup)
+        .addTo(map.current!);
+
+      markersRef.current[cult.id] = marker;
+    });
+
     if (hasCoords && experiences.length > 0) {
       map.current.fitBounds(bounds, { padding: 70, maxZoom: 8 });
     }
-  }, [experiences, selectedExperienceId]);
+  }, [experiences, culturalExperiences, selectedExperienceId]);
 
   return (
     <div className="relative w-full rounded-3xl overflow-hidden shadow-lg border border-stone-200" style={{ height }}>
       <div ref={mapContainer} className="w-full h-full" />
       {/* Overlay legend tag */}
-      <div className="absolute top-4 left-4 z-10 bg-white/95 backdrop-blur-md px-3.5 py-2.5 rounded-2xl shadow-md border border-stone-200 text-xs">
-        <div className="flex items-center gap-2 font-bold text-[#2D4A3E]">
-          <span className="w-2.5 h-2.5 rounded-full bg-[#2D4A3E]"></span>
-          <span>17+ Verified Craft Ateliers Active</span>
+      <div className="absolute top-4 left-4 z-10 bg-white/95 backdrop-blur-md px-3.5 py-2.5 rounded-2xl shadow-md border border-stone-200 text-xs space-y-1">
+        <div className="flex items-center gap-3">
+          <div className="flex items-center gap-1.5 font-bold text-[#2D4A3E]">
+            <span className="w-2.5 h-2.5 rounded-full bg-[#2D4A3E]"></span>
+            <span>Artisan Ateliers (Green)</span>
+          </div>
+          <div className="flex items-center gap-1.5 font-bold text-[#D84315]">
+            <span className="w-2.5 h-2.5 rounded-full bg-[#D84315]"></span>
+            <span>Cultural Experiences (Orange)</span>
+          </div>
         </div>
-        <div className="text-[10px] text-stone-500 mt-0.5">Click any artisan pin to inspect workshop details</div>
-        <div className="text-[9px] text-[#D84315] font-semibold mt-1 pt-1 border-t border-stone-200">
+        <div className="text-[10px] text-stone-500">Click any marker to inspect heritage masterclass & tradition</div>
+        <div className="text-[9px] text-[#D84315] font-semibold pt-1 border-t border-stone-200">
           🇮🇳 Official Survey of India Political Territorial Extent
         </div>
       </div>

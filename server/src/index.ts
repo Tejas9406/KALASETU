@@ -10,12 +10,14 @@ import { bookingRouter } from './routes/booking.routes.js';
 import { emergencyRouter } from './routes/emergency.routes.js';
 import { chatRouter } from './routes/chat.routes.js';
 import { govtRouter } from './routes/govt.routes.js';
+import galleryRouter from './routes/gallery.routes.js';
 
 const app = express();
 
 // Middlewares
 app.use(cors({ origin: true, credentials: true }));
-app.use(express.json());
+app.use(express.json({ limit: '20mb' }));
+app.use(express.urlencoded({ extended: true, limit: '20mb' }));
 
 // Health check endpoint
 app.get('/api/health', async (req, res) => {
@@ -36,6 +38,7 @@ app.use('/api/bookings', bookingRouter);
 app.use('/api/emergency', emergencyRouter);
 app.use('/api/chat', chatRouter);
 app.use('/api/govt', govtRouter);
+app.use('/api/gallery', galleryRouter);
 
 // Start Server
 const PORT = parseInt(env.PORT, 10) || 5000;

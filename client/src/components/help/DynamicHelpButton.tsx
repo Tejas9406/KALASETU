@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { 
   HelpCircle, ShieldAlert, PhoneCall, AlertTriangle, 
   MapPin, CheckCircle, X, Send, Download, FileText, 
@@ -23,6 +23,17 @@ export const DynamicHelpButton: React.FC<DynamicHelpButtonProps> = ({
   const [ticketId, setTicketId] = useState('');
 
   const t = translations[language];
+
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isOpen]);
 
   const captureGps = () => {
     setLoadingGps(true);
@@ -90,7 +101,7 @@ export const DynamicHelpButton: React.FC<DynamicHelpButtonProps> = ({
 
       {/* Dynamic Modal Dialog */}
       {isOpen && (
-        <div className="fixed inset-0 z-[100] bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto">
+        <div className="fixed inset-0 z-[9999] bg-black/75 backdrop-blur-md flex items-center justify-center p-4 overflow-y-auto">
           <div className="bg-[#FDFBF7] rounded-3xl max-w-lg w-full overflow-hidden shadow-2xl border border-stone-200 animate-in zoom-in-95">
             {/* Header */}
             <div className="bg-[#2D4A3E] text-white p-5 flex items-center justify-between">

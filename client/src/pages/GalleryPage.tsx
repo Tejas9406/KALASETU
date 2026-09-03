@@ -33,6 +33,10 @@ export const GalleryPage: React.FC<GalleryPageProps> = ({ language }) => {
   const [uploadMediaUrl, setUploadMediaUrl] = useState('');
   const [uploaderName, setUploaderName] = useState('Aarav Sharma (Tourist)');
 
+  const [selectedFile, setSelectedFile] = useState<File | null>(null);
+  const [filePreview, setFilePreview] = useState<string>('');
+  const [isUploading, setIsUploading] = useState(false);
+
   const t = translations[language];
 
   const places = ['All', 'Kolhapur', 'Chanderi', 'Majuli', 'Srinagar', 'Bishnupur'];
@@ -49,13 +53,18 @@ export const GalleryPage: React.FC<GalleryPageProps> = ({ language }) => {
   const fetchGallery = async () => {
     setLoading(true);
     try {
-      const res = await fetch(`/api/experiences/gallery/all?place=${selectedPlace}`);
+      const res = await fetch(`/api/gallery?place=${selectedPlace}`);
       const data = await res.json();
-      if (data.success) {
+      if (data.success && data.items) {
         setItems(data.items);
+      } else {
+        // Fallback endpoint check
+        const fallbackRes = await fetch(`/api/experiences/gallery/all?place=${selectedPlace}`);
+        const fallbackData = await fallbackRes.json();
+        if (fallbackData.success) setItems(fallbackData.items);
       }
     } catch (e) {
-      console.warn('Gallery fallback:', e);
+      console.warn('Gallery fetch:', e);
     } finally {
       setLoading(false);
     }
@@ -70,31 +79,66 @@ export const GalleryPage: React.FC<GalleryPageProps> = ({ language }) => {
     setItems(items.map(item => item.id === id ? { ...item, likes: item.likes + 1 } : item));
   };
 
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files[0]) {
+      const file = e.target.files[0];
+      setSelectedFile(file);
+      setFilePreview(URL.createObjectURL(file));
+      setUploadMediaUrl('');
+    }
+  };
+
   const handleUploadSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!uploadTitle.trim() || !uploadMediaUrl.trim()) return;
+    if (!uploadTitle.trim()) return;
+    if (!selectedFile && !uploadMediaUrl.trim()) return;
 
+    setIsUploading(true);
     try {
-      const res = await fetch('/api/experiences/gallery/upload', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          title: uploadTitle,
-          mediaUrl: uploadMediaUrl,
-          place: uploadPlace,
-          artisanName: uploadArtisan,
-          uploader: uploaderName
-        })
-      });
-      const data = await res.json();
-      if (data.success) {
-        setItems([data.item, ...items]);
-        setIsUploadModalOpen(false);
-        setUploadTitle('');
-        setUploadMediaUrl('');
+      if (selectedFile) {
+        const formData = new FormData();
+        formData.append('file', selectedFile);
+        formData.append('title', uploadTitle);
+        formData.append('place', uploadPlace);
+        formData.append('artisanName', uploadArtisan);
+        formData.append('uploader', uploaderName);
+
+        const res = await fetch('/api/gallery/upload', {
+          method: 'POST',
+          body: formData
+        });
+        const data = await res.json();
+        if (data.success && data.item) {
+          setItems([data.item, ...items]);
+          setIsUploadModalOpen(false);
+          setUploadTitle('');
+          setSelectedFile(null);
+          setFilePreview('');
+        }
+      } else {
+        const res = await fetch('/api/gallery/upload', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            title: uploadTitle,
+            mediaUrl: uploadMediaUrl,
+            place: uploadPlace,
+            artisanName: uploadArtisan,
+            uploader: uploaderName
+          })
+        });
+        const data = await res.json();
+        if (data.success && data.item) {
+          setItems([data.item, ...items]);
+          setIsUploadModalOpen(false);
+          setUploadTitle('');
+          setUploadMediaUrl('');
+        }
       }
     } catch (err) {
-      console.warn('Upload error fallback:', err);
+      console.warn('Upload error:', err);
+    } finally {
+      setIsUploading(false);
     }
   };
 
@@ -294,15 +338,42 @@ export const GalleryPage: React.FC<GalleryPageProps> = ({ language }) => {
               </div>
 
               <div>
-                <label className="block text-xs font-bold text-stone-700 mb-1">Photo URL or Select Preset</label>
-                <input
-                  type="text"
-                  required
-                  placeholder="https://... or sample asset URL"
-                  value={uploadMediaUrl}
-                  onChange={(e) => setUploadMediaUrl(e.target.value)}
-                  className="w-full bg-stone-50 border border-stone-200 rounded-xl px-3 py-2 text-xs mb-2"
-                />
+                <label className="block text-xs font-bold text-stone-700 mb-1">
+                  Upload Photo from Local Device (Cloudinary Sync)
+                </label>
+                
+                {/* Local File Picker */}
+                <div className="border-2 border-dashed border-stone-300 hover:border-[#D84315] rounded-2xl p-4 text-center cursor-pointer transition-colors bg-stone-50 mb-3">
+                  <input
+                    type="file"
+                    id="local-gallery-upload-input"
+                    accept="image/*,video/*"
+                    onChange={handleFileChange}
+                    className="hidden"
+                  />
+                  <label htmlFor="local-gallery-upload-input" className="cursor-pointer block">
+                    {filePreview ? (
+                      <div className="relative w-full h-32 rounded-xl overflow-hidden mb-2">
+                        <img src={filePreview} alt="Preview" className="w-full h-full object-cover" />
+                        <span className="absolute bottom-2 right-2 bg-black/70 text-white text-[10px] px-2 py-0.5 rounded-md font-bold">
+                          ✓ Ready to Cloudinary
+                        </span>
+                      </div>
+                    ) : (
+                      <div className="py-2">
+                        <Upload className="w-6 h-6 text-[#D84315] mx-auto mb-1" />
+                        <span className="text-xs font-bold text-stone-700 block">Choose image from your computer</span>
+                        <span className="text-[10px] text-stone-400">PNG, JPG, MP4 up to 10MB</span>
+                      </div>
+                    )}
+                  </label>
+                </div>
+
+                <div className="flex items-center gap-2 mb-2">
+                  <div className="flex-1 h-px bg-stone-200" />
+                  <span className="text-[10px] uppercase font-bold text-stone-400">OR SELECT PRESET</span>
+                  <div className="flex-1 h-px bg-stone-200" />
+                </div>
 
                 <div className="flex gap-2 overflow-x-auto pb-1 no-scrollbar">
                   {sampleStock.map((url, i) => (
@@ -310,7 +381,11 @@ export const GalleryPage: React.FC<GalleryPageProps> = ({ language }) => {
                       key={i}
                       src={url}
                       alt="preset"
-                      onClick={() => setUploadMediaUrl(url)}
+                      onClick={() => {
+                        setUploadMediaUrl(url);
+                        setSelectedFile(null);
+                        setFilePreview('');
+                      }}
                       className={`w-12 h-12 rounded-xl object-cover cursor-pointer border-2 transition-transform hover:scale-105 shrink-0 ${
                         uploadMediaUrl === url ? 'border-[#D84315]' : 'border-transparent opacity-60'
                       }`}
@@ -329,9 +404,17 @@ export const GalleryPage: React.FC<GalleryPageProps> = ({ language }) => {
                 </button>
                 <button
                   type="submit"
-                  className="flex-1 bg-[#D84315] hover:bg-[#BF360C] text-white py-2.5 rounded-full text-xs font-bold shadow-md"
+                  disabled={isUploading}
+                  className="flex-1 bg-[#D84315] hover:bg-[#BF360C] disabled:bg-stone-300 text-white py-2.5 rounded-full text-xs font-bold shadow-md flex items-center justify-center gap-1.5"
                 >
-                  Upload to Gallery
+                  {isUploading ? (
+                    <>
+                      <span className="w-3.5 h-3.5 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                      <span>Uploading to Cloudinary...</span>
+                    </>
+                  ) : (
+                    <span>Upload to Gallery</span>
+                  )}
                 </button>
               </div>
             </form>

@@ -1,8 +1,14 @@
 import { Router } from 'express';
+import multer from 'multer';
 import { pool } from '../config/db.js';
 import { authenticateUser, requireRole } from '../middleware/auth.middleware.js';
+import { AIService } from '../services/ai.service.js';
 
 export const artisanRouter = Router();
+const privateDocUpload = multer({
+  storage: multer.memoryStorage(),
+  limits: { fileSize: 10 * 1024 * 1024 }
+});
 
 // Full verified seed list of 17+ artisans across 5 major Indian craft hubs
 const SEEDED_ARTISANS = [
@@ -447,12 +453,20 @@ artisanRouter.post('/verification/apply', authenticateUser, async (req, res) => 
     const appId = `app_${Date.now()}`;
     const secureStorageKey = `sec_docs/${userId}/${appId}_id_proof.enc`;
 
-    // Calculate transparent evidence-based trust score:
-    let calculatedTrustScore = 50; // base score for applicant
-    if (id_proof_type) calculatedTrustScore += 20; // Valid Government ID selected
-    if (evidence_photos && evidence_photos.length >= 3) calculatedTrustScore += 20; // 3+ craft photos provided
-    if (pehchan_card_number && pehchan_card_number.trim().length > 4) calculatedTrustScore += 10; // Ministry of Textiles Pehchan Card
-    if (gi_authorized_user_no || award_category !== 'NONE') calculatedTrustScore += 10; // GI / Award tier
+    // Run AI OCR field extraction & consistency check
+    const aiAnalysis = await AIService.analyzeArtisanDocumentsForConsistency({
+      artisan_name,
+      craft_type,
+      district,
+      id_proof_type,
+      id_proof_number: id_proof_data,
+      pehchan_card_number,
+      gi_authorized_user_no,
+      evidence_photos_count: Array.isArray(evidence_photos) ? evidence_photos.length : 0
+    });
+
+    // Evidence-based trust score calculation
+    const calculatedTrustScore = aiAnalysis.completeness_score;
 
     // Insert Application into PostgreSQL
     await pool.query(
@@ -471,11 +485,17 @@ artisanRouter.post('/verification/apply', authenticateUser, async (req, res) => 
       ]
     );
 
-    // Insert Audit Trail Log
+    // Insert Audit Trail Log with AI assessment notes
     await pool.query(
       `INSERT INTO artisan_audit_logs (id, application_id, actor_id, action, notes)
        VALUES ($1, $2, $3, $4, $5)`,
-      [`log_${Date.now()}`, appId, userId, 'SUBMITTED', 'Artisan verification application submitted with evidence.']
+      [
+        `log_${Date.now()}`, 
+        appId, 
+        userId, 
+        'SUBMITTED', 
+        `Submitted with AI consistency check: ${aiAnalysis.ai_recommendation}. Flags: ${aiAnalysis.flags.join('; ') || 'None'}`
+      ]
     );
 
     // Update user role to ARTISAN
@@ -486,7 +506,13 @@ artisanRouter.post('/verification/apply', authenticateUser, async (req, res) => 
       applicationId: appId,
       status: 'PENDING_REVIEW',
       trustScore: calculatedTrustScore,
-      message: 'Application successfully submitted to Directorate of Handicrafts verification queue.'
+      aiAnalysis: {
+        is_consistent: aiAnalysis.is_consistent,
+        flags: aiAnalysis.flags,
+        extracted_fields: aiAnalysis.extracted_fields,
+        recommendation: aiAnalysis.ai_recommendation
+      },
+      message: 'Application successfully submitted to Directorate of Handicrafts review queue.'
     });
   } catch (err: any) {
     res.status(500).json({ success: false, error: err.message });

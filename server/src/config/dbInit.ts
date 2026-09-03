@@ -18,6 +18,9 @@ export async function initializeDatabaseSchema() {
         created_at TIMESTAMPTZ DEFAULT NOW(),
         updated_at TIMESTAMPTZ DEFAULT NOW()
       );
+
+      ALTER TABLE users ADD COLUMN IF NOT EXISTS firebase_uid VARCHAR(128);
+      ALTER TABLE users ADD COLUMN IF NOT EXISTS avatar_url TEXT;
     `);
 
     // 2. Artisan Verification Applications (Evidence-Based, O/o DC Handicrafts & Privacy Compliant)
