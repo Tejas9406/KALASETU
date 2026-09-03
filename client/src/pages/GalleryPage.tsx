@@ -230,7 +230,7 @@ export const GalleryPage: React.FC<GalleryPageProps> = ({ language }) => {
                 </h3>
                 <div className="flex items-center justify-between text-xs text-stone-500 mt-2">
                   <span className="font-medium text-stone-700">Artisan: {item.artisan_name}</span>
-                  <span className="text-[10px] text-stone-400">By {item.uploader.split(' ')[0]}</span>
+                  <span className="text-[10px] text-stone-400">By {(item.uploader || 'Community Custodian').split(' ')[0]}</span>
                 </div>
               </div>
             </div>
@@ -265,7 +265,7 @@ export const GalleryPage: React.FC<GalleryPageProps> = ({ language }) => {
                   {activeLightbox.title}
                 </h3>
                 <p className="text-xs text-emerald-200 mt-1">
-                  Master Custodian: {activeLightbox.artisan_name} • Uploaded by {activeLightbox.uploader}
+                  Master Custodian: {activeLightbox.artisan_name} • Uploaded by {activeLightbox.uploader || 'Community Custodian'}
                 </p>
               </div>
 

@@ -11,7 +11,7 @@ import {
 } from 'firebase/auth';
 
 const firebaseConfig = {
-  apiKey: import.meta.env.VITE_FIREBASE_API_KEY || "",
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY || "AIzaSyChEp7azhYzHhUix_OMEu9NtVwFS9SCeHg",
   authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN || "sih-artisian.firebaseapp.com",
   projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID || "sih-artisian",
   storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET || "sih-artisian.firebasestorage.app",
