@@ -134,7 +134,7 @@ export const DynamicHelpButton: React.FC<DynamicHelpButtonProps> = ({
               {activeForm === 'menu' && currentRole === 'tourist' && (
                 <div className="space-y-3">
                   <div className="text-xs text-stone-500 font-semibold uppercase tracking-wider mb-1">
-                    Grievance Redressal & Verification
+                    {t.grievanceHeading}
                   </div>
 
                   <button
@@ -144,10 +144,10 @@ export const DynamicHelpButton: React.FC<DynamicHelpButtonProps> = ({
                     <ShieldAlert className="w-5 h-5 text-red-600 shrink-0 mt-0.5" />
                     <div>
                       <div className="text-sm font-bold text-red-900 group-hover:underline">
-                        Report Scam, Fake Artisan or Overcharging
+                        {t.reportScamTitle}
                       </div>
                       <div className="text-xs text-red-700 mt-0.5">
-                        Instant GPS geotagging & report dispatch to district tourism authority.
+                        {t.reportScamDesc}
                       </div>
                     </div>
                   </button>
@@ -159,10 +159,10 @@ export const DynamicHelpButton: React.FC<DynamicHelpButtonProps> = ({
                     <AlertTriangle className="w-5 h-5 text-amber-600 shrink-0" />
                     <div>
                       <div className="text-xs font-bold text-stone-800">
-                        Flag Misleading Listing or Wrong Location
+                        {t.flagListingTitle}
                       </div>
                       <div className="text-[11px] text-stone-500">
-                        Notify admin verification team to re-inspect workshop details.
+                        {t.flagListingDesc}
                       </div>
                     </div>
                   </button>
@@ -174,27 +174,27 @@ export const DynamicHelpButton: React.FC<DynamicHelpButtonProps> = ({
                     <CreditCard className="w-5 h-5 text-[#2D4A3E] shrink-0" />
                     <div>
                       <div className="text-xs font-bold text-stone-800">
-                        Payment, Refund or Cancellation Assistance
+                        {t.paymentAssistanceTitle}
                       </div>
                       <div className="text-[11px] text-stone-500">
-                        Razorpay escrow transaction disputes and refund requests.
+                        {t.paymentAssistanceDesc}
                       </div>
                     </div>
                   </button>
 
                   <div className="pt-3 border-t border-stone-200">
                     <div className="text-xs text-stone-500 font-semibold uppercase tracking-wider mb-2">
-                      Direct National Helplines
+                      {t.directHelplinesTitle}
                     </div>
-                    <div className="grid grid-cols-2 gap-2">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                       <a
                         href="tel:1363"
                         className="p-3 bg-emerald-50 border border-emerald-200 rounded-xl flex items-center gap-2 text-xs font-bold text-emerald-800 hover:bg-emerald-100"
                       >
                         <PhoneCall className="w-4 h-4 text-emerald-600 shrink-0" />
                         <div>
-                          <div>1363 (Tourist Infoline)</div>
-                          <span className="text-[9px] font-normal text-emerald-700">24x7 Multi-lingual</span>
+                          <div>{t.touristInfoline}</div>
+                          <span className="text-[9px] font-normal text-emerald-700">{t.multiLingualSupport}</span>
                         </div>
                       </a>
 
@@ -204,8 +204,8 @@ export const DynamicHelpButton: React.FC<DynamicHelpButtonProps> = ({
                       >
                         <PhoneCall className="w-4 h-4 text-blue-600 shrink-0" />
                         <div>
-                          <div>1800-11-4000</div>
-                          <span className="text-[9px] font-normal text-blue-700">National Consumer Helpline</span>
+                          <div>{t.consumerHelpline}</div>
+                          <span className="text-[9px] font-normal text-blue-700">24x7</span>
                         </div>
                       </a>
                     </div>

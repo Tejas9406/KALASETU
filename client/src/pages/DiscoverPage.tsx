@@ -31,7 +31,14 @@ export const DiscoverPage: React.FC<DiscoverPageProps> = ({
 
   const t = translations[language];
 
-  const categories = ['All', 'Leathercraft', 'Handloom', 'Bamboo-Cane', 'Woodwork', 'Pottery'];
+  const categories = [
+    { id: 'All', label: t.filterAll },
+    { id: 'Leathercraft', label: t.leathercraft },
+    { id: 'Handloom', label: t.handloom },
+    { id: 'Bamboo-Cane', label: t.bambooCane },
+    { id: 'Woodwork', label: t.woodwork },
+    { id: 'Pottery', label: t.pottery }
+  ];
   const states = ['All', 'Maharashtra', 'Madhya Pradesh', 'Assam', 'Jammu and Kashmir', 'West Bengal'];
 
   const filtered = experiences.filter((exp) => {
@@ -76,7 +83,7 @@ export const DiscoverPage: React.FC<DiscoverPageProps> = ({
               type="text"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              placeholder="Search by craft, artisan name, city, or state..."
+              placeholder={t.searchPlaceholder}
               className="w-full bg-stone-50 border border-stone-200 rounded-full pl-12 pr-4 py-3 text-sm focus:outline-none focus:border-[#2D4A3E]"
             />
           </div>
@@ -92,7 +99,7 @@ export const DiscoverPage: React.FC<DiscoverPageProps> = ({
               }`}
             >
               <Grid className="w-4 h-4" />
-              <span>Grid</span>
+              <span>{t.grid}</span>
             </button>
             <button
               onClick={() => setViewMode('map')}
@@ -103,24 +110,24 @@ export const DiscoverPage: React.FC<DiscoverPageProps> = ({
               }`}
             >
               <MapIcon className="w-4 h-4" />
-              <span>Map View</span>
+              <span>{t.mapView}</span>
             </button>
           </div>
         </div>
 
         {/* Category Filters */}
-        <div className="flex gap-2 overflow-x-auto pb-1 no-scrollbar text-xs">
+        <div className="flex flex-wrap gap-2 text-xs">
           {categories.map((c) => (
             <button
-              key={c}
-              onClick={() => setCategoryFilter(c)}
+              key={c.id}
+              onClick={() => setCategoryFilter(c.id)}
               className={`px-4 py-2 rounded-full font-medium shrink-0 transition-colors ${
-                categoryFilter === c
+                categoryFilter === c.id
                   ? 'bg-[#D84315] text-white'
                   : 'bg-stone-100 text-stone-700 hover:bg-stone-200'
               }`}
             >
-              {c}
+              {c.label}
             </button>
           ))}
         </div>
@@ -135,7 +142,7 @@ export const DiscoverPage: React.FC<DiscoverPageProps> = ({
                 onChange={(e) => setWomenOnly(e.target.checked)}
                 className="rounded text-[#D84315] focus:ring-[#D84315]"
               />
-              <span className="font-medium text-stone-700">👩 Women-Led Only</span>
+              <span className="font-medium text-stone-700">{t.womenOnlyFilter}</span>
             </label>
 
             <label className="flex items-center gap-1.5 cursor-pointer bg-stone-50 px-3 py-1.5 rounded-full border border-stone-200 hover:bg-stone-100">
@@ -145,7 +152,7 @@ export const DiscoverPage: React.FC<DiscoverPageProps> = ({
                 onChange={(e) => setElderlyFriendlyOnly(e.target.checked)}
                 className="rounded text-[#2D4A3E] focus:ring-[#2D4A3E]"
               />
-              <span className="font-medium text-stone-700">👴 Senior & Family Friendly</span>
+              <span className="font-medium text-stone-700">{t.elderlyFriendlyFilter}</span>
             </label>
 
             <label className="flex items-center gap-1.5 cursor-pointer bg-stone-50 px-3 py-1.5 rounded-full border border-stone-200 hover:bg-stone-100">
@@ -155,12 +162,12 @@ export const DiscoverPage: React.FC<DiscoverPageProps> = ({
                 onChange={(e) => setOdopOnly(e.target.checked)}
                 className="rounded text-[#C9A84C] focus:ring-[#C9A84C]"
               />
-              <span className="font-medium text-stone-700">🏛️ ODOP Certified</span>
+              <span className="font-medium text-stone-700">{t.odopCertifiedFilter}</span>
             </label>
           </div>
 
           <div className="flex items-center gap-2">
-            <span className="text-stone-500 font-medium">Max Price:</span>
+            <span className="text-stone-500 font-medium">{t.maxPriceLabel}</span>
             <input
               type="range"
               min="1000"

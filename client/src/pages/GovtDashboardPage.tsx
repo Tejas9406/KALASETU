@@ -4,8 +4,13 @@ import {
   MapPin, CheckCircle, BarChart3, PieChart, RefreshCw 
 } from 'lucide-react';
 import { GovtMetrics } from '../types';
+import { SupportedLanguage, translations } from '../utils/translations';
 
-export const GovtDashboardPage: React.FC = () => {
+interface GovtDashboardPageProps {
+  language?: SupportedLanguage;
+}
+
+export const GovtDashboardPage: React.FC<GovtDashboardPageProps> = ({ language = 'en' }) => {
   const [data, setData] = useState<{
     metrics: GovtMetrics;
     sdgCompliance: any;
@@ -13,6 +18,7 @@ export const GovtDashboardPage: React.FC = () => {
     recentAlerts: any[];
   } | null>(null);
   const [loading, setLoading] = useState(true);
+  const t = translations[language] || translations.en;
 
   const fetchDashboardData = async () => {
     setLoading(true);
@@ -76,7 +82,7 @@ export const GovtDashboardPage: React.FC = () => {
             <span>Ministry of Tourism & State Craft Councils</span>
           </div>
           <h1 className="text-3xl sm:text-4xl font-serif font-bold text-[#2D4A3E]">
-            National Craft Tourism Intelligence Dashboard
+            {t.govtDashboardTitle}
           </h1>
           <p className="text-xs sm:text-sm text-stone-600 mt-1">
             Real-time tracking of artisan livelihoods, tourist dispersion, ODOP coverage, and emergency response feeds.

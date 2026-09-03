@@ -16,7 +16,7 @@ import { GalleryPage } from './pages/GalleryPage';
 import { MapLibreView } from './components/map/MapLibreView';
 import { AuthModal } from './components/auth/AuthModal';
 import { Experience, Artisan, Booking } from './types';
-import { SupportedLanguage } from './utils/translations';
+import { SupportedLanguage, translations } from './utils/translations';
 import { LOCALIZED_EXPERIENCES } from './utils/localizedData';
 
 const DEFAULT_INITIAL_ARTISANS: Artisan[] = [
@@ -138,6 +138,7 @@ export const App: React.FC = () => {
   const [currentRole, setCurrentRole] = useState<'tourist' | 'artisan' | 'govt'>('tourist');
   const [authenticatedUser, setAuthenticatedUser] = useState<any>(null);
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
+  const t = translations[language] || translations.en;
 
   const [experiences, setExperiences] = useState<Experience[]>(LOCALIZED_EXPERIENCES['en']);
   const [artisans, setArtisans] = useState<Artisan[]>(DEFAULT_INITIAL_ARTISANS);
@@ -284,7 +285,7 @@ export const App: React.FC = () => {
                   Verified Hereditary Custodians
                 </span>
                 <h1 className="text-3xl sm:text-5xl font-serif font-bold text-[#2D4A3E]">
-                  Master Artisans of India
+                  {t.masterArtisansTitle}
                 </h1>
                 <p className="text-stone-600 text-sm mt-2">
                   Connect directly with certified practitioners across traditional leathercraft, pit-loom silk weaving, bamboo mask making, and terracotta sculpting.
@@ -403,7 +404,7 @@ export const App: React.FC = () => {
         )}
 
         {currentTab === 'govt' && (
-          <GovtDashboardPage />
+          <GovtDashboardPage language={language} />
         )}
       </main>
 

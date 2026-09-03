@@ -36,22 +36,24 @@ export const HomePage: React.FC<HomePageProps> = ({
   const ui = LOCALIZED_HOMEPAGE_UI[language] || LOCALIZED_HOMEPAGE_UI.en;
   const slides = LOCALIZED_HERO_SLIDES[language] || LOCALIZED_HERO_SLIDES.en;
 
-  // Auto-advance slideshow every 6 seconds
+  // Unified auto-advance: 5s for image, 4.2s for video with single timer
   useEffect(() => {
-    if (!isPlaying) return;
-    const interval = setInterval(() => {
+    if (!isPlaying || !slides.length) return;
+    const active = slides[currentSlide];
+    const duration = active?.type === 'image' ? 5000 : 4200;
+    const timer = setTimeout(() => {
       setCurrentSlide((prev) => (prev + 1) % slides.length);
-    }, 6000);
-    return () => clearInterval(interval);
-  }, [isPlaying, slides.length]);
+    }, duration);
+    return () => clearTimeout(timer);
+  }, [currentSlide, isPlaying, slides]);
 
   const categories = [
-    { id: 'All', label: ui.allCraftsCategory, icon: '✨' },
-    { id: 'Leathercraft', label: 'Kolhapuri Leather', icon: '👞' },
-    { id: 'Handloom', label: 'Royal Handloom', icon: '🧵' },
-    { id: 'Bamboo-Cane', label: 'Assam Bamboo', icon: '🎋' },
-    { id: 'Woodwork', label: 'Kashmir Walnut', icon: '🪵' },
-    { id: 'Pottery', label: 'Living Terracotta', icon: '🏺' }
+    { id: 'All', label: t.filterAll || ui.allCraftsCategory, icon: '✨' },
+    { id: 'Leathercraft', label: t.leathercraft || 'Kolhapuri Leather', icon: '👞' },
+    { id: 'Handloom', label: t.handloom || 'Royal Handloom', icon: '🧵' },
+    { id: 'Bamboo-Cane', label: t.bambooCane || 'Assam Bamboo', icon: '🎋' },
+    { id: 'Woodwork', label: t.woodwork || 'Kashmir Walnut', icon: '🪵' },
+    { id: 'Pottery', label: t.pottery || 'Living Terracotta', icon: '🏺' }
   ];
 
   const filteredExperiences = experiences.filter((exp) => {
@@ -67,59 +69,68 @@ export const HomePage: React.FC<HomePageProps> = ({
 
   return (
     <div className="min-h-screen bg-[#FDFBF7]">
-      {/* 1. Dynamic Hero Slideshow — Stacked Absolute Slides */}
+      {/* 1. Dynamic Hero Slideshow — Cinematic Dissolve */}
       <section className="relative w-full overflow-hidden bg-stone-900" style={{ height: '92vh', minHeight: '560px' }}>
-        {/* All slides stacked, only active one is visible */}
+        {/* All slides stacked, active crossfades smoothly */}
         {slides.map((slide, index) => {
           const isCurrent = index === currentSlide;
-          const isPrev = index === (currentSlide - 1 + slides.length) % slides.length;
+          // Only load/mount media for active slide and immediate neighbors to guarantee 60fps performance
+          const shouldLoad = Math.abs(index - currentSlide) <= 1 || 
+                             (currentSlide === 0 && index === slides.length - 1) || 
+                             (currentSlide === slides.length - 1 && index === 0);
+
           return (
             <div
               key={`${slide.id}-${index}`}
               className="absolute inset-0 w-full h-full overflow-hidden"
               style={{
-                transform: isCurrent ? 'translateX(0%)' : isPrev ? 'translateX(-100%)' : 'translateX(100%)',
-                transition: 'transform 900ms cubic-bezier(0.25, 1, 0.5, 1)',
+                opacity: isCurrent ? 1 : 0,
+                transition: 'opacity 1000ms cubic-bezier(0.4, 0, 0.2, 1)',
                 zIndex: isCurrent ? 2 : 1,
+                pointerEvents: isCurrent ? 'auto' : 'none',
               }}
             >
-              {slide.type === 'video' ? (
-                <video
-                  key={`video-${index}-${isCurrent}`}
-                  src={slide.src}
-                  poster="/assets/images/Home page/Kolhapuri_Chappals_in_roadside_shop_in_Kolhapur3.jpeg"
-                  autoPlay
-                  muted
-                  playsInline
-                  preload="auto"
-                  style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
-                  onTimeUpdate={(e: any) => {
-                    // Advance to next slide after 4 seconds — do not loop
-                    if (e.target.currentTime >= 4 && isCurrent) {
-                      setCurrentSlide((prev) => (prev + 1) % slides.length);
-                    }
-                  }}
-                />
-              ) : (
-                <img
-                  src={slide.src}
-                  alt={slide.craftName}
-                  style={{
-                    width: '100%',
-                    height: '100%',
-                    objectFit: 'cover',
-                    display: 'block',
-                    transform: isCurrent ? 'scale(1.08)' : 'scale(1)',
-                    transition: isCurrent ? 'transform 7000ms ease-out' : 'none',
-                  }}
-                  onError={(e: any) => {
-                    e.target.src = '/assets/images/Home page/Kolhapuri_Chappals_in_roadside_shop_in_Kolhapur3.jpeg';
-                  }}
-                />
+              {shouldLoad && (
+                slide.type === 'video' ? (
+                  <video
+                    ref={(el) => {
+                      if (el) {
+                        if (isCurrent && isPlaying) {
+                          el.currentTime = 0;
+                          el.play().catch(() => {});
+                        } else {
+                          el.pause();
+                        }
+                      }
+                    }}
+                    src={slide.src}
+                    poster="/assets/images/Home page/Kolhapuri_Chappals_in_roadside_shop_in_Kolhapur3.jpeg"
+                    muted
+                    playsInline
+                    preload={isCurrent ? "auto" : "metadata"}
+                    style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+                  />
+                ) : (
+                  <img
+                    src={slide.src}
+                    alt={slide.craftName}
+                    style={{
+                      width: '100%',
+                      height: '100%',
+                      objectFit: 'cover',
+                      display: 'block',
+                      transform: isCurrent ? 'scale(1.06)' : 'scale(1)',
+                      transition: isCurrent ? 'transform 6000ms ease-out' : 'none',
+                    }}
+                    onError={(e: any) => {
+                      e.target.src = '/assets/images/Home page/Kolhapuri_Chappals_in_roadside_shop_in_Kolhapur3.jpeg';
+                    }}
+                  />
+                )
               )}
-              {/* Gradient overlays */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-black/20" />
-              <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-transparent to-black/25" />
+              {/* Cinematic legibility gradient overlays */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/35 to-black/25" />
+              <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-transparent to-black/30" />
             </div>
           );
         })}
@@ -129,12 +140,12 @@ export const HomePage: React.FC<HomePageProps> = ({
           <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center text-white pt-24 pb-16 pointer-events-auto">
             {/* Active Craft Badge */}
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/15 backdrop-blur-md border border-white/20 text-xs font-semibold tracking-wider uppercase mb-5 text-amber-300 shadow-md">
-              <Sparkles className="w-3.5 h-3.5" />
+              <Sparkles className="w-3.5 h-3.5 shrink-0" />
               <span>{activeSlide.badge} • SIH 2026</span>
             </div>
 
             {/* Heading */}
-            <h1 className="text-4xl sm:text-6xl md:text-7xl font-serif font-extrabold tracking-tight leading-[1.08] mb-4 text-white drop-shadow-[0_4px_16px_rgba(0,0,0,0.9)]">
+            <h1 className="text-3xl sm:text-5xl md:text-6xl font-serif font-extrabold tracking-tight leading-[1.1] mb-4 text-white drop-shadow-[0_4px_16px_rgba(0,0,0,0.9)] break-words">
               {ui.discoverHeading} <br />
               <span className="italic font-normal text-amber-200">
                 {activeSlide.craftName}
@@ -142,7 +153,7 @@ export const HomePage: React.FC<HomePageProps> = ({
             </h1>
 
             {/* Tagline */}
-            <p className="text-base sm:text-lg text-stone-200 max-w-2xl mx-auto mb-8 font-light leading-relaxed drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">
+            <p className="text-sm sm:text-base md:text-lg text-stone-200 max-w-2xl mx-auto mb-8 font-light leading-relaxed drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">
               {activeSlide.tagline}
             </p>
 
@@ -155,30 +166,30 @@ export const HomePage: React.FC<HomePageProps> = ({
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder={ui.searchPlaceholder}
-                className="flex-1 bg-transparent text-stone-800 text-sm sm:text-base focus:outline-none placeholder:text-stone-400"
+                className="flex-1 bg-transparent text-stone-800 text-sm sm:text-base focus:outline-none placeholder:text-stone-400 min-w-0"
               />
               <button
                 onClick={onNavigateToDiscover}
-                className="bg-[#D84315] hover:bg-[#BF360C] text-white px-6 py-3 rounded-full text-sm font-bold shadow-md transition-transform hover:scale-105"
+                className="bg-[#D84315] hover:bg-[#BF360C] text-white px-5 sm:px-6 py-2.5 sm:py-3 rounded-full text-xs sm:text-sm font-bold shadow-md transition-transform hover:scale-105 shrink-0"
               >
                 {t.discover}
               </button>
             </div>
 
             {/* Trust Badges Bar */}
-            <div className="mt-8 flex flex-wrap items-center justify-center gap-4 text-xs sm:text-sm text-stone-300">
+            <div className="mt-8 flex flex-wrap items-center justify-center gap-3 sm:gap-4 text-xs sm:text-sm text-stone-300">
               <span className="flex items-center gap-1.5 drop-shadow">
-                <ShieldCheck className="w-4 h-4 text-emerald-400" />
+                <ShieldCheck className="w-4 h-4 text-emerald-400 shrink-0" />
                 {ui.verifiedArtisansBadge}
               </span>
               <span className="text-white/30">•</span>
               <span className="flex items-center gap-1.5 drop-shadow">
-                <Award className="w-4 h-4 text-amber-400" />
+                <Award className="w-4 h-4 text-amber-400 shrink-0" />
                 {ui.giTagBadge}
               </span>
               <span className="text-white/30">•</span>
               <span className="flex items-center gap-1.5 drop-shadow">
-                <Heart className="w-4 h-4 text-rose-400" />
+                <Heart className="w-4 h-4 text-rose-400 shrink-0" />
                 {ui.directIncomeBadge}
               </span>
             </div>
@@ -186,22 +197,22 @@ export const HomePage: React.FC<HomePageProps> = ({
         </div>
 
         {/* Slideshow Controls */}
-        <div className="absolute bottom-6 left-0 right-0 z-20 flex items-center justify-between px-6 sm:px-12 max-w-7xl mx-auto pointer-events-auto">
+        <div className="absolute bottom-6 left-0 right-0 z-20 flex items-center justify-between px-4 sm:px-8 md:px-12 max-w-7xl mx-auto pointer-events-auto">
           {/* Active Location Info */}
           <div className="hidden sm:flex items-center gap-2 text-white/90 text-xs font-medium drop-shadow bg-black/40 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-white/15">
-            <MapPin className="w-3.5 h-3.5 text-amber-300" />
+            <MapPin className="w-3.5 h-3.5 text-amber-300 shrink-0" />
             <span>{activeSlide.location}</span>
           </div>
 
-          {/* Dots Indicator */}
-          <div className="flex items-center gap-1.5 bg-black/40 backdrop-blur-md px-4 py-2 rounded-full border border-white/15 mx-auto sm:mx-0">
+          {/* Dots Indicator for 14 slides */}
+          <div className="flex items-center gap-1.5 bg-black/40 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/15 max-w-[280px] sm:max-w-none overflow-x-auto no-scrollbar mx-auto sm:mx-0">
             {slides.map((_, i) => (
               <button
                 key={i}
                 onClick={() => setCurrentSlide(i)}
-                className={`transition-all duration-300 rounded-full ${
+                className={`transition-all duration-300 rounded-full shrink-0 ${
                   currentSlide === i 
-                    ? 'w-6 h-2 bg-amber-400 shadow-[0_0_10px_rgba(251,191,36,0.9)]' 
+                    ? 'w-5 h-2 bg-amber-400 shadow-[0_0_10px_rgba(251,191,36,0.9)]' 
                     : 'w-2 h-2 bg-white/40 hover:bg-white'
                 }`}
                 title={`Go to slide ${i + 1}`}
@@ -209,7 +220,7 @@ export const HomePage: React.FC<HomePageProps> = ({
             ))}
             <button
               onClick={() => setIsPlaying(!isPlaying)}
-              className="ml-2 text-white/70 hover:text-white transition-colors"
+              className="ml-2 text-white/70 hover:text-white transition-colors shrink-0"
               title={isPlaying ? 'Pause slideshow' : 'Play slideshow'}
             >
               {isPlaying ? <Pause className="w-3.5 h-3.5" /> : <Play className="w-3.5 h-3.5" />}
@@ -235,6 +246,7 @@ export const HomePage: React.FC<HomePageProps> = ({
           </div>
         </div>
       </section>
+
 
       {/* 2. Craft Categories Ribbon */}
       <section className="py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">

@@ -45,7 +45,7 @@ export const MyBookingsPage: React.FC<MyBookingsPageProps> = ({
           {t.myBookings}
         </h1>
         <p className="text-stone-600 text-sm mt-2">
-          Your confirmed artisan workshop passes. Present your pass upon arrival at the atelier.
+          {t.bookingPassesSubtitle}
         </p>
       </div>
 
@@ -57,16 +57,16 @@ export const MyBookingsPage: React.FC<MyBookingsPageProps> = ({
         <div className="bg-white rounded-3xl p-12 text-center border border-stone-200 shadow-sm max-w-lg mx-auto">
           <BookmarkCheck className="w-12 h-12 text-stone-300 mx-auto mb-3" />
           <h3 className="text-xl font-serif font-bold text-stone-800 mb-2">
-            No Booked Experiences Yet
+            {t.noBookingsTitle}
           </h3>
           <p className="text-xs text-stone-500 mb-6 leading-relaxed">
-            Discover and book hands-on workshops with verified Indian master artisans in Kolhapur, Chanderi, and Majuli.
+            {t.noBookingsDesc}
           </p>
           <button
             onClick={onExploreMore}
             className="bg-[#D84315] hover:bg-[#BF360C] text-white font-bold text-xs px-6 py-3 rounded-full transition-transform hover:scale-105"
           >
-            Explore Masterclasses
+            {t.exploreMasterclasses}
           </button>
         </div>
       ) : (
@@ -80,7 +80,7 @@ export const MyBookingsPage: React.FC<MyBookingsPageProps> = ({
                 <div className="flex items-center justify-between mb-4">
                   <span className="bg-emerald-100 text-emerald-800 text-[10px] font-bold px-3 py-1 rounded-full uppercase flex items-center gap-1">
                     <CheckCircle2 className="w-3 h-3" />
-                    Confirmed Pass
+                    {t.confirmedPass}
                   </span>
                   <span className="font-mono text-xs text-stone-400 font-bold">
                     {b.id}
