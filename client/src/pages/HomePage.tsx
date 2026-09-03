@@ -85,17 +85,18 @@ export const HomePage: React.FC<HomePageProps> = ({
             >
               {slide.type === 'video' ? (
                 <video
+                  key={`video-${index}-${isCurrent}`}
                   src={slide.src}
                   poster="/assets/images/Home page/Kolhapuri_Chappals_in_roadside_shop_in_Kolhapur3.jpeg"
                   autoPlay
-                  loop
                   muted
                   playsInline
                   preload="auto"
                   style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
                   onTimeUpdate={(e: any) => {
-                    if (e.target.currentTime >= 4) {
-                      e.target.currentTime = 0;
+                    // Advance to next slide after 4 seconds — do not loop
+                    if (e.target.currentTime >= 4 && isCurrent) {
+                      setCurrentSlide((prev) => (prev + 1) % slides.length);
                     }
                   }}
                 />
@@ -368,32 +369,7 @@ export const HomePage: React.FC<HomePageProps> = ({
         language={language}
       />
 
-      {/* 5. Interactive Heritage Map Component (Artisan Ateliers in Green, Cultural Activities in Orange) */}
-      <section className="py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-        <div className="bg-[#F5F0E6] rounded-3xl p-6 sm:p-10 border border-stone-200">
-          <div className="mb-6 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
-            <div>
-              <div className="inline-flex items-center gap-1.5 text-xs font-bold text-[#D84315] uppercase tracking-wider mb-2">
-                <MapPin className="w-4 h-4" />
-                <span>Geographical Discovery Grid</span>
-              </div>
-              <h2 className="text-2xl sm:text-4xl font-serif font-bold text-[#2D4A3E]">
-                {t.livingHeritageMap}
-              </h2>
-              <p className="text-xs sm:text-sm text-stone-600 mt-1 max-w-xl">
-                Explore 17+ verified craft custodians (Green) & authentic living cultural traditions (Orange) on our interactive vector map.
-              </p>
-            </div>
-          </div>
 
-          <MapLibreView
-            experiences={experiences}
-            culturalExperiences={CULTURAL_EXPERIENCES}
-            onSelectExperience={onSelectExperience}
-            height="500px"
-          />
-        </div>
-      </section>
 
       {/* 5. Master Artisans Profile Spotlight */}
       <section className="py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">

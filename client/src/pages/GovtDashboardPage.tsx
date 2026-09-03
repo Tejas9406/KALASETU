@@ -17,7 +17,40 @@ export const GovtDashboardPage: React.FC = () => {
   const fetchDashboardData = async () => {
     setLoading(true);
     try {
-      const res = await fetch('/api/govt/dashboard');
+      // Try to get Firebase auth token if available
+      let authHeader: Record<string, string> = {};
+      try {
+        const { auth } = await import('../config/firebase');
+        const user = auth.currentUser;
+        if (user) {
+          const token = await user.getIdToken();
+          authHeader = { 'Authorization': `Bearer ${token}` };
+        }
+      } catch (_) {}
+
+      const res = await fetch('/api/govt/dashboard', { headers: authHeader });
+      if (res.status === 401) {
+        // Not logged in as govt — show demo data for prototype
+        setData({
+          metrics: {
+            totalArtisans: 1247,
+            registeredOnPlatform: 984,
+            activeExperiences: 73,
+            totalBookings: 28540,
+            estimatedRevenueInr: 12600000,
+            directArtisanIncomePercent: 96,
+            middlemanCommissionSavedPercent: 61,
+            womenArtisansPercent: 47,
+            elderlyArtisansPercent: 18,
+            giTaggedCoverageCount: 34,
+            emergencyIncidentsLogged: 2
+          },
+          sdgCompliance: { sdg8: 87, sdg11: 72, sdg17: 64 },
+          districtClusters: [],
+          recentAlerts: []
+        });
+        return;
+      }
       const json = await res.json();
       if (json.success) {
         setData(json);

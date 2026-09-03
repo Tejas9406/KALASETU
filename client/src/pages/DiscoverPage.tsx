@@ -4,8 +4,10 @@ import {
   Award, Sparkles, Filter, Grid, Map as MapIcon, Mic, ArrowRight 
 } from 'lucide-react';
 import { Experience } from '../types';
+import { CulturalExperience } from '../types';
 import { MapLibreView } from '../components/map/MapLibreView';
 import { SupportedLanguage, translations } from '../utils/translations';
+import { CULTURAL_EXPERIENCES } from '../utils/localizedData';
 
 interface DiscoverPageProps {
   experiences: Experience[];
@@ -184,6 +186,7 @@ export const DiscoverPage: React.FC<DiscoverPageProps> = ({
         <div className="space-y-6">
           <MapLibreView
             experiences={filtered}
+            culturalExperiences={CULTURAL_EXPERIENCES}
             onSelectExperience={onSelectExperience}
             height="550px"
           />
