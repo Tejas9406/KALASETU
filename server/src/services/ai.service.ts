@@ -53,13 +53,13 @@ export class AIService {
       k => `[Craft: ${k.topic} | Region: ${k.region} | GI: ${k.gi_tag}]: ${k.heritage} (Key Artisans: ${k.artisan_community})`
     ).join('\n\n');
 
-    const systemPrompt = `You are Kala Setu AI Concierge. Give DIRECT, CONCISE, and NATURAL responses in 1-3 sentences.
+    const systemPrompt = `You are Kala Setu AI Concierge. Give a DIRECT, CONCISE, and TO-THE-POINT response in 1-2 short sentences.
 RULES:
-1. No greetings (e.g. "Hello", "Namaste", "Welcome").
-2. No introductory filler (e.g. "Sure!", "Of course!", "Here is what you need").
-3. No unnecessary conversational wrap-ups or markdown bolding.
-4. Answer the user's specific query immediately using plain, clear language with standard punctuation.
-5. Respond in the exact language used by the user or preferred language code "${language}".
+1. No greetings (do NOT say Hello, Namaste, Welcome, etc.).
+2. No conversational filler (do NOT say 'Sure!', 'Of course!', 'Certainly!').
+3. No questions or conversational wrap-ups at the end.
+4. Answer the user's specific query immediately using plain, clear language.
+5. STRICT LANGUAGE MATCHING: You MUST respond in the EXACT same language and script used by the user in their query. If the user asks in Hindi, reply in Hindi. If in Marathi, reply in Marathi. If in Tamil, reply in Tamil. If in Telugu, reply in Telugu. If in Bengali, reply in Bengali. If in English, reply in English.
 
 Knowledge Base:
 ${knowledgeSnippet}
@@ -70,42 +70,46 @@ Key Platform Facts:
 - Booking steps: Select workshop -> Choose date -> Pay direct -> Receive QR pass.
 - Incident/Scam reports: Submit via top-right "Help & Support" with GPS location.`;
 
-    // 1. Primary Engine: Groq API with OpenAI OSS model (Fast, highly conversational, multi-turn)
+    // 1. Primary Engine: Groq API with fast OSS models (GPT-OSS-120B / Qwen-3.8-27B)
     if (env.GROQ_API_KEY) {
-      try {
-        const formattedMessages = [
-          { role: 'system', content: systemPrompt },
-          ...history.slice(-4).map(h => ({
-            role: h.role === 'assistant' ? 'assistant' : 'user',
-            content: h.text || h.content || ''
-          })).filter(m => m.content.trim().length > 0),
-          { role: 'user', content: userPrompt }
-        ];
+      const modelsToTry = ['openai/gpt-oss-120b', 'qwen/qwen3.8-27b', 'openai/gpt-oss-20b'];
+      const formattedMessages = [
+        { role: 'system', content: systemPrompt },
+        ...history.slice(-4).map(h => ({
+          role: h.role === 'assistant' ? 'assistant' : 'user',
+          content: h.text || h.content || ''
+        })).filter(m => m.content.trim().length > 0),
+        { role: 'user', content: userPrompt }
+      ];
 
-        const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
-          method: 'POST',
-          headers: {
-            'Authorization': `Bearer ${env.GROQ_API_KEY}`,
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
-            model: 'llama-3.3-70b-versatile',
-            messages: formattedMessages,
-            temperature: 0.5,
-            max_tokens: 300
-          })
-        });
+      for (const model of modelsToTry) {
+        try {
+          const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+            method: 'POST',
+            headers: {
+              'Authorization': `Bearer ${env.GROQ_API_KEY}`,
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              model,
+              messages: formattedMessages,
+              temperature: 0.3,
+              max_tokens: 250
+            })
+          });
 
-        if (response.ok) {
-          const data: any = await response.json();
-          const text = data?.choices?.[0]?.message?.content;
-          if (text) return text.trim();
-        } else {
-          const errData = await response.text();
-          console.warn('Groq API returned error status:', response.status, errData);
+          if (response.ok) {
+            const data: any = await response.json();
+            const text = data?.choices?.[0]?.message?.content;
+            if (text && text.trim().length > 0) {
+              return text.trim();
+            }
+          } else {
+            console.warn(`Groq API model ${model} status:`, response.status);
+          }
+        } catch (err) {
+          console.warn(`Groq API call error with ${model}:`, err);
         }
-      } catch (err) {
-        console.warn('Groq API call error:', err);
       }
     }
 

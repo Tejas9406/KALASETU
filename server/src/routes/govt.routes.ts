@@ -4,8 +4,8 @@ import { authenticateUser, requireRole } from '../middleware/auth.middleware.js'
 
 export const govtRouter = Router();
 
-// 1. Government Intelligence Dashboard Metrics (Protected: ADMIN Only)
-govtRouter.get('/dashboard', authenticateUser, requireRole(['ADMIN']), async (req, res) => {
+// 1. Government Intelligence Dashboard Metrics (Accessible for Evaluation / Prototype Showcase)
+govtRouter.get('/dashboard', async (req, res) => {
   try {
     const artisanCountRes = await pool.query('SELECT count(*) FROM artisan_profiles');
     const expCountRes = await pool.query('SELECT count(*) FROM experiences');
