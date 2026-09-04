@@ -77,7 +77,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
       console.warn('Firebase email auth warning:', err);
       // If Firebase Auth API fails due to network/domain sandbox, perform verified server sign-in directly
       try {
-        const fallbackRes = await fetch('http://localhost:5000/api/auth/login', {
+        const fallbackRes = await fetch('/api/auth/login', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ email, role: role.toUpperCase() })
@@ -107,7 +107,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
       console.warn('Firebase Google Auth warning:', err);
       // Fallback demo sign-in
       try {
-        const fallbackRes = await fetch('http://localhost:5000/api/auth/login', {
+        const fallbackRes = await fetch('/api/auth/login', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ email: 'google.demo@kalasetu.in', role: role.toUpperCase() })
@@ -131,10 +131,11 @@ export const AuthModal: React.FC<AuthModalProps> = ({
     setLoading(true);
     setError(null);
     try {
-      const res = await fetch('http://localhost:5000/api/auth/login', {
+      const rolePayload = demoRole === 'govt' ? 'ADMIN' : demoRole.toUpperCase();
+      const res = await fetch('/api/auth/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ role: demoRole.toUpperCase() })
+        body: JSON.stringify({ role: rolePayload })
       });
       const data = await res.json();
       if (data.success) {
@@ -142,6 +143,8 @@ export const AuthModal: React.FC<AuthModalProps> = ({
         localStorage.setItem('kala_setu_user', JSON.stringify(data.user));
         onAuthSuccess(data.user, data.token);
         onClose();
+      } else {
+        throw new Error(data.error || 'Demo sign-in failed');
       }
     } catch (err: any) {
       setError(err.message);

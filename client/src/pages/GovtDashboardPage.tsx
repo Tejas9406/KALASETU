@@ -23,17 +23,19 @@ export const GovtDashboardPage: React.FC<GovtDashboardPageProps> = ({ language =
   const fetchDashboardData = async () => {
     setLoading(true);
     try {
-      // Try to get Firebase auth token if available
-      let authHeader: Record<string, string> = {};
-      try {
-        const { auth } = await import('../config/firebase');
-        const user = auth.currentUser;
-        if (user) {
-          const token = await user.getIdToken();
-          authHeader = { 'Authorization': `Bearer ${token}` };
-        }
-      } catch (_) {}
+      // Try to get token from localStorage (1-Click Demo / standard login) or Firebase
+      let token = localStorage.getItem('kala_setu_token');
+      if (!token) {
+        try {
+          const { auth } = await import('../config/firebase');
+          const user = auth.currentUser;
+          if (user) {
+            token = await user.getIdToken();
+          }
+        } catch (_) {}
+      }
 
+      const authHeader: Record<string, string> = token ? { 'Authorization': `Bearer ${token}` } : {};
       const res = await fetch('/api/govt/dashboard', { headers: authHeader });
       if (res.status === 401) {
         // Not logged in as govt — show demo data for prototype

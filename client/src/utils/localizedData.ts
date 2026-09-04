@@ -759,29 +759,11 @@ export const LOCALIZED_HERO_SLIDES: Record<SupportedLanguage, LocalizedSlideItem
     {
       "id": 7,
       "type": "video",
-      "src": "/assets/images/Home page/(8)A_aesthetic_Fire_Pot_Dance.ogv",
-      "craftName": "Sacred Fire Pot Devotional Dance",
-      "tagline": "Spiritual temple rituals featuring fearless balance, live flame pots, and ancient rhythmic devotion.",
-      "location": "South India & Maharashtra",
-      "badge": "Sacred Ritual Custom"
-    },
-    {
-      "id": 8,
-      "type": "video",
       "src": "/assets/images/Home page/local artist.mp4",
       "craftName": "Master Artisan at Work",
       "tagline": "Watch hereditary artisans hand-paint intricate heritage motifs and live brushstrokes.",
       "location": "Living Atelier, India",
       "badge": "Master Artisan Live"
-    },
-    {
-      "id": 9,
-      "type": "video",
-      "src": "/assets/images/Home page/Bamboo_basket_making.ogv",
-      "craftName": "Ancestral Bamboo Basket Weaving",
-      "tagline": "Watch the hypnotic slicing of green bamboo culms and dexterous hand-interlacing of storage baskets.",
-      "location": "Western Ghats & Majuli",
-      "badge": "Bamboo Heritage Lineage"
     }
   ],
   "hi": [
@@ -851,29 +833,11 @@ export const LOCALIZED_HERO_SLIDES: Record<SupportedLanguage, LocalizedSlideItem
     {
       "id": 7,
       "type": "video",
-      "src": "/assets/images/Home page/(8)A_aesthetic_Fire_Pot_Dance.ogv",
-      "craftName": "अग्नि घट नृत्य — पवित्र मंदिर अनुष्ठान",
-      "tagline": "सिर पर प्रज्वलित अग्नि घट रखकर किया जाने वाला प्राचीन भक्ति और शक्ति का विस्मयकारी नृत्य।",
-      "location": "दक्षिण भारत व महाराष्ट्र",
-      "badge": "पवित्र अनुष्ठान"
-    },
-    {
-      "id": 8,
-      "type": "video",
       "src": "/assets/images/Home page/local artist.mp4",
       "craftName": "सजीव कार्यशाला में उस्ताद कारीगर",
       "tagline": "पारंपरिक सिद्धहस्त शिल्पकारों को लाइव बारीक धरोहर आकृतियां बनाते देखें।",
       "location": "जीवंत कार्यशाला, भारत",
       "badge": "उस्ताद कारीगर"
-    },
-    {
-      "id": 9,
-      "type": "video",
-      "src": "/assets/images/Home page/Bamboo_basket_making.ogv",
-      "craftName": "पारंपरिक बांस टोकरी निर्माण",
-      "tagline": "हरे बांस की पत्तियों को तराशकर हाथ से मजबूत और सुंदर टोकरी बुनने का जीवंत प्रदर्शन।",
-      "location": "पश्चिमी घाट व माजुली",
-      "badge": "बांस शिल्प"
     }
   ],
   "mr": [
@@ -943,29 +907,11 @@ export const LOCALIZED_HERO_SLIDES: Record<SupportedLanguage, LocalizedSlideItem
     {
       "id": 7,
       "type": "video",
-      "src": "/assets/images/Home page/(8)A_aesthetic_Fire_Pot_Dance.ogv",
-      "craftName": "अग्नि घट नृत्य — मंदिरातील धार्मिक विधी",
-      "tagline": "डोक्यावर धगधगता अग्निघट घेऊन भक्तीभावाने सादर होणारे थरारक आणि पवित्र लोकनृत्य.",
-      "location": "महाराष्ट्र व दक्षिण भारत",
-      "badge": "धार्मिक विधी"
-    },
-    {
-      "id": 8,
-      "type": "video",
       "src": "/assets/images/Home page/local artist.mp4",
       "craftName": "कार्यरत ज्येष्ठ हस्तकलाकार",
       "tagline": "पारंपरिक कारागिरांना जिवंत कलेचे नक्षीकाम आणि कुंचल्याचे फटकारे मारताना प्रत्यक्ष पहा.",
       "location": "प्रत्यक्ष कार्यशाळा, भारत",
       "badge": "मास्टर आर्टिसन"
-    },
-    {
-      "id": 9,
-      "type": "video",
-      "src": "/assets/images/Home page/Bamboo_basket_making.ogv",
-      "craftName": "पारंपरिक बांबू विणकाम कला",
-      "tagline": "बांबूच्या काड्या कुशलतेने कापून हाताने सुबक टोपल्या विणण्याची पारंपरिक पद्धत प्रत्यक्ष पहा.",
-      "location": "पश्चिम घाट आणि माजुली",
-      "badge": "बांबू कला"
     }
   ],
   "ta": [
@@ -1035,29 +981,11 @@ export const LOCALIZED_HERO_SLIDES: Record<SupportedLanguage, LocalizedSlideItem
     {
       "id": 7,
       "type": "video",
-      "src": "/assets/images/Home page/(8)A_aesthetic_Fire_Pot_Dance.ogv",
-      "craftName": "அக்னி சட்டி நடனம் — ஆன்மீக சடங்கு",
-      "tagline": "தலையில் எரியும் தீச்சட்டியுடன் பக்தி பரவசத்துடன் ஆடப்படும் பண்டைய கோவில் சடங்கு நடனம்.",
-      "location": "தென்னிந்தியா",
-      "badge": "புனித சடங்கு"
-    },
-    {
-      "id": 8,
-      "type": "video",
       "src": "/assets/images/Home page/local artist.mp4",
       "craftName": "கைவினைஞர் நேரடி படைப்பு பணி",
       "tagline": "பாரம்பரிய கைவினைஞர்கள் நுணுக்கமான கலை நயங்களை நேரடியாக உருவாக்குவதை காணுங்கள்.",
       "location": "நேரடி பணிமனை, இந்தியா",
       "badge": "கைவினைஞர் நேரடி"
-    },
-    {
-      "id": 9,
-      "type": "video",
-      "src": "/assets/images/Home page/Bamboo_basket_making.ogv",
-      "craftName": "பாரம்பரிய மூங்கில் கூடை நெசவு",
-      "tagline": "பச்சை மூங்கிலை அறுத்து கைகளால் உறுதியான மற்றும் அழகான கூடைகள் முடையும் காட்சியை பாருங்கள்.",
-      "location": "மேற்கு தொடர்ச்சி மலை",
-      "badge": "மூங்கில் கலை"
     }
   ],
   "te": [
@@ -1127,29 +1055,11 @@ export const LOCALIZED_HERO_SLIDES: Record<SupportedLanguage, LocalizedSlideItem
     {
       "id": 7,
       "type": "video",
-      "src": "/assets/images/Home page/(8)A_aesthetic_Fire_Pot_Dance.ogv",
-      "craftName": "అగ్ని కుండ నృత్యం — పవిత్ర ఆలయ ఆచారం",
-      "tagline": "తల పై అగ్ని కుండాలు ధరించి భక్తి శ్రద్ధలతో ప్రదర్శించే పురాతన ఆలయ నృత్య విన్యాసం.",
-      "location": "దక్షిణ భారతదేశం",
-      "badge": "పవిత్ర ఆచారం"
-    },
-    {
-      "id": 8,
-      "type": "video",
       "src": "/assets/images/Home page/local artist.mp4",
       "craftName": "పనిలో నిమగ్నమైన మాస్టర్ కళాకారుడు",
       "tagline": "వంశపారంపర్య కళాకారులు అద్భుతమైన సాంప్రదాయ నమూనాలను గీస్తుండగా ప్రత్యక్షంగా వీక్షించండి.",
       "location": "కళా శాల, భారతదేశం",
       "badge": "మాస్టర్ కళాకారుడు"
-    },
-    {
-      "id": 9,
-      "type": "video",
-      "src": "/assets/images/Home page/Bamboo_basket_making.ogv",
-      "craftName": "సాంప్రదాయ వెదురు బుట్టల అల్లిక",
-      "tagline": "పచ్చి వెదురును చీల్చి అద్భుతమైన నైపుణ్యంతో ధాన్యపు బుట్టలను అల్లే ప్రత్యక్ష దృశ్యం.",
-      "location": "పశ్చిమ కనుమలు & మజులి",
-      "badge": "వెదురు కళ"
     }
   ],
   "bn": [
@@ -1219,29 +1129,11 @@ export const LOCALIZED_HERO_SLIDES: Record<SupportedLanguage, LocalizedSlideItem
     {
       "id": 7,
       "type": "video",
-      "src": "/assets/images/Home page/(8)A_aesthetic_Fire_Pot_Dance.ogv",
-      "craftName": "অগ্নি পাত্র নৃত্য — আধ্যাত্মিক আচার",
-      "tagline": "মাথায় জ্বলন্ত মাটির অগ্নিকুণ্ড নিয়ে প্রাচীন মন্দিরের ভক্তি ও শক্তির অপূর্ব আত্মনিবেদন।",
-      "location": "দক্ষিণ ভারত ও মহারাষ্ট্র",
-      "badge": "পবিত্র আচার"
-    },
-    {
-      "id": 8,
-      "type": "video",
       "src": "/assets/images/Home page/local artist.mp4",
       "craftName": "কর্মরত প্রধান কারিগর",
       "tagline": "বংশপরম্পরা কারিগরদের সরাসরি ঐতিহ্যবাহী নকশা ও তুলির ছোঁয়ায় শিল্পকর্ম তৈরি দেখুন।",
       "location": "সরাসরি কর্মশাला, ভারত",
       "badge": "মাস্টার কারিগর"
-    },
-    {
-      "id": 9,
-      "type": "video",
-      "src": "/assets/images/Home page/Bamboo_basket_making.ogv",
-      "craftName": "বাঁশের ঐতিহ্যবাহী খাঁটি বয়ন",
-      "tagline": "বাঁশের কাঠি নিখুঁতভাবে চিরে হাতে মজবুত ঝুড়ি বোনার অসাধারণ দৃশ্য প্রত্যক্ষ করুন।",
-      "location": "পশ্চিমঘাট ও মাজুলী",
-      "badge": "বাঁশ বয়ন শিল্প"
     }
   ]
 };

@@ -37,9 +37,12 @@ export async function authenticateUser(req: Request, res: Response, next: NextFu
     let userEmail: string | undefined;
     let firebaseUid: string | undefined;
 
+    let decodedStandardJwt: any = null;
+
     try {
       // 1. Check if token is standard JWT
       const decoded: any = jwt.verify(token, env.JWT_SECRET);
+      decodedStandardJwt = decoded;
       userEmail = decoded.email;
       firebaseUid = decoded.firebase_uid || decoded.id;
     } catch (jwtErr) {
@@ -61,21 +64,37 @@ export async function authenticateUser(req: Request, res: Response, next: NextFu
     }
 
     // 3. Query PostgreSQL for true server-side role and user ID
-    let userResult = await pool.query(
-      'SELECT id, firebase_uid, email, name, phone, role FROM users WHERE email = $1 OR firebase_uid = $2 LIMIT 1',
-      [userEmail || '', firebaseUid || '']
-    );
-
-    let user = userResult.rows[0];
-
-    // If user does not exist yet (first-time sign-up via Firebase), create user with default TOURIST role
-    if (!user && userEmail) {
-      const newId = `usr_${Date.now()}`;
-      await pool.query(
-        'INSERT INTO users (id, firebase_uid, email, role) VALUES ($1, $2, $3, $4)',
-        [newId, firebaseUid || newId, userEmail, 'TOURIST']
+    let user: any = null;
+    try {
+      const userResult = await pool.query(
+        'SELECT id, firebase_uid, email, name, phone, role FROM users WHERE email = $1 OR firebase_uid = $2 LIMIT 1',
+        [userEmail || '', firebaseUid || '']
       );
-      user = { id: newId, firebase_uid: firebaseUid, email: userEmail, role: 'TOURIST' };
+      user = userResult.rows[0];
+
+      // If user does not exist yet (first-time sign-up via Firebase), create user with default TOURIST role
+      if (!user && userEmail) {
+        const newId = `usr_${Date.now()}`;
+        const defaultRole = decodedStandardJwt?.role || 'TOURIST';
+        await pool.query(
+          'INSERT INTO users (id, firebase_uid, email, role) VALUES ($1, $2, $3, $4) ON CONFLICT (email) DO NOTHING',
+          [newId, firebaseUid || newId, userEmail, defaultRole]
+        );
+        user = { id: newId, firebase_uid: firebaseUid, email: userEmail, role: defaultRole };
+      }
+    } catch (dbErr) {
+      console.warn('⚠️ PostgreSQL query warning in authenticateUser:', dbErr);
+    }
+
+    // Resilient fallback for verified standard JWT tokens
+    if (!user && decodedStandardJwt && decodedStandardJwt.role) {
+      user = {
+        id: decodedStandardJwt.id || `usr_${Date.now()}`,
+        firebase_uid: decodedStandardJwt.id,
+        email: decodedStandardJwt.email,
+        name: decodedStandardJwt.name,
+        role: decodedStandardJwt.role
+      };
     }
 
     if (!user) {
