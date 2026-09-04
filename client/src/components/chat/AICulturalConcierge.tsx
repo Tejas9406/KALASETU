@@ -4,6 +4,7 @@ import {
   CornerDownLeft, MessageSquare, HelpCircle, Navigation 
 } from 'lucide-react';
 import { SupportedLanguage, translations } from '../../utils/translations';
+import { getApiUrl } from '../../config/api';
 
 interface AICulturalConciergeProps {
   language: SupportedLanguage;
@@ -98,7 +99,7 @@ export const AICulturalConcierge: React.FC<AICulturalConciergeProps> = ({
     const isAskingScam = lower.includes('scam') || lower.includes('fraud') || lower.includes('cheat') || lower.includes('fake') || lower.includes('धोखा');
 
     try {
-      const res = await fetch('/api/chat/message', {
+      const res = await fetch(getApiUrl('/api/chat/message'), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

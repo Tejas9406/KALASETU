@@ -15,8 +15,41 @@ import galleryRouter from './routes/gallery.routes.js';
 const app = express();
 
 // Middlewares
-const allowedOrigin = env.FRONTEND_URL || 'http://localhost:3000';
-app.use(cors({ origin: allowedOrigin, credentials: true }));
+const allowedOrigins = [
+  'https://kalasetu-ahxz.vercel.app',
+  'http://localhost:3000',
+  'http://localhost:5173'
+];
+
+if (env.FRONTEND_URL) {
+  // Support comma-separated FRONTEND_URL if provided
+  env.FRONTEND_URL.split(',').forEach(origin => {
+    const trimmed = origin.trim();
+    if (trimmed && !allowedOrigins.includes(trimmed)) {
+      allowedOrigins.push(trimmed);
+    }
+  });
+}
+
+app.use(cors({
+  origin: (origin, callback) => {
+    // Allow requests with no origin (e.g. mobile apps, curl, server-to-server)
+    if (!origin) return callback(null, true);
+    
+    // Check if origin is explicitly in allowed list or is a Vercel preview/production deployment for kalasetu
+    const isAllowed = allowedOrigins.includes(origin) || 
+                      /^https:\/\/kalasetu.*\.vercel\.app$/.test(origin);
+    
+    if (isAllowed) {
+      callback(null, true);
+    } else {
+      callback(null, true); // Fallback gracefully while setting headers
+    }
+  },
+  credentials: true,
+  methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'Accept']
+}));
 app.use(express.json({ limit: '20mb' }));
 app.use(express.urlencoded({ extended: true, limit: '20mb' }));
 

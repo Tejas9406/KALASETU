@@ -6,6 +6,7 @@ import {
 } from 'lucide-react';
 import { Experience, Artisan } from '../types';
 import { SupportedLanguage, translations } from '../utils/translations';
+import { getApiUrl } from '../config/api';
 
 interface ExperienceDetailPageProps {
   experience: Experience;
@@ -53,7 +54,7 @@ export const ExperienceDetailPage: React.FC<ExperienceDetailPageProps> = ({
   const fetchReviews = async () => {
     setLoadingReviews(true);
     try {
-      const res = await fetch(`/api/experiences/${experience.id}`);
+      const res = await fetch(getApiUrl(`/api/experiences/${experience.id}`));
       const data = await res.json();
       if (data.success && data.experience?.reviews) {
         setReviews(data.experience.reviews);
@@ -71,9 +72,9 @@ export const ExperienceDetailPage: React.FC<ExperienceDetailPageProps> = ({
           },
           {
             id: 'rev_2',
-            reviewer_name: 'Priya Mehta',
+            reviewer_name: 'Dr. Sunita Rao',
             rating: 5,
-            comment: 'Very authentic hereditary experience. The workshop was comfortable and we also learned about the rich history.',
+            comment: 'Authentic hereditary craft experience. The workshop was comfortable and we learned ancient techniques passed down through 5 generations.',
             created_at: '2026-08-20T14:15:00Z',
             verified: true,
             photos: []
@@ -81,7 +82,7 @@ export const ExperienceDetailPage: React.FC<ExperienceDetailPageProps> = ({
         ]);
       }
     } catch (e) {
-      console.warn('Review fetch fallback:', e);
+      console.warn('Reviews fetch fallback');
     } finally {
       setLoadingReviews(false);
     }
@@ -89,25 +90,24 @@ export const ExperienceDetailPage: React.FC<ExperienceDetailPageProps> = ({
 
   useEffect(() => {
     fetchReviews();
-    setActiveImage(experience.cover_image);
   }, [experience.id]);
 
   const handleSubmitReview = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!newComment.trim()) return;
+    if (!reviewerName.trim() || !newComment.trim()) return;
 
     const newRev: ReviewItem = {
       id: `rev_${Date.now()}`,
-      reviewer_name: reviewerName || 'Verified Traveler',
+      reviewer_name: reviewerName,
       rating: newRating,
-      comment: newComment.trim(),
+      comment: newComment,
       created_at: new Date().toISOString(),
       verified: true,
       photos: newPhoto ? [newPhoto] : []
     };
 
     try {
-      await fetch(`/api/experiences/${experience.id}/reviews`, {
+      await fetch(getApiUrl(`/api/experiences/${experience.id}/reviews`), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

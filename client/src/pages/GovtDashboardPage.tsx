@@ -5,6 +5,7 @@ import {
 } from 'lucide-react';
 import { GovtMetrics } from '../types';
 import { SupportedLanguage, translations } from '../utils/translations';
+import { getApiUrl } from '../config/api';
 
 interface GovtDashboardPageProps {
   language?: SupportedLanguage;
@@ -36,7 +37,7 @@ export const GovtDashboardPage: React.FC<GovtDashboardPageProps> = ({ language =
       }
 
       const authHeader: Record<string, string> = token ? { 'Authorization': `Bearer ${token}` } : {};
-      const res = await fetch('/api/govt/dashboard', { headers: authHeader });
+      const res = await fetch(getApiUrl('/api/govt/dashboard'), { headers: authHeader });
       if (res.status === 401) {
         // Not logged in as govt — show demo data for prototype
         setData({

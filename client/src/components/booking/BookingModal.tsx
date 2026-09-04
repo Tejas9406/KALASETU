@@ -5,6 +5,7 @@ import {
 } from 'lucide-react';
 import { Experience, Booking } from '../../types';
 import confetti from 'canvas-confetti';
+import { getApiUrl } from '../../config/api';
 
 interface BookingModalProps {
   experience: Experience | null;
@@ -42,7 +43,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
 
     try {
       // 1. Trigger Razorpay order creation on backend
-      const orderRes = await fetch('/api/bookings/create-order', {
+      const orderRes = await fetch(getApiUrl('/api/bookings/create-order'), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -54,7 +55,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
       const orderData = await orderRes.json();
 
       // 2. Confirm booking in Neon DB with generated QR pass
-      const confirmRes = await fetch('/api/bookings/confirm', {
+      const confirmRes = await fetch(getApiUrl('/api/bookings/confirm'), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

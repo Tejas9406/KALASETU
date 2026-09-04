@@ -5,6 +5,8 @@ import {
 } from 'lucide-react';
 import { SupportedLanguage, translations } from '../utils/translations';
 
+import { getApiUrl } from '../config/api';
+
 interface GalleryItem {
   id: string;
   title: string;
@@ -53,15 +55,13 @@ export const GalleryPage: React.FC<GalleryPageProps> = ({ language }) => {
   const fetchGallery = async () => {
     setLoading(true);
     try {
-      const res = await fetch(`/api/gallery?place=${selectedPlace}`);
+      const res = await fetch(getApiUrl(`/api/gallery?place=${encodeURIComponent(selectedPlace)}`));
+      if (!res.ok) {
+        throw new Error(`HTTP ${res.status}`);
+      }
       const data = await res.json();
       if (data.success && data.items) {
         setItems(data.items);
-      } else {
-        // Fallback endpoint check
-        const fallbackRes = await fetch(`/api/experiences/gallery/all?place=${selectedPlace}`);
-        const fallbackData = await fallbackRes.json();
-        if (fallbackData.success) setItems(fallbackData.items);
       }
     } catch (e) {
       console.warn('Gallery fetch:', e);
@@ -103,7 +103,7 @@ export const GalleryPage: React.FC<GalleryPageProps> = ({ language }) => {
         formData.append('artisanName', uploadArtisan);
         formData.append('uploader', uploaderName);
 
-        const res = await fetch('/api/gallery/upload', {
+        const res = await fetch(getApiUrl('/api/gallery/upload'), {
           method: 'POST',
           body: formData
         });
@@ -116,7 +116,7 @@ export const GalleryPage: React.FC<GalleryPageProps> = ({ language }) => {
           setFilePreview('');
         }
       } else {
-        const res = await fetch('/api/gallery/upload', {
+        const res = await fetch(getApiUrl('/api/gallery/upload'), {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({

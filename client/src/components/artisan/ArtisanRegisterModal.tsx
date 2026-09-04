@@ -5,6 +5,7 @@ import {
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { Artisan } from '../../types';
+import { getApiUrl } from '../../config/api';
 
 interface ArtisanRegisterModalProps {
   isOpen: boolean;
@@ -66,7 +67,7 @@ export const ArtisanRegisterModal: React.FC<ArtisanRegisterModalProps> = ({
     setSubmitting(true);
     try {
       const token = localStorage.getItem('kala_setu_token') || '';
-      const res = await fetch('http://localhost:5000/api/artisans/verification/apply', {
+      const res = await fetch(getApiUrl('/api/artisans/verification/apply'), {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

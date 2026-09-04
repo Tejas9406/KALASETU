@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { BookmarkCheck, Calendar, Clock, MapPin, QrCode, CheckCircle2, AlertCircle } from 'lucide-react';
 import { Booking } from '../types';
 import { SupportedLanguage, translations } from '../utils/translations';
+import { getApiUrl } from '../config/api';
 
 interface MyBookingsPageProps {
   language: SupportedLanguage;
@@ -19,7 +20,7 @@ export const MyBookingsPage: React.FC<MyBookingsPageProps> = ({
   const fetchBookings = async () => {
     setLoading(true);
     try {
-      const res = await fetch('/api/bookings/user/usr_demo_tourist');
+      const res = await fetch(getApiUrl('/api/bookings/user/usr_demo_tourist'));
       const data = await res.json();
       if (data.success) {
         setBookings(data.bookings);

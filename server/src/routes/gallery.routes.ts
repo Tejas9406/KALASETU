@@ -81,26 +81,91 @@ const ensureGalleryTable = async () => {
 };
 ensureGalleryTable();
 
-// GET all gallery items
+// GET all gallery items with optional place filter
 router.get('/', async (req: Request, res: Response) => {
   try {
-    const dbRes = await pool.query('SELECT * FROM community_gallery ORDER BY created_at DESC');
-    if (dbRes.rows.length > 0) {
-      return res.json({ success: true, items: dbRes.rows, gallery: dbRes.rows });
+    const { place } = req.query;
+    let query = 'SELECT * FROM community_gallery';
+    const params: any[] = [];
+
+    if (place && place !== 'All') {
+      query += ' WHERE location ILIKE $1 OR craft_tag ILIKE $1';
+      params.push(`%${place}%`);
     }
-    return res.json({ success: true, items: SEED_GALLERY, gallery: SEED_GALLERY });
+    query += ' ORDER BY created_at DESC';
+
+    const dbRes = await pool.query(query, params);
+    
+    // Normalizer to guarantee consistent fields (media_url, image_url, place, location, likes, likes_count, artisan_name, etc.)
+    const formatItem = (row: any) => ({
+      id: row.id,
+      title: row.caption || row.title || 'Master Craft Atelier Moment',
+      caption: row.caption || row.title || 'Master Craft Atelier Moment',
+      media_url: row.image_url || row.media_url || '',
+      image_url: row.image_url || row.media_url || '',
+      media_type: row.media_type || 'image',
+      place: row.location || row.place || 'India',
+      location: row.location || row.place || 'India',
+      artisan_name: row.artisan_name || 'Master Artisan',
+      uploader: row.user_name || row.uploader || 'Cultural Explorer',
+      user_name: row.user_name || row.uploader || 'Cultural Explorer',
+      user_avatar: row.user_avatar || 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=150',
+      craft_tag: row.craft_tag || 'Traditional Heritage',
+      likes: parseInt(row.likes_count ?? row.likes ?? 0, 10),
+      likes_count: parseInt(row.likes_count ?? row.likes ?? 0, 10),
+      comments_count: parseInt(row.comments_count ?? 0, 10),
+      created_at: row.created_at || new Date().toISOString()
+    });
+
+    if (dbRes.rows.length > 0) {
+      const formatted = dbRes.rows.map(formatItem);
+      return res.json({ success: true, items: formatted, gallery: formatted });
+    }
+
+    // Filter seed gallery if DB empty
+    let seedItems = [...SEED_GALLERY];
+    if (place && place !== 'All') {
+      seedItems = seedItems.filter(s => 
+        s.location.toLowerCase().includes((place as string).toLowerCase()) ||
+        s.craft_tag.toLowerCase().includes((place as string).toLowerCase())
+      );
+    }
+    const formattedSeeds = seedItems.map(formatItem);
+    return res.json({ success: true, items: formattedSeeds, gallery: formattedSeeds });
   } catch (err: any) {
-    return res.json({ success: true, items: SEED_GALLERY, gallery: SEED_GALLERY });
+    const formatItem = (row: any) => ({
+      id: row.id,
+      title: row.caption || 'Master Craft Atelier Moment',
+      caption: row.caption || 'Master Craft Atelier Moment',
+      media_url: row.image_url || '',
+      image_url: row.image_url || '',
+      media_type: 'image',
+      place: row.location || 'India',
+      location: row.location || 'India',
+      artisan_name: 'Master Artisan',
+      uploader: row.user_name || 'Cultural Explorer',
+      user_name: row.user_name || 'Cultural Explorer',
+      user_avatar: row.user_avatar || 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=150',
+      craft_tag: row.craft_tag || 'Traditional Heritage',
+      likes: row.likes_count || 0,
+      likes_count: row.likes_count || 0,
+      comments_count: row.comments_count || 0,
+      created_at: row.created_at
+    });
+    return res.json({ success: true, items: SEED_GALLERY.map(formatItem), gallery: SEED_GALLERY.map(formatItem) });
   }
 });
 
-// POST local device upload to Cloudinary & DB
-router.post('/upload', upload.single('file'), async (req: Request, res: Response) => {
+// POST local device upload to Cloudinary & DB (supports both 'file' and 'image' field names)
+router.post('/upload', upload.fields([{ name: 'file', maxCount: 1 }, { name: 'image', maxCount: 1 }]), async (req: Request, res: Response) => {
   try {
     const { title, place, artisanName, uploader, userName, location, craftTag, caption, mediaUrl } = req.body;
     let secureUrl = mediaUrl || '';
 
-    if (req.file) {
+    const files = req.files as { [fieldname: string]: Express.Multer.File[] } | undefined;
+    const uploadedFile = files?.file?.[0] || files?.image?.[0];
+
+    if (uploadedFile) {
       // Stream buffer to Cloudinary
       const uploadToCloudinary = (): Promise<any> => {
         return new Promise((resolve, reject) => {
@@ -111,7 +176,7 @@ router.post('/upload', upload.single('file'), async (req: Request, res: Response
               else resolve(result);
             }
           );
-          uploadStream.end(req.file?.buffer);
+          uploadStream.end(uploadedFile.buffer);
         });
       };
 
@@ -120,7 +185,7 @@ router.post('/upload', upload.single('file'), async (req: Request, res: Response
         secureUrl = cloudRes.secure_url;
       } catch (cErr: any) {
         console.warn('Cloudinary upload fallback to data URI:', cErr.message);
-        secureUrl = `data:${req.file.mimetype};base64,${req.file.buffer.toString('base64')}`;
+        secureUrl = `data:${uploadedFile.mimetype};base64,${uploadedFile.buffer.toString('base64')}`;
       }
     }
 

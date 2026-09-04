@@ -18,6 +18,7 @@ import { AuthModal } from './components/auth/AuthModal';
 import { Experience, Artisan, Booking } from './types';
 import { SupportedLanguage, translations } from './utils/translations';
 import { LOCALIZED_EXPERIENCES } from './utils/localizedData';
+import { getApiUrl } from './config/api';
 
 const DEFAULT_INITIAL_ARTISANS: Artisan[] = [
   {
@@ -177,8 +178,8 @@ export const App: React.FC = () => {
     const fetchData = async () => {
       try {
         const [expRes, artRes] = await Promise.all([
-          fetch('http://localhost:5000/api/experiences'),
-          fetch('http://localhost:5000/api/artisans')
+          fetch(getApiUrl('/api/experiences')),
+          fetch(getApiUrl('/api/artisans'))
         ]);
         const expData = await expRes.json();
         const artData = await artRes.json();

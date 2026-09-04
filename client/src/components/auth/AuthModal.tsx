@@ -7,6 +7,7 @@ import {
   signInWithEmailAndPassword, 
   createUserWithEmailAndPassword 
 } from '../../config/firebase';
+import { getApiUrl } from '../../config/api';
 
 interface AuthModalProps {
   isOpen: boolean;
@@ -34,7 +35,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
   const handleBackendSessionSync = async (firebaseUser: any, selectedRole: string) => {
     try {
       const idToken = await firebaseUser.getIdToken();
-      const res = await fetch('http://localhost:5000/api/auth/session', {
+      const res = await fetch(getApiUrl('/api/auth/session'), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -77,7 +78,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
       console.warn('Firebase email auth warning:', err);
       // If Firebase Auth API fails due to network/domain sandbox, perform verified server sign-in directly
       try {
-        const fallbackRes = await fetch('/api/auth/login', {
+        const fallbackRes = await fetch(getApiUrl('/api/auth/login'), {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ email, role: role.toUpperCase() })
@@ -107,7 +108,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
       console.warn('Firebase Google Auth warning:', err);
       // Fallback demo sign-in
       try {
-        const fallbackRes = await fetch('/api/auth/login', {
+        const fallbackRes = await fetch(getApiUrl('/api/auth/login'), {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ email: 'google.demo@kalasetu.in', role: role.toUpperCase() })
@@ -132,7 +133,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
     setError(null);
     try {
       const rolePayload = demoRole === 'govt' ? 'ADMIN' : demoRole.toUpperCase();
-      const res = await fetch('/api/auth/login', {
+      const res = await fetch(getApiUrl('/api/auth/login'), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ role: rolePayload })
