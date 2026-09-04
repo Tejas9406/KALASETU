@@ -15,7 +15,8 @@ import galleryRouter from './routes/gallery.routes.js';
 const app = express();
 
 // Middlewares
-app.use(cors({ origin: true, credentials: true }));
+const allowedOrigin = env.FRONTEND_URL || 'http://localhost:3000';
+app.use(cors({ origin: allowedOrigin, credentials: true }));
 app.use(express.json({ limit: '20mb' }));
 app.use(express.urlencoded({ extended: true, limit: '20mb' }));
 
@@ -41,7 +42,7 @@ app.use('/api/govt', govtRouter);
 app.use('/api/gallery', galleryRouter);
 
 // Start Server
-const PORT = parseInt(env.PORT, 10) || 5000;
+const PORT = parseInt(env.PORT || process.env.PORT || '5000', 10);
 
 async function startServer() {
   await testDbConnection();
@@ -49,7 +50,7 @@ async function startServer() {
   await initializeDatabaseSchema();
 
   app.listen(PORT, '0.0.0.0', () => {
-    console.log(`🚀 Kala Setu API Server live on http://localhost:${PORT}`);
+    console.log(`🚀 Kala Setu API Server live on port ${PORT}`);
     console.log(`📡 Health Check: http://localhost:${PORT}/api/health`);
   });
 }
