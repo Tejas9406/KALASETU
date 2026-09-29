@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Globe, UserCheck, ChevronDown } from 'lucide-react';
+import { Globe, UserCheck, ChevronDown, Sparkles, Network, Compass, BookOpen } from 'lucide-react';
 import { SupportedLanguage, translations } from '../../utils/translations';
 import { DynamicHelpButton } from '../help/DynamicHelpButton';
+import { GlobalLocationSelector } from '../world/GlobalLocationSelector';
 
 interface NavbarProps {
   currentTab: string;
@@ -13,6 +14,12 @@ interface NavbarProps {
   onOpenRegisterModal: () => void;
   onOpenAuthModal?: () => void;
   authenticatedUser?: any;
+  activeDomain: 'gateway' | 'artisan' | 'community' | 'genesis' | 'world';
+  onChangeDomain: (domain: 'gateway' | 'artisan' | 'community') => void;
+  currentCountry: string;
+  onChangeCountry: (countryCode: string) => void;
+  onOpenArtisanAISuite?: () => void;
+  onOpenCommunityAISuite?: () => void;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
@@ -24,11 +31,16 @@ export const Navbar: React.FC<NavbarProps> = ({
   setCurrentRole,
   onOpenRegisterModal,
   onOpenAuthModal,
-  authenticatedUser
+  authenticatedUser,
+  activeDomain,
+  onChangeDomain,
+  currentCountry,
+  onChangeCountry,
+  onOpenArtisanAISuite,
+  onOpenCommunityAISuite
 }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [langMenuOpen, setLangMenuOpen] = useState(false);
-  const [roleMenuOpen, setRoleMenuOpen] = useState(false);
 
   const t = translations[language];
 
@@ -54,80 +66,191 @@ export const Navbar: React.FC<NavbarProps> = ({
       className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
         isScrolled
           ? 'bg-[#FDFBF7]/95 backdrop-blur-md shadow-[0_4px_20px_rgba(45,74,62,0.08)] py-2.5 border-b border-[#2D4A3E]/10'
-          : 'bg-gradient-to-b from-black/80 via-black/40 to-transparent py-3 text-white'
+          : 'bg-gradient-to-b from-black/85 via-black/45 to-transparent py-3 text-white'
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
-        {/* Brand Logo & Tagline */}
-        <div 
-          onClick={() => setCurrentTab('home')}
-          className="flex items-center gap-3 cursor-pointer group shrink-0"
-        >
-          <div className="w-10 h-10 rounded-full bg-[#D84315] flex items-center justify-center text-white font-serif font-bold text-xl shadow-md group-hover:scale-105 transition-transform">
-            क
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-2">
+        {/* Brand Logo & World Switcher Bar */}
+        <div className="flex items-center gap-3 shrink-0">
+          <div 
+            onClick={() => setCurrentTab('gateway')}
+            className="flex items-center gap-2.5 cursor-pointer group"
+            title="Kala Setu 2.0 Main Gateway"
+          >
+            <div className="w-9 h-9 rounded-2xl bg-[#D84315] flex items-center justify-center text-white font-serif font-bold text-lg shadow-md group-hover:scale-105 transition-transform">
+              क
+            </div>
+            <div>
+              <span className={`text-xl font-bold tracking-tight font-serif ${isScrolled ? 'text-[#2D4A3E]' : 'text-white'}`}>
+                KALA SETU
+              </span>
+              <span className={`hidden sm:block text-[9px] tracking-wider uppercase font-semibold ${isScrolled ? 'text-[#D84315]' : 'text-amber-300'}`}>
+                2.0 Cultural Intelligence
+              </span>
+            </div>
           </div>
-          <div>
-            <span className={`text-2xl font-bold tracking-tight font-serif ${isScrolled ? 'text-[#2D4A3E]' : 'text-white'}`}>
-              {t.brandName}
-            </span>
-            <span className={`hidden sm:block text-[10px] tracking-wider uppercase font-medium ${isScrolled ? 'text-[#6D4C41]' : 'text-white/80'}`}>
-              {t.brandTagline}
-            </span>
+
+          {/* Domain World Switcher Pill (Section 1.1 & 2) */}
+          <div className="hidden md:flex items-center p-0.5 rounded-full bg-black/25 backdrop-blur-md border border-white/20 text-xs">
+            <button
+              onClick={() => {
+                onChangeDomain('artisan');
+                setCurrentTab('home');
+              }}
+              className={`px-3 py-1 rounded-full font-bold transition-all flex items-center gap-1 ${
+                activeDomain === 'artisan'
+                  ? 'bg-amber-600 text-white shadow-xs'
+                  : isScrolled ? 'text-stone-700 hover:text-stone-900' : 'text-white/80 hover:text-white'
+              }`}
+            >
+              <span>🧑‍🎨</span>
+              <span>Artisans</span>
+            </button>
+            <button
+              onClick={() => {
+                onChangeDomain('community');
+                setCurrentTab('community');
+              }}
+              className={`px-3 py-1 rounded-full font-bold transition-all flex items-center gap-1 ${
+                activeDomain === 'community'
+                  ? 'bg-emerald-700 text-white shadow-xs'
+                  : isScrolled ? 'text-stone-700 hover:text-stone-900' : 'text-white/80 hover:text-white'
+              }`}
+            >
+              <span>🌏</span>
+              <span>Community</span>
+            </button>
+          </div>
+
+          {/* Global Location Selector (Universal Hierarchy ISO 3166) */}
+          <div className="hidden lg:block">
+            <GlobalLocationSelector
+              currentCountry={currentCountry}
+              onSelectCountry={onChangeCountry}
+              onNavigateToWorld={() => setCurrentTab('world')}
+              isScrolled={isScrolled}
+            />
           </div>
         </div>
 
-        {/* Desktop Navigation Links (Uniform style across all items) */}
-        <nav className="hidden lg:flex items-center gap-6">
+        {/* Dynamic Desktop Navigation Links */}
+        <nav className="hidden xl:flex items-center gap-5">
+          {activeDomain === 'community' ? (
+            <>
+              <button
+                onClick={() => setCurrentTab('community')}
+                className={`text-xs font-semibold transition-colors hover:text-[#D84315] ${
+                  currentTab === 'community' 
+                    ? 'text-[#D84315] font-bold underline underline-offset-8' 
+                    : isScrolled ? 'text-[#2C2420]' : 'text-white'
+                }`}
+              >
+                Community Home
+              </button>
+              <button
+                onClick={() => setCurrentTab('community-discover')}
+                className={`text-xs font-semibold transition-colors hover:text-[#D84315] ${
+                  currentTab === 'community-discover' 
+                    ? 'text-[#D84315] font-bold underline underline-offset-8' 
+                    : isScrolled ? 'text-[#2C2420]' : 'text-white'
+                }`}
+              >
+                Living Traditions
+              </button>
+              <button
+                onClick={() => setCurrentTab('community-map')}
+                className={`text-xs font-semibold transition-colors hover:text-[#D84315] ${
+                  currentTab === 'community-map' 
+                    ? 'text-[#D84315] font-bold underline underline-offset-8' 
+                    : isScrolled ? 'text-[#2C2420]' : 'text-white'
+                }`}
+              >
+                Culture Map
+              </button>
+              {onOpenCommunityAISuite && (
+                <button
+                  onClick={onOpenCommunityAISuite}
+                  className="text-xs font-bold text-emerald-400 hover:text-emerald-300 flex items-center gap-1 px-2.5 py-1 rounded-full bg-emerald-950/60 border border-emerald-700/50"
+                >
+                  <Network className="w-3.5 h-3.5" />
+                  <span>Heritage AI</span>
+                </button>
+              )}
+            </>
+          ) : (
+            <>
+              <button
+                onClick={() => setCurrentTab('home')}
+                className={`text-xs font-semibold transition-colors hover:text-[#D84315] ${
+                  currentTab === 'home' 
+                    ? 'text-[#D84315] font-bold underline underline-offset-8' 
+                    : isScrolled ? 'text-[#2C2420]' : 'text-white'
+                }`}
+              >
+                Artisans Home
+              </button>
+              <button
+                onClick={() => setCurrentTab('discover')}
+                className={`text-xs font-semibold transition-colors hover:text-[#D84315] ${
+                  currentTab === 'discover' 
+                    ? 'text-[#D84315] font-bold underline underline-offset-8' 
+                    : isScrolled ? 'text-[#2C2420]' : 'text-white'
+                }`}
+              >
+                Craft Workshops
+              </button>
+              <button
+                onClick={() => setCurrentTab('artisans')}
+                className={`text-xs font-semibold transition-colors hover:text-[#D84315] ${
+                  currentTab === 'artisans' 
+                    ? 'text-[#D84315] font-bold underline underline-offset-8' 
+                    : isScrolled ? 'text-[#2C2420]' : 'text-white'
+                }`}
+              >
+                Master Artisans
+              </button>
+              <button
+                onClick={() => setCurrentTab('map')}
+                className={`text-xs font-semibold transition-colors hover:text-[#D84315] ${
+                  currentTab === 'map' 
+                    ? 'text-[#D84315] font-bold underline underline-offset-8' 
+                    : isScrolled ? 'text-[#2C2420]' : 'text-white'
+                }`}
+              >
+                Artisan Map
+              </button>
+              {onOpenArtisanAISuite && (
+                <button
+                  onClick={onOpenArtisanAISuite}
+                  className="text-xs font-bold text-amber-400 hover:text-amber-300 flex items-center gap-1 px-2.5 py-1 rounded-full bg-amber-950/60 border border-amber-700/50"
+                >
+                  <Sparkles className="w-3.5 h-3.5" />
+                  <span>Artisan AI</span>
+                </button>
+              )}
+            </>
+          )}
+
+          {/* Shared Links */}
           <button
-            onClick={() => setCurrentTab('home')}
+            onClick={() => setCurrentTab('genesis')}
             className={`text-xs font-semibold transition-colors hover:text-[#D84315] ${
-              currentTab === 'home' 
+              currentTab === 'genesis' 
                 ? 'text-[#D84315] font-bold underline underline-offset-8' 
                 : isScrolled ? 'text-[#2C2420]' : 'text-white'
             }`}
           >
-            Home
+            Genesis
           </button>
           <button
-            id="nav-discover"
-            onClick={() => setCurrentTab('discover')}
+            onClick={() => setCurrentTab('world')}
             className={`text-xs font-semibold transition-colors hover:text-[#D84315] ${
-              currentTab === 'discover' 
+              currentTab === 'world' 
                 ? 'text-[#D84315] font-bold underline underline-offset-8' 
                 : isScrolled ? 'text-[#2C2420]' : 'text-white'
             }`}
           >
-            {t.discover}
-          </button>
-          <button
-            onClick={() => setCurrentTab('artisans')}
-            className={`text-xs font-semibold transition-colors hover:text-[#D84315] ${
-              currentTab === 'artisans' 
-                ? 'text-[#D84315] font-bold underline underline-offset-8' 
-                : isScrolled ? 'text-[#2C2420]' : 'text-white'
-            }`}
-          >
-            {t.artisans}
-          </button>
-          <button
-            onClick={() => setCurrentTab('map')}
-            className={`text-xs font-semibold transition-colors hover:text-[#D84315] ${
-              currentTab === 'map' 
-                ? 'text-[#D84315] font-bold underline underline-offset-8' 
-                : isScrolled ? 'text-[#2C2420]' : 'text-white'
-            }`}
-          >
-            {t.mapView}
-          </button>
-          <button
-            onClick={() => setCurrentTab('gallery')}
-            className={`text-xs font-semibold transition-colors hover:text-[#D84315] ${
-              currentTab === 'gallery' 
-                ? 'text-[#D84315] font-bold underline underline-offset-8' 
-                : isScrolled ? 'text-[#2C2420]' : 'text-white'
-            }`}
-          >
-            {t.gallery}
+            Global World
           </button>
           <button
             onClick={() => setCurrentTab('bookings')}
@@ -139,7 +262,6 @@ export const Navbar: React.FC<NavbarProps> = ({
           >
             {t.myBookings}
           </button>
-          {/* Govt Intelligence (Identical styling to other nav links) */}
           <button
             onClick={() => setCurrentTab('govt')}
             className={`text-xs font-semibold transition-colors hover:text-[#D84315] ${
@@ -148,13 +270,12 @@ export const Navbar: React.FC<NavbarProps> = ({
                 : isScrolled ? 'text-[#2C2420]' : 'text-white'
             }`}
           >
-            {t.govtDashboard}
+            Govt
           </button>
         </nav>
 
-        {/* Right Tools: Dynamic Help Button, Language Selector, Role Switcher */}
-        <div className="flex items-center gap-2 sm:gap-3">
-          {/* Dynamic Role-Based Help Button */}
+        {/* Right Tools: Dynamic Help, Language, Account */}
+        <div className="flex items-center gap-2 sm:gap-2.5">
           <DynamicHelpButton
             currentRole={currentRole}
             language={language}
@@ -196,11 +317,11 @@ export const Navbar: React.FC<NavbarProps> = ({
             )}
           </div>
 
-          {/* Quick Sign In / User Status Badge (Opens AuthModal with 1-Click Demo Switcher) */}
+          {/* Sign In / User Status Badge */}
           {onOpenAuthModal && (
             <button
               onClick={onOpenAuthModal}
-              className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-bold transition-all shadow-sm ${
+              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold transition-all shadow-sm ${
                 authenticatedUser
                   ? 'bg-[#2D4A3E] text-white hover:bg-[#1A332A]'
                   : isScrolled
@@ -209,7 +330,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               }`}
             >
               <UserCheck className="w-3.5 h-3.5" />
-              <span>{authenticatedUser ? (authenticatedUser.name?.split(' ')[0] || 'My Account') : 'Sign In / Register'}</span>
+              <span>{authenticatedUser ? (authenticatedUser.name?.split(' ')[0] || 'My Account') : 'Sign In'}</span>
             </button>
           )}
         </div>

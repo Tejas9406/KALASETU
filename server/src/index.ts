@@ -11,6 +11,8 @@ import { emergencyRouter } from './routes/emergency.routes.js';
 import { chatRouter } from './routes/chat.routes.js';
 import { govtRouter } from './routes/govt.routes.js';
 import galleryRouter from './routes/gallery.routes.js';
+import { communityRouter } from './routes/community.routes.js';
+import { worldRouter } from './routes/world.routes.js';
 
 const app = express();
 
@@ -73,6 +75,8 @@ app.use('/api/emergency', emergencyRouter);
 app.use('/api/chat', chatRouter);
 app.use('/api/govt', govtRouter);
 app.use('/api/gallery', galleryRouter);
+app.use('/api/community', communityRouter);
+app.use('/api/world', worldRouter);
 
 // Start Server
 const PORT = parseInt(env.PORT || process.env.PORT || '5000', 10);

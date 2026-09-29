@@ -121,3 +121,60 @@ export interface GovtMetrics {
   giTaggedCoverageCount: number;
   emergencyIncidentsLogged: number;
 }
+
+export type DomainType = 'gateway' | 'artisan' | 'community' | 'genesis' | 'world';
+
+export interface ReasoningStep {
+  id: string;
+  name: string;
+  action: string;
+  status: 'completed' | 'running' | 'pending';
+  duration_ms: number;
+  details?: string;
+}
+
+export interface TelemetryTrace {
+  domain: 'ARTISAN' | 'COMMUNITY';
+  query: string;
+  timestamp: string;
+  total_duration_ms: number;
+  model: string;
+  confidence: number;
+  steps: ReasoningStep[];
+}
+
+export interface UniversalLocation {
+  id: string;
+  name: string;
+  local_name: string;
+  code: string;
+  flag_emoji: string;
+  coverage_status: 'AVAILABLE' | 'PREVIEW' | 'COMING_SOON';
+  status_label: string;
+  description: string;
+  lat: number;
+  lng: number;
+  admin_regions: Array<{
+    id: string;
+    code: string;
+    name: string;
+    local_name: string;
+    lat: number;
+    lng: number;
+    localities: Array<{
+      id: string;
+      name: string;
+      local_name: string;
+      cluster_type: 'ARTISAN_CLUSTER' | 'COMMUNITY_HERITAGE' | 'MIXED';
+      lat: number;
+      lng: number;
+      highlight: string;
+    }>;
+  }>;
+}
+
+export interface CulturalKnowledgeGraph {
+  nodes: Array<{ id: string; label: string; type: string; category?: string; region?: string }>;
+  edges: Array<{ from: string; to: string; label: string }>;
+}
+

@@ -1,80 +1,106 @@
 import React from 'react';
-import { Home, Compass, MapPin, BookmarkCheck, Image as ImageIcon, Shield } from 'lucide-react';
+import { Home, Compass, MapPin, BookmarkCheck, Sparkles, Network, BookOpen, Layers } from 'lucide-react';
 import { SupportedLanguage, translations } from '../../utils/translations';
 
 interface MobileNavProps {
   currentTab: string;
   setCurrentTab: (tab: string) => void;
   language: SupportedLanguage;
+  activeDomain: 'gateway' | 'artisan' | 'community' | 'genesis' | 'world';
+  onChangeDomain: (domain: 'gateway' | 'artisan' | 'community') => void;
 }
 
 export const MobileNav: React.FC<MobileNavProps> = ({
   currentTab,
   setCurrentTab,
-  language
+  language,
+  activeDomain,
+  onChangeDomain
 }) => {
   const t = translations[language];
 
   return (
-    <nav className="lg:hidden fixed bottom-0 left-0 right-0 z-30 bg-[#FDFBF7]/95 backdrop-blur-md border-t border-stone-200 py-2 px-3 flex items-center justify-around shadow-lg">
+    <nav className="lg:hidden fixed bottom-0 left-0 right-0 z-30 bg-[#FDFBF7]/95 backdrop-blur-md border-t border-stone-200 py-1.5 px-2 flex items-center justify-around shadow-xl">
+      {/* 1. Main Gateway */}
       <button
-        onClick={() => setCurrentTab('home')}
-        className={`flex flex-col items-center gap-1 p-1 ${
-          currentTab === 'home' ? 'text-[#D84315] font-bold' : 'text-stone-500'
+        onClick={() => setCurrentTab('gateway')}
+        className={`flex flex-col items-center gap-0.5 p-1 ${
+          currentTab === 'gateway' ? 'text-[#D84315] font-bold' : 'text-stone-500'
         }`}
       >
-        <Home className="w-5 h-5" />
-        <span className="text-[10px]">Home</span>
+        <span className="text-base leading-none">🏛️</span>
+        <span className="text-[9px]">Gateway</span>
       </button>
 
+      {/* 2. World 1: Artisans */}
       <button
-        onClick={() => setCurrentTab('discover')}
-        className={`flex flex-col items-center gap-1 p-1 ${
-          currentTab === 'discover' ? 'text-[#D84315] font-bold' : 'text-stone-500'
+        onClick={() => {
+          onChangeDomain('artisan');
+          setCurrentTab('home');
+        }}
+        className={`flex flex-col items-center gap-0.5 p-1 ${
+          activeDomain === 'artisan' && (currentTab === 'home' || currentTab === 'discover' || currentTab === 'artisans')
+            ? 'text-amber-600 font-bold'
+            : 'text-stone-500'
         }`}
       >
-        <Compass className="w-5 h-5" />
-        <span className="text-[10px]">{t.discover}</span>
+        <span className="text-base leading-none">🧑‍🎨</span>
+        <span className="text-[9px]">Artisans</span>
       </button>
 
+      {/* 3. World 2: Community */}
       <button
-        onClick={() => setCurrentTab('map')}
-        className={`flex flex-col items-center gap-1 p-1 ${
-          currentTab === 'map' ? 'text-[#D84315] font-bold' : 'text-stone-500'
+        onClick={() => {
+          onChangeDomain('community');
+          setCurrentTab('community');
+        }}
+        className={`flex flex-col items-center gap-0.5 p-1 ${
+          activeDomain === 'community' && (currentTab === 'community' || currentTab === 'community-discover')
+            ? 'text-emerald-700 font-bold'
+            : 'text-stone-500'
         }`}
       >
-        <MapPin className="w-5 h-5" />
-        <span className="text-[10px]">{t.mapView}</span>
+        <span className="text-base leading-none">🌏</span>
+        <span className="text-[9px]">Community</span>
       </button>
 
+      {/* 4. Active Domain Map */}
       <button
-        onClick={() => setCurrentTab('gallery')}
-        className={`flex flex-col items-center gap-1 p-1 ${
-          currentTab === 'gallery' ? 'text-[#D84315] font-bold' : 'text-stone-500'
+        onClick={() => {
+          if (activeDomain === 'community') {
+            setCurrentTab('community-map');
+          } else {
+            setCurrentTab('map');
+          }
+        }}
+        className={`flex flex-col items-center gap-0.5 p-1 ${
+          currentTab === 'map' || currentTab === 'community-map' ? 'text-[#D84315] font-bold' : 'text-stone-500'
         }`}
       >
-        <ImageIcon className="w-5 h-5" />
-        <span className="text-[10px]">Gallery</span>
+        <MapPin className="w-4 h-4" />
+        <span className="text-[9px]">Map</span>
       </button>
 
+      {/* 5. Bookings */}
       <button
         onClick={() => setCurrentTab('bookings')}
-        className={`flex flex-col items-center gap-1 p-1 ${
+        className={`flex flex-col items-center gap-0.5 p-1 ${
           currentTab === 'bookings' ? 'text-[#D84315] font-bold' : 'text-stone-500'
         }`}
       >
-        <BookmarkCheck className="w-5 h-5" />
-        <span className="text-[10px]">Bookings</span>
+        <BookmarkCheck className="w-4 h-4" />
+        <span className="text-[9px]">Bookings</span>
       </button>
 
+      {/* 6. Genesis */}
       <button
-        onClick={() => setCurrentTab('govt')}
-        className={`flex flex-col items-center gap-1 p-1 ${
-          currentTab === 'govt' ? 'text-[#2D4A3E] font-bold' : 'text-stone-500'
+        onClick={() => setCurrentTab('genesis')}
+        className={`flex flex-col items-center gap-0.5 p-1 ${
+          currentTab === 'genesis' ? 'text-amber-500 font-bold' : 'text-stone-500'
         }`}
       >
-        <Shield className="w-5 h-5" />
-        <span className="text-[10px]">Govt</span>
+        <span className="text-base leading-none">📜</span>
+        <span className="text-[9px]">Genesis</span>
       </button>
     </nav>
   );

@@ -1392,3 +1392,89 @@ export const CULTURAL_EXPERIENCES: CulturalExperience[] = [
     significance: 'Over 1,500 years of unbroken sacred grove conservation and spiritual dance.'
   }
 ];
+
+// Domain-Separated Hero Slides (Section 1.2 & 1.3)
+export const LOCALIZED_ARTISAN_SLIDES: Record<SupportedLanguage, LocalizedSlideItem[]> = {
+  en: LOCALIZED_HERO_SLIDES.en.filter(s => s.id !== 4 && s.id !== 5),
+  hi: LOCALIZED_HERO_SLIDES.hi.filter(s => s.id !== 4 && s.id !== 5),
+  mr: LOCALIZED_HERO_SLIDES.mr.filter(s => s.id !== 4 && s.id !== 5),
+  ta: LOCALIZED_HERO_SLIDES.ta.filter(s => s.id !== 4 && s.id !== 5),
+  te: LOCALIZED_HERO_SLIDES.te.filter(s => s.id !== 4 && s.id !== 5),
+  bn: LOCALIZED_HERO_SLIDES.bn.filter(s => s.id !== 4 && s.id !== 5)
+};
+
+export const LOCALIZED_COMMUNITY_SLIDES: Record<SupportedLanguage, LocalizedSlideItem[]> = {
+  en: [
+    ...LOCALIZED_HERO_SLIDES.en.filter(s => s.id === 4 || s.id === 5),
+    {
+      id: 8,
+      type: "video",
+      src: "/assets/images/Home page/(8)A_aesthetic_Fire_Pot_Dance.ogv",
+      craftName: "Ancestral Fire Pot Folk Dance & Shakti Rites",
+      tagline: "Sacred rural community dance honoring local deities with rhythmic percussion and live earthenware fire-pots.",
+      location: "Coastal & Tribal Belts, India",
+      badge: "Living Heritage Ritual"
+    }
+  ],
+  hi: [
+    ...LOCALIZED_HERO_SLIDES.hi.filter(s => s.id === 4 || s.id === 5),
+    {
+      id: 8,
+      type: "video",
+      src: "/assets/images/Home page/(8)A_aesthetic_Fire_Pot_Dance.ogv",
+      craftName: "पारंपरिक अग्नि कलश लोक नृत्य एवं शक्ति अनुष्ठान",
+      tagline: "ग्राम-देवताओं के सम्मान में लयबद्ध ढोल और मिट्टी के अग्नि-पात्रों के साथ प्रस्तुत किया जाने वाला पवित्र सामुदायिक नृत्य।",
+      location: "तटीय एवं जनजातीय क्षेत्र, भारत",
+      badge: "सजीव सांस्कृतिक परंपरा"
+    }
+  ],
+  mr: [
+    ...LOCALIZED_HERO_SLIDES.mr.filter(s => s.id === 4 || s.id === 5),
+    {
+      id: 8,
+      type: "video",
+      src: "/assets/images/Home page/(8)A_aesthetic_Fire_Pot_Dance.ogv",
+      craftName: "पारंपरिक अग्नी कलश लोकनृत्य व शक्ती अनुष्ठान",
+      tagline: "ग्रामदैवतांच्या सन्मानार्थ पारंपरिक वाद्यांच्या तालावर होणारे पवित्र सामूहिक नृत्य.",
+      location: "कोकण व ग्रामीण पट्टा, भारत",
+      badge: "वारसा लोकसंस्कृती"
+    }
+  ],
+  ta: [
+    ...LOCALIZED_HERO_SLIDES.ta.filter(s => s.id === 4 || s.id === 5),
+    {
+      id: 8,
+      type: "video",
+      src: "/assets/images/Home page/(8)A_aesthetic_Fire_Pot_Dance.ogv",
+      craftName: "பாரம்பரிய அக்னி பானை நாட்டுப்புற நடனம்",
+      tagline: "கிராம தெய்வ வழிபாட்டில் தாள வாத்தியங்களுடன் நிகழ்த்தப்படும் புனித சமூக நடனம்.",
+      location: "பாரம்பரிய கிராமங்கள், இந்தியா",
+      badge: "வாழும் மரபு"
+    }
+  ],
+  te: [
+    ...LOCALIZED_HERO_SLIDES.te.filter(s => s.id === 4 || s.id === 5),
+    {
+      id: 8,
+      type: "video",
+      src: "/assets/images/Home page/(8)A_aesthetic_Fire_Pot_Dance.ogv",
+      craftName: "సాంప్రదాయ అగ్ని కుండ జానపద నృత్యం",
+      tagline: "గ్రామ దేవతల ఆరాధనలో లయబద్ధమైన వాయిద్యాలతో ప్రదర్శించే పవిత్ర సామూహిక నృత్యం.",
+      location: "గ్రామీణ ప్రాంతాలు, భారతదేశం",
+      badge: "సజీవ సాంస్కృతిక వారసత్వం"
+    }
+  ],
+  bn: [
+    ...LOCALIZED_HERO_SLIDES.bn.filter(s => s.id === 4 || s.id === 5),
+    {
+      id: 8,
+      type: "video",
+      src: "/assets/images/Home page/(8)A_aesthetic_Fire_Pot_Dance.ogv",
+      craftName: "ঐতিহ্যবাহী অগ্নি কলস লোকনৃত্য ও শক্তি অর্চনা",
+      tagline: "গ্রামদেবতার আরাধনায় ঢাক ও খোল সহযোগে অনুষ্ঠিত পবিত্র লোকনৃত্য।",
+      location: "গ্রামীণ ভারত",
+      badge: "জীবন্ত সাংস্কৃতিক ঐতিহ্য"
+    }
+  ]
+};
+

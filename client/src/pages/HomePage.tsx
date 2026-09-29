@@ -8,7 +8,7 @@ import { Experience, Artisan } from '../types';
 import { MapLibreView } from '../components/map/MapLibreView';
 import { CulturalActivitiesSection } from '../components/culture/CulturalActivitiesSection';
 import { SupportedLanguage, translations } from '../utils/translations';
-import { LOCALIZED_HERO_SLIDES, LOCALIZED_HOMEPAGE_UI, CULTURAL_EXPERIENCES } from '../utils/localizedData';
+import { LOCALIZED_ARTISAN_SLIDES, LOCALIZED_HOMEPAGE_UI, CULTURAL_EXPERIENCES } from '../utils/localizedData';
 
 interface HomePageProps {
   experiences: Experience[];
@@ -16,6 +16,7 @@ interface HomePageProps {
   onSelectExperience: (exp: Experience) => void;
   onSelectArtisan: (artisan: Artisan) => void;
   onNavigateToDiscover: () => void;
+  onOpenAISuite?: () => void;
   language: SupportedLanguage;
 }
 
@@ -25,6 +26,7 @@ export const HomePage: React.FC<HomePageProps> = ({
   onSelectExperience,
   onSelectArtisan,
   onNavigateToDiscover,
+  onOpenAISuite,
   language
 }) => {
   const [searchQuery, setSearchQuery] = useState('');
@@ -34,7 +36,7 @@ export const HomePage: React.FC<HomePageProps> = ({
 
   const t = translations[language] || translations.en;
   const ui = LOCALIZED_HOMEPAGE_UI[language] || LOCALIZED_HOMEPAGE_UI.en;
-  const slides = LOCALIZED_HERO_SLIDES[language] || LOCALIZED_HERO_SLIDES.en;
+  const slides = LOCALIZED_ARTISAN_SLIDES[language] || LOCALIZED_ARTISAN_SLIDES.en;
 
   // Auto-advance video slideshow: exactly 4 seconds per video
   useEffect(() => {
@@ -118,10 +120,16 @@ export const HomePage: React.FC<HomePageProps> = ({
         {/* Hero Content Overlay — always on top */}
         <div className="absolute inset-0 z-10 flex items-center justify-center pointer-events-none">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center text-white pt-24 pb-16 pointer-events-auto">
-            {/* Active Craft Badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/15 backdrop-blur-md border border-white/20 text-xs font-semibold tracking-wider uppercase mb-5 text-amber-300 shadow-md">
-              <Sparkles className="w-3.5 h-3.5 shrink-0" />
-              <span>{activeSlide.badge} • SIH 2026</span>
+            {/* World 1 Domain & Craft Badge */}
+            <div className="flex flex-wrap items-center justify-center gap-2 mb-4">
+              <span className="px-3.5 py-1.5 rounded-full bg-amber-600/80 text-white text-xs font-bold uppercase tracking-wider backdrop-blur-md shadow-md flex items-center gap-1.5">
+                <span>🧑‍🎨</span>
+                <span>World 1 • Local Artisans</span>
+              </span>
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/15 backdrop-blur-md border border-white/20 text-xs font-semibold tracking-wider uppercase text-amber-300 shadow-md">
+                <Sparkles className="w-3.5 h-3.5 shrink-0" />
+                <span>{activeSlide.badge}</span>
+              </div>
             </div>
 
             {/* Heading */}
@@ -137,23 +145,35 @@ export const HomePage: React.FC<HomePageProps> = ({
               {activeSlide.tagline}
             </p>
 
-            {/* Search Bar */}
-            <div className="max-w-2xl mx-auto bg-white/95 backdrop-blur-md rounded-full p-2 pl-6 shadow-2xl flex items-center gap-3 border border-stone-200 mb-6">
-              <Search className="w-5 h-5 text-stone-400 shrink-0" />
-              <input
-                id="hero-search-input"
-                type="text"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder={ui.searchPlaceholder}
-                className="flex-1 bg-transparent text-stone-800 text-sm sm:text-base focus:outline-none placeholder:text-stone-400 min-w-0"
-              />
-              <button
-                onClick={onNavigateToDiscover}
-                className="bg-[#D84315] hover:bg-[#BF360C] text-white px-5 sm:px-6 py-2.5 sm:py-3 rounded-full text-xs sm:text-sm font-bold shadow-md transition-transform hover:scale-105 shrink-0"
-              >
-                {t.discover}
-              </button>
+            {/* Search Bar + AI Suite Button */}
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-6">
+              <div className="w-full max-w-xl bg-white/95 backdrop-blur-md rounded-full p-2 pl-6 shadow-2xl flex items-center gap-3 border border-stone-200">
+                <Search className="w-5 h-5 text-stone-400 shrink-0" />
+                <input
+                  id="hero-search-input"
+                  type="text"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  placeholder={ui.searchPlaceholder}
+                  className="flex-1 bg-transparent text-stone-800 text-sm sm:text-base focus:outline-none placeholder:text-stone-400 min-w-0"
+                />
+                <button
+                  onClick={onNavigateToDiscover}
+                  className="bg-[#D84315] hover:bg-[#BF360C] text-white px-5 sm:px-6 py-2.5 sm:py-3 rounded-full text-xs sm:text-sm font-bold shadow-md transition-transform hover:scale-105 shrink-0"
+                >
+                  {t.discover}
+                </button>
+              </div>
+
+              {onOpenAISuite && (
+                <button
+                  onClick={onOpenAISuite}
+                  className="bg-amber-600/90 hover:bg-amber-500 text-white backdrop-blur-md px-5 py-3 rounded-full text-xs sm:text-sm font-bold shadow-lg transition-transform hover:scale-105 flex items-center gap-2 border border-amber-400/40 shrink-0"
+                >
+                  <Sparkles className="w-4 h-4 text-amber-200" />
+                  <span>Artisan AI Studio</span>
+                </button>
+              )}
             </div>
 
             {/* Trust Badges Bar */}

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { X, Lock, Mail, User, ShieldCheck, Sparkles, ArrowRight, AlertCircle, LogIn } from 'lucide-react';
+import { X, Lock, Mail, User, Sparkles, AlertCircle, LogIn } from 'lucide-react';
 import { 
   auth, 
   googleProvider, 
@@ -91,7 +91,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
           onClose();
           return;
         }
-      } catch (fErr) {}
+      } catch (_fErr) {}
       setError(err.message || 'Authentication failed. Please check your credentials.');
     } finally {
       setLoading(false);
@@ -121,7 +121,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
           onClose();
           return;
         }
-      } catch (e) {}
+      } catch (_e) {}
       setError(err.message || 'Google Sign-in failed.');
     } finally {
       setLoading(false);

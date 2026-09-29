@@ -15,10 +15,20 @@ import { MyBookingsPage } from './pages/MyBookingsPage';
 import { GalleryPage } from './pages/GalleryPage';
 import { MapLibreView } from './components/map/MapLibreView';
 import { AuthModal } from './components/auth/AuthModal';
-import { Experience, Artisan, Booking } from './types';
+import { Experience, Artisan, DomainType } from './types';
 import { SupportedLanguage, translations } from './utils/translations';
 import { LOCALIZED_EXPERIENCES } from './utils/localizedData';
 import { getApiUrl } from './config/api';
+
+// Kala Setu 2.0 Reform Modules
+import { GatewayPage } from './pages/GatewayPage';
+import { CommunityLandingPage } from './pages/CommunityLandingPage';
+import { CommunityDiscoverPage } from './pages/CommunityDiscoverPage';
+import { CommunityMapPage } from './pages/CommunityMapPage';
+import { GenesisPage } from './pages/GenesisPage';
+import { GlobalWorldPage } from './pages/GlobalWorldPage';
+import { ArtisanAISuiteModal } from './components/artisan/ArtisanAISuiteModal';
+import { CommunityAISuiteModal } from './components/culture/CommunityAISuiteModal';
 
 const DEFAULT_INITIAL_ARTISANS: Artisan[] = [
   {
@@ -135,6 +145,8 @@ const DEFAULT_INITIAL_ARTISANS: Artisan[] = [
 
 export const App: React.FC = () => {
   const [currentTab, setCurrentTab] = useState<string>('home');
+  const [activeDomain, setActiveDomain] = useState<DomainType>('artisan');
+  const [currentCountry, setCurrentCountry] = useState<string>('IN');
   const [language, setLanguage] = useState<SupportedLanguage>('en');
   const [currentRole, setCurrentRole] = useState<'tourist' | 'artisan' | 'govt'>('tourist');
   const [authenticatedUser, setAuthenticatedUser] = useState<any>(null);
@@ -145,9 +157,13 @@ export const App: React.FC = () => {
   const [artisans, setArtisans] = useState<Artisan[]>(DEFAULT_INITIAL_ARTISANS);
   const [selectedExperience, setSelectedExperience] = useState<Experience | null>(LOCALIZED_EXPERIENCES['en'][0]);
   const [selectedArtisan, setSelectedArtisan] = useState<Artisan | null>(DEFAULT_INITIAL_ARTISANS[0]);
+  
+  // Modals
   const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
   const [isShowStepsOpen, setIsShowStepsOpen] = useState(false);
   const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
+  const [isArtisanAIOpen, setIsArtisanAIOpen] = useState(false);
+  const [isCommunityAIOpen, setIsCommunityAIOpen] = useState(false);
 
   // Restore stored session on mount
   useEffect(() => {
@@ -160,7 +176,7 @@ export const App: React.FC = () => {
           setCurrentRole(u.role.toLowerCase() as any);
         }
       }
-    } catch (e) {}
+    } catch (_e) {}
   }, []);
 
   // Update whole dataset dynamically when language changes (Requirement 6)
@@ -184,10 +200,13 @@ export const App: React.FC = () => {
         const expData = await expRes.json();
         const artData = await artRes.json();
 
+        if (expData.success && expData.experiences?.length > 0) {
+          setExperiences(expData.experiences);
+        }
         if (artData.success && artData.artisans?.length > 0) {
           setArtisans(artData.artisans);
         }
-      } catch (err) {
+      } catch (_err) {
         console.warn('API sync completed with local fallback state');
       }
     };
@@ -225,7 +244,7 @@ export const App: React.FC = () => {
     setCurrentTab('artisan-studio');
   };
 
-  const handleAuthSuccess = (user: any, token: string) => {
+  const handleAuthSuccess = (user: any, _token?: string) => {
     setAuthenticatedUser(user);
     if (user.role === 'ARTISAN') {
       setCurrentRole('artisan');
@@ -236,6 +255,18 @@ export const App: React.FC = () => {
     } else {
       setCurrentRole('tourist');
     }
+  };
+
+  const handleDomainChange = (domain: 'gateway' | 'artisan' | 'community') => {
+    setActiveDomain(domain);
+    if (domain === 'gateway') {
+      setCurrentTab('gateway');
+    } else if (domain === 'artisan') {
+      setCurrentTab('home');
+    } else if (domain === 'community') {
+      setCurrentTab('community');
+    }
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
@@ -251,10 +282,42 @@ export const App: React.FC = () => {
         onOpenRegisterModal={() => setIsRegisterModalOpen(true)}
         onOpenAuthModal={() => setIsAuthModalOpen(true)}
         authenticatedUser={authenticatedUser}
+        activeDomain={activeDomain}
+        onChangeDomain={handleDomainChange}
+        currentCountry={currentCountry}
+        onChangeCountry={setCurrentCountry}
+        onOpenArtisanAISuite={() => setIsArtisanAIOpen(true)}
+        onOpenCommunityAISuite={() => setIsCommunityAIOpen(true)}
       />
 
       {/* Main Dynamic View Content */}
       <main className="flex-1 pb-16 lg:pb-0">
+        {/* Gateway Dual-Door Landing Page */}
+        {currentTab === 'gateway' && (
+          <GatewayPage
+            onEnterArtisanWorld={() => {
+              setActiveDomain('artisan');
+              setCurrentTab('home');
+            }}
+            onEnterCommunityWorld={() => {
+              setActiveDomain('community');
+              setCurrentTab('community');
+            }}
+            onNavigateToGenesis={() => {
+              setActiveDomain('genesis');
+              setCurrentTab('genesis');
+            }}
+            onNavigateToWorld={() => {
+              setActiveDomain('world');
+              setCurrentTab('world');
+            }}
+            onNavigateToGovt={() => {
+              setCurrentTab('govt');
+            }}
+          />
+        )}
+
+        {/* World 1: Local Artisans Landing Page */}
         {currentTab === 'home' && (
           <HomePage
             experiences={experiences}
@@ -262,10 +325,92 @@ export const App: React.FC = () => {
             onSelectExperience={handleSelectExperience}
             onSelectArtisan={handleSelectArtisan}
             onNavigateToDiscover={() => setCurrentTab('discover')}
+            onOpenAISuite={() => setIsArtisanAIOpen(true)}
             language={language}
           />
         )}
 
+        {/* World 2: Community Experiences Landing Page */}
+        {currentTab === 'community' && (
+          <CommunityLandingPage
+            onSelectExperience={(exp) => {
+              const match = experiences.find(e => e.id === exp.id);
+              if (match) {
+                handleSelectExperience(match);
+              } else {
+                handleSelectExperience(experiences[0]);
+              }
+            }}
+            onNavigateToDiscover={() => setCurrentTab('community-discover')}
+            onOpenAISuite={() => setIsCommunityAIOpen(true)}
+            language={language}
+          />
+        )}
+
+        {/* World 2: Living Traditions Discovery */}
+        {currentTab === 'community-discover' && (
+          <CommunityDiscoverPage
+            onSelectExperience={(exp) => {
+              const match = experiences.find(e => e.id === exp.id);
+              if (match) {
+                handleSelectExperience(match);
+              } else {
+                handleSelectExperience(experiences[0]);
+              }
+            }}
+            onOpenAISuite={() => setIsCommunityAIOpen(true)}
+            language={language}
+          />
+        )}
+
+        {/* World 2: Community Living Heritage Map */}
+        {currentTab === 'community-map' && (
+          <CommunityMapPage
+            onSelectExperience={(exp) => {
+              const match = experiences.find(e => e.id === exp.id);
+              if (match) {
+                handleSelectExperience(match);
+              } else {
+                handleSelectExperience(experiences[0]);
+              }
+            }}
+            onOpenAISuite={() => setIsCommunityAIOpen(true)}
+            language={language}
+          />
+        )}
+
+        {/* Genesis 7-Chapter Storytelling Page */}
+        {currentTab === 'genesis' && (
+          <GenesisPage
+            onBackToMain={() => {
+              setActiveDomain('artisan');
+              setCurrentTab('home');
+            }}
+            onEnterArtisanWorld={() => {
+              setActiveDomain('artisan');
+              setCurrentTab('home');
+            }}
+            onEnterCommunityWorld={() => {
+              setActiveDomain('community');
+              setCurrentTab('community');
+            }}
+          />
+        )}
+
+        {/* Global World Network Explorer */}
+        {currentTab === 'world' && (
+          <GlobalWorldPage
+            onBackToMain={() => {
+              setActiveDomain('artisan');
+              setCurrentTab('home');
+            }}
+            onSelectCountryContext={(code) => {
+              setCurrentCountry(code);
+            }}
+          />
+        )}
+
+        {/* World 1: Masterclasses & Craft Experiences Discovery */}
         {currentTab === 'discover' && (
           <DiscoverPage
             experiences={experiences}
@@ -274,10 +419,12 @@ export const App: React.FC = () => {
           />
         )}
 
+        {/* Living Heritage Gallery */}
         {currentTab === 'gallery' && (
           <GalleryPage language={language} />
         )}
 
+        {/* World 1: Master Artisans Directory */}
         {currentTab === 'artisans' && (
           <div className="pt-24 pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
             <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8">
@@ -293,12 +440,21 @@ export const App: React.FC = () => {
                 </p>
               </div>
 
-              <button
-                onClick={() => setIsRegisterModalOpen(true)}
-                className="bg-[#2D4A3E] hover:bg-[#1A332A] text-white text-xs font-bold px-5 py-2.5 rounded-full shadow-sm self-start sm:self-auto"
-              >
-                + Register New Artisan
-              </button>
+              <div className="flex items-center gap-3">
+                <button
+                  onClick={() => setIsArtisanAIOpen(true)}
+                  className="bg-amber-100 text-amber-900 border border-amber-300 hover:bg-amber-200 text-xs font-bold px-4 py-2.5 rounded-full shadow-xs flex items-center gap-1.5"
+                >
+                  <span>✨</span>
+                  <span>Artisan AI Studio</span>
+                </button>
+                <button
+                  onClick={() => setIsRegisterModalOpen(true)}
+                  className="bg-[#2D4A3E] hover:bg-[#1A332A] text-white text-xs font-bold px-5 py-2.5 rounded-full shadow-sm self-start sm:self-auto"
+                >
+                  + Register New Artisan
+                </button>
+              </div>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -350,18 +506,29 @@ export const App: React.FC = () => {
           </div>
         )}
 
+        {/* World 1: Craft Ateliers Spatial Cartography */}
         {currentTab === 'map' && (
           <div className="pt-24 pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-            <div className="mb-6">
-              <span className="text-xs uppercase tracking-widest font-bold text-[#D84315] block mb-1">
-                Spatial Cartography
-              </span>
-              <h1 className="text-3xl sm:text-5xl font-serif font-bold text-[#2D4A3E]">
-                Living Heritage Geospatial Map
-              </h1>
-              <p className="text-stone-600 text-sm mt-1">
-                Explore verified craft clusters and bookable ateliers on OpenStreetMap. Click any pin for atelier details.
-              </p>
+            <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-6">
+              <div>
+                <span className="text-xs uppercase tracking-widest font-bold text-[#D84315] block mb-1">
+                  World 1 • Spatial Cartography
+                </span>
+                <h1 className="text-3xl sm:text-5xl font-serif font-bold text-[#2D4A3E]">
+                  Verified Craft Ateliers Map
+                </h1>
+                <p className="text-stone-600 text-sm mt-1">
+                  Explore verified artisan workshops and masterclasses on OpenStreetMap. Click any pin for atelier details.
+                </p>
+              </div>
+
+              <button
+                onClick={() => setCurrentTab('community-map')}
+                className="bg-emerald-100 text-emerald-900 border border-emerald-300 hover:bg-emerald-200 text-xs font-bold px-4 py-2 rounded-full flex items-center gap-1.5 self-start sm:self-auto"
+              >
+                <span>🌏</span>
+                <span>Switch to Community Map →</span>
+              </button>
             </div>
             <MapLibreView
               experiences={experiences}
@@ -371,16 +538,18 @@ export const App: React.FC = () => {
           </div>
         )}
 
+        {/* Detail: Single Experience / Masterclass */}
         {currentTab === 'experience-detail' && selectedExperience && (
           <ExperienceDetailPage
             experience={selectedExperience}
-            onBack={() => setCurrentTab('discover')}
+            onBack={() => setCurrentTab(activeDomain === 'community' ? 'community' : 'discover')}
             onBookNow={handleInitiateBooking}
             onSelectArtisan={handleSelectArtisan}
             language={language}
           />
         )}
 
+        {/* Detail: Single Artisan Profile */}
         {currentTab === 'artisan-detail' && selectedArtisan && (
           <ArtisanProfilePage
             artisan={selectedArtisan}
@@ -390,6 +559,7 @@ export const App: React.FC = () => {
           />
         )}
 
+        {/* Artisan Self-Management Studio */}
         {currentTab === 'artisan-studio' && selectedArtisan && (
           <ArtisanStudioPage
             artisan={selectedArtisan}
@@ -397,17 +567,45 @@ export const App: React.FC = () => {
           />
         )}
 
+        {/* Tourist Confirmed Bookings & Pass Redemptions */}
         {currentTab === 'bookings' && (
           <MyBookingsPage
             language={language}
-            onExploreMore={() => setCurrentTab('discover')}
+            onExploreMore={() => setCurrentTab(activeDomain === 'community' ? 'community-discover' : 'discover')}
           />
         )}
 
+        {/* Govt / Tourism Administrator Dashboard */}
         {currentTab === 'govt' && (
           <GovtDashboardPage language={language} />
         )}
       </main>
+
+      {/* 2.0 World 1: Artisan AI Studio Suite Modal */}
+      <ArtisanAISuiteModal
+        isOpen={isArtisanAIOpen}
+        onClose={() => setIsArtisanAIOpen(false)}
+        onSelectArtisan={(artisanId) => {
+          setIsArtisanAIOpen(false);
+          handleSelectArtisan(artisanId);
+        }}
+        onBookMasterclass={(expId) => {
+          setIsArtisanAIOpen(false);
+          const found = experiences.find(e => e.id === expId) || experiences[0];
+          handleInitiateBooking(found);
+        }}
+      />
+
+      {/* 2.0 World 2: Community Heritage AI Suite Modal */}
+      <CommunityAISuiteModal
+        isOpen={isCommunityAIOpen}
+        onClose={() => setIsCommunityAIOpen(false)}
+        onSelectExperience={(expId) => {
+          setIsCommunityAIOpen(false);
+          const found = experiences.find(e => e.id === expId) || experiences[0];
+          handleInitiateBooking(found);
+        }}
+      />
 
       {/* Direct Booking Checkout Modal */}
       <BookingModal
@@ -455,6 +653,8 @@ export const App: React.FC = () => {
         currentTab={currentTab}
         setCurrentTab={setCurrentTab}
         language={language}
+        activeDomain={activeDomain}
+        onChangeDomain={handleDomainChange}
       />
 
       {/* Footer */}
@@ -466,21 +666,42 @@ export const App: React.FC = () => {
                 <div className="w-8 h-8 rounded-full bg-[#D84315] flex items-center justify-center font-serif font-bold text-white text-base">
                   क
                 </div>
-                <span className="text-xl font-serif font-bold text-white">KALA SETU (कला सेतु)</span>
+                <span className="text-xl font-serif font-bold text-white">KALA SETU (कला सेतु) 2.0</span>
               </div>
               <p className="text-xs text-stone-300 max-w-sm leading-relaxed">
-                Smart India Hackathon 2026 • Problem Statement PS-TUR05: Local Artisan and Experience Discovery Platform. Direct livelihoods, authentic living craft, and zero middleman deductions.
+                Smart India Hackathon 2026 • Dual-Domain Global Cultural Intelligence Platform. Dedicated to 7 Million traditional craftspeople and living community heritage custodians worldwide.
               </p>
+              <div className="flex items-center gap-3 mt-4">
+                <button
+                  onClick={() => setCurrentTab('gateway')}
+                  className="text-xs text-amber-300 hover:text-white underline"
+                >
+                  🏛️ Main Gateway
+                </button>
+                <button
+                  onClick={() => setCurrentTab('genesis')}
+                  className="text-xs text-amber-300 hover:text-white underline"
+                >
+                  📖 Platform Genesis
+                </button>
+                <button
+                  onClick={() => setCurrentTab('world')}
+                  className="text-xs text-amber-300 hover:text-white underline"
+                >
+                  🌐 Global Network
+                </button>
+              </div>
             </div>
             <div>
               <h4 className="text-xs uppercase font-bold text-amber-300 tracking-wider mb-3">
-                National Initiatives
+                Platform Architecture
               </h4>
               <ul className="text-xs space-y-2 text-stone-300">
-                <li>• One District One Product (ODOP)</li>
-                <li>• Dekho Apna Desh (Ministry of Tourism)</li>
-                <li>• Vocal for Local Craft Guilds</li>
-                <li>• GI Tag Heritage Protection</li>
+                <li>• World 1: Local Artisans & Masterclasses</li>
+                <li>• World 2: Living Community Traditions</li>
+                <li>• ViT Multimodal Craft Vision</li>
+                <li>• MediaPipe Kinematic Pose Tracking</li>
+                <li>• UNESCO Living Crowd Balancer</li>
               </ul>
             </div>
             <div>
@@ -496,11 +717,12 @@ export const App: React.FC = () => {
             </div>
           </div>
           <div className="pt-6 border-t border-white/10 text-center text-xs text-stone-400">
-            © 2026 Kala Setu — Dedicated to India's 7 Million Traditional Artisans. 🇮🇳
+            © 2026 Kala Setu 2.0 — Dual-Domain Global Cultural Intelligence Platform. 🇮🇳 🇯🇵 🇮🇹 🇧🇷 🇲🇽
           </div>
         </div>
       </footer>
     </div>
   );
 };
+
 export default App;

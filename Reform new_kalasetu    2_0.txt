@@ -1,0 +1,1057 @@
+# KALA SETU 2.0 — MASTER PROMPT: THE DUAL-DOMAIN GLOBAL CULTURAL INTELLIGENCE PLATFORM
+
+## *"From Local Artisans to a World of Living Heritage"*
+
+---
+
+## 0. CONTEXT — READ THIS FIRST
+
+### What Exists
+
+**KALA SETU is already built and working.** It is a functional full-stack platform with:
+
+- Complete Node.js + Express + TypeScript backend
+- Complete React + Vite + TypeScript frontend
+- Live Neon PostgreSQL database
+- Active Upstash Redis cache
+- Cloudinary media storage
+- Multi-provider AI (Gemini + OpenAI + Groq)
+- Voice input, multi-lingual support
+- MapLibre maps, Razorpay test payments
+- SOS emergency system
+- Government dashboard
+- AI Cultural Concierge
+
+**This project works. It is not a prototype.**
+
+### The Problem
+
+A senior reviewer said: **"Your project looks like normal software — like you built it 5 years ago. Today is the AI/ML era. They want extraordinary AI/ML — many concepts, not just RAG and semantic search."**
+
+He is partially right. The AI/ML exists, but it is **hidden in backend logs**, **invisible to the user**, and **indistinguishable from any other RAG+chatbot project**.
+
+### The Mission
+
+**Reform the existing project — do not rebuild it.**
+
+Transform KALA SETU into a **dual-domain cultural intelligence platform** where:
+
+1. **Local Artisans** and **Local Community Experiences** become two first-class worlds
+2. Each world has its **own AI/ML intelligence** — not one generic engine pretending everything is the same
+3. The platform is **designed for global expansion** — not "India with more countries"
+4. Every AI/ML operation is **visually undeniable** — no more hiding in logs
+5. The **Genesis module** proves the effort — ethnographic research, architecture, everything
+
+---
+
+## PART A — WHAT WE ARE BUILDING (Non-Technical Product Requirement)
+
+---
+
+## 1. THE FUNDAMENTAL REFORMATION
+
+### 1.1 Two Worlds, One Brand
+
+KALA SETU is no longer one generic discovery page. It becomes **two intelligent worlds** inside one shared platform.
+
+```
+                         KALA SETU
+                              │
+             ┌────────────────┴────────────────┐
+             │                                 │
+    🧑‍🎨 LOCAL ARTISANS              🌏 COMMUNITY EXPERIENCES
+             │                                 │
+      Crafts & Makers                  Culture & Living Heritage
+             │                                 │
+      Artisan AI/ML                    Community AI/ML
+             │                                 │
+      Artisan Map                      Experience Map
+             │                                 │
+      Artisan Media                    Culture Media
+             │                                 │
+      Artisan Discovery                Experience Discovery
+             │                                 │
+             └────────────────┬────────────────┘
+                              │
+                     SHARED PLATFORM
+                              │
+        Auth • AI • Maps • Search • Locations • Media
+        Users • Safety • Analytics • i18n
+                              │
+                     GLOBAL EXPANSION
+                              │
+          Country → Region → Locality → Domain
+                              │
+                  World Local Culture Network
+```
+
+UNESCO defines **living heritage** as community-based, continuously evolving, and involving communities in deciding what constitutes their heritage — oral traditions, performing arts, social practices, rituals, festive events, knowledge concerning nature and craftsmanship. KALA SETU 2.0 reflects this: **Community Experiences** represents the people, practices, context, and community — not just a database of tourist attractions.
+
+### 1.2 World 1 — KALA SETU: LOCAL ARTISANS
+
+**Focus:** People + Craft + Skill + Making
+
+| Domain | Content |
+|--------|---------|
+| **Crafts** | Pottery, handloom, woodcraft, bamboo/cane, metal craft, textiles |
+| **Techniques** | Traditional methods, material handling, tool usage |
+| **Workshops** | Hands-on learning, craft demonstrations |
+| **Artisan Stories** | Heritage, lineage, journey, philosophy |
+| **Artisan Experiences** | Craft workshops, learning sessions, studio visits |
+| **Craft Discovery** | Direct artisan discovery, craft-based exploration |
+
+**Hero videos must only show:**
+- Artisans working
+- Hands creating crafts
+- Workshops, tools, materials
+- Finished crafts
+- Craft demonstrations
+
+**No random festival videos.**
+
+### 1.3 World 2 — KALA SETU: COMMUNITY EXPERIENCES
+
+**Focus:** People + Place + Culture + Experience
+
+| Domain | Content |
+|--------|---------|
+| **Festivals** | Seasonal celebrations, community events |
+| **Local Food** | Traditional cooking, local cuisine, food experiences |
+| **Folk Dance** | Traditional performances, community dances |
+| **Folk Music** | Traditional instruments, community singing |
+| **Community Celebrations** | Gatherings, rituals (community-approved) |
+| **Village Experiences** | Local lifestyles, rural immersion |
+| **Cultural Performances** | Theatre, storytelling, performing arts |
+| **Heritage Walks** | Historical exploration, local guides |
+| **Nature-Linked Culture** | Nature-based cultural experiences |
+| **Seasonal Experiences** | Time-specific cultural activities |
+
+**Hero videos must only show:**
+- Festivals, dances, food
+- Markets, community activities
+- Cultural performances, village life
+- Local traditions, community gatherings
+
+**No random artisan-only videos.**
+
+---
+
+## 2. TWO SEPARATE LANDING EXPERIENCES
+
+The current single homepage evolves. The first major user decision becomes:
+
+```
+                 KALA SETU
+                     ↓
+       ┌─────────────┴─────────────┐
+       ↓                           ↓
+   LOCAL ARTISANS          COMMUNITY EXPERIENCES
+       ↓                           ↓
+   Artisan World              Culture World
+```
+
+### 2.1 Artisan Landing Page
+
+**Communicates:** People + Craft + Skill + Making
+
+**Content:**
+- Full-bleed artisan hero (artisan working, hands creating)
+- Craft category scrollable badges (Pottery, Textiles, Woodwork, etc.)
+- Featured artisan experiences grid
+- Interactive artisan map
+- Master artisan spotlights with trust scores
+
+### 2.2 Community Landing Page
+
+**Communicates:** People + Place + Culture + Experience
+
+**Content:**
+- Full-bleed community hero (festival, dance, food)
+- Cultural category scrollable badges (Festivals, Food, Music, Dance, etc.)
+- Featured community experiences grid
+- Interactive community map
+- Cultural spotlight with season/availability
+
+### 2.3 Shared Header
+
+Both worlds share:
+- Kala Setu logo
+- Language selector
+- Global location selector (Country → Region → Locality)
+- User account
+- Help button (dynamic, role-based)
+- Search
+
+---
+
+## 3. COMPLETELY SEPARATE DISCOVERY
+
+### 3.1 Artisan Discovery
+
+**Filters:**
+- Craft, material, artisan, region, distance
+- Workshop, price, duration, skill level
+- Accessibility, verification, language
+- Women-led (where genuinely supported)
+
+### 3.2 Community Discovery
+
+**Filters:**
+- Culture, activity, festival, food, dance, music
+- Tradition, season, region, duration, price
+- Accessibility, family-friendly, language
+- Community type
+
+---
+
+## 4. TWO SEPARATE MAP EXPERIENCES
+
+**One map technology (MapLibre GL). Two different map experiences.**
+
+### 4.1 Artisan Map
+
+Shows only:
+- Artisan locations
+- Craft workshops
+- Craft clusters
+- Artisan experiences
+
+Example:
+```
+Maharashtra
+   ↓
+Kolhapur
+   ↓
+Leather Craft
+   ↓
+Artisan A, Artisan B, Workshop C
+```
+
+### 4.2 Community Map
+
+Shows only:
+- Cultural experiences
+- Festivals
+- Food experiences
+- Folk performances
+- Heritage/community activities
+
+Example:
+```
+Maharashtra
+   ↓
+Kolhapur
+   ↓
+Community Experiences
+   ├─ Festival
+   ├─ Food
+   ├─ Folk Dance
+   └─ Village Experience
+```
+
+MapLibre supports GeoJSON sources and interactive layers, making this separation natural. Dynamic filtering with `setFilter` and layer control plugins enable clean domain separation.
+
+---
+
+## 5. TWO DIFFERENT AI PERSONALIZATION SYSTEMS
+
+### 5.1 Artisan AI
+
+**Understands:** "What type of maker/craft experience is relevant to this user?"
+
+**Signals:**
+- Craft interests, materials, workshop preference
+- Skill level, location, distance, budget, duration
+- Previous interactions, accessibility
+- Artisan verification, availability
+
+**Output:**
+- Recommended Artisans
+- Recommended Crafts
+- Recommended Workshops
+- Recommended Craft Experiences
+
+### 5.2 Community AI
+
+**Understands:** "What kind of cultural experience would this traveler enjoy?"
+
+**Signals:**
+- Culture interests, food interests, festivals
+- Dance, music, nature, season
+- Destination, travel duration, budget
+- Family/solo/group, accessibility, language
+- Previous experiences
+
+**Output:**
+- Recommended Experiences
+- Recommended Festivals
+- Recommended Food
+- Recommended Cultural Activities
+- Recommended Local Routes
+
+---
+
+## 6. TWO DIFFERENT AI/RAG KNOWLEDGE BASES
+
+**Do not mix all embeddings into one uncontrolled vector collection.**
+
+```
+ChromaDB
+│
+├── artisan_knowledge
+│   ├── craft descriptions
+│   ├── artisan profiles
+│   ├── techniques
+│   ├── materials
+│   ├── workshops
+│   ├── craft history
+│   ├── locations
+│   ├── verification information
+│   └── experience information
+│
+└── community_knowledge
+    ├── festivals
+    ├── traditions
+    ├── food
+    ├── dances
+    ├── music
+    ├── cultural practices
+    ├── locations
+    ├── seasons
+    ├── community descriptions
+    ├── experience rules
+    └── source information
+```
+
+This prevents an AI query about a festival from accidentally retrieving irrelevant artisan content. ChromaDB supports multi-collection operations with agent-aware context, and sharding strategies for parallel retrieval.
+
+---
+
+## 7. TWO DIFFERENT AI PIPELINES
+
+### 7.1 Artisan Pipeline
+
+```
+User
+ ↓
+Artisan Intent Classification
+ ↓
+Craft/Artisan Retrieval
+ ↓
+PostgreSQL Filtering (geo, verification, availability)
+ ↓
+Chroma Semantic Search (artisan_knowledge)
+ ↓
+Personalized Ranking (craft similarity + distance + trust + availability)
+ ↓
+Trust/Verification Check
+ ↓
+Gemini/Groq/OpenAI
+ ↓
+Artisan Recommendation
+```
+
+### 7.2 Community Pipeline
+
+```
+User
+ ↓
+Culture/Experience Intent Classification
+ ↓
+Community Knowledge Retrieval
+ ↓
+Location + Season + Availability Filter
+ ↓
+Chroma Semantic Search (community_knowledge)
+ ↓
+Knowledge Graph Traversal (festival → region → community → experience)
+ ↓
+Cultural Relevance Ranking
+ ↓
+Safety/Respect Checks (community_approved, publicly_shareable)
+ ↓
+Gemini/Groq/OpenAI
+ ↓
+Community Recommendation
+```
+
+---
+
+## 8. TWO DIFFERENT ADVANCED AI/ML SYSTEMS
+
+### 8.1 Artisan Intelligence
+
+| # | System | Description | Technology |
+|---|--------|-------------|------------|
+| 1 | **Multimodal Craft Recognition** | Photo → identify craft/material/style → find relevant artisans | CLIP + ViT (fine-tuned on craft dataset) |
+| 2 | **Skill/Technique Analysis** | Video → pose/motion analysis → technique assistance signal | MediaPipe (33 landmarks, joint angles, velocities) |
+| 3 | **Artisan Recommendation** | User preferences + craft similarity + distance + trust + availability → ranking | Feature-weighted ranking (later: learned ranking model) |
+| 4 | **Artisan Demand Forecasting** | Historical views + bookings + seasonality + location → future demand | Time-series Transformer |
+| 5 | **Anomaly Detection** | Suspicious review bursts, abnormal listing behavior, duplicate content | Isolation Forest + Autoencoder |
+
+**Important:** Skill/Technique Analysis should **never claim that movement alone proves authenticity**. It is an assistance signal only.
+
+### 8.2 Community Intelligence
+
+| # | System | Description | Technology |
+|---|--------|-------------|------------|
+| 1 | **Cultural Semantic Understanding** | Query → food + music + tradition → relevant destinations | Semantic retrieval + knowledge graph |
+| 2 | **Cultural Knowledge Graph** | Region → Community → Festival → Food → Music → Dance → Historical Context → Experience | Neo4j / GraphRAG |
+| 3 | **Seasonal Intelligence** | Festival calendar + weather + historical demand + availability → suitability | Time-series + calendar integration |
+| 4 | **Cultural Experience Recommendation** | Traveler profile + destination + season + interests → ranking | Hybrid recommender |
+| 5 | **Crowd/Pressure Intelligence** | Demand + capacity → crowding indicator → recommendation adjustment | Load-balancing algorithm |
+
+UNESCO explicitly links living heritage with sustainable development and community resilience. Crowd/Pressure Intelligence supports this direction.
+
+---
+
+## 9. THE GLOBAL WORLD
+
+**Design as a global platform from the beginning.** Initially activate only selected Indian data.
+
+### 9.1 Universal Location Hierarchy
+
+Do **not** hardcode `Country → State → District`. Administrative structures differ between countries.
+
+Use:
+```
+COUNTRY
+   ↓
+ADMIN_REGION_LEVEL_1
+   ↓
+ADMIN_REGION_LEVEL_2
+   ↓
+LOCALITY
+```
+
+Each region has:
+- id, country_code, parent_id
+- name, local_name, admin_level
+- iso_code, latitude, longitude
+
+ISO 3166 provides universally applicable coded representations of country names and subdivisions. ISO 3166-1 (country codes) and ISO 3166-2 (subdivision codes) provide the standard foundation. Over 4,000 subdivision codes are defined globally.
+
+### 9.2 Global Coverage States
+
+Every country/region has a clear status:
+
+```
+India
+🟢 Available
+
+Japan
+🟡 Preview available
+
+Italy
+🟡 Selected cultural data available
+
+Brazil
+⚪ Coming Soon
+```
+
+Never make empty pages look broken. Show available static experiences. Where data isn't ready: **Coming Soon** with explanation.
+
+### 9.3 Global Data Must Be Source-Aware
+
+Every cultural item has:
+```
+Source, Source Type, Source URL
+Country, Region, Community
+Last Verified, License, Contributor
+Confidence
+```
+
+**Source hierarchy (configurable):**
+| Tier | Source Type |
+|------|-------------|
+| 1 | Official national/regional sources |
+| 2 | UNESCO / international cultural datasets |
+| 3 | Recognized institutions / museums / universities |
+| 4 | Community-provided information |
+| 5 | Curated secondary sources |
+
+**Do not let AI invent cultural facts.** AI-generated text must never be presented as community-authenticated fact.
+
+### 9.4 Global Media Separation
+
+```
+Graphics/
+│
+├── artisan/
+│   ├── india/
+│   │   ├── kolhapur/
+│   │   └── chanderi/
+│   ├── japan/
+│   └── italy/
+│
+└── community/
+    ├── india/
+    │   ├── kolhapur/
+    │   └── majuli/
+    ├── japan/
+    └── italy/
+```
+
+Use metadata: domain, country, region, city, culture, category, experience, source, creator, license, date.
+
+---
+
+## PART B — EXACT TECHNICAL IMPLEMENTATION
+
+---
+
+## 10. REPOSITORY ARCHITECTURE
+
+Do **not** create two separate projects. Create two domain modules inside the same platform.
+
+```
+client/
+├── modules/
+│   ├── artisan/
+│   │   ├── pages/
+│   │   ├── components/
+│   │   ├── services/
+│   │   ├── hooks/
+│   │   └── data/
+│   └── community/
+│       ├── pages/
+│       ├── components/
+│       ├── services/
+│       ├── hooks/
+│       └── data/
+├── shared/
+│   ├── auth/
+│   ├── map/
+│   ├── media/
+│   ├── i18n/
+│   ├── ai/
+│   └── ui/
+└── genesis/
+    ├── pages/
+    └── components/
+
+server/src/
+├── modules/
+│   ├── artisan/
+│   └── community/
+├── shared/
+│   ├── auth/
+│   ├── ai/
+│   ├── maps/
+│   ├── media/
+│   ├── locations/
+│   └── analytics/
+└── genesis/
+    └── services/
+```
+
+---
+
+## 11. ROUTING
+
+```
+/                          Main gateway
+/artisans                  Artisan world
+/artisans/discover
+/artisans/map
+/artisans/:id
+/artisans/experiences
+/artisans/ai
+
+/community                 Community world
+/community/discover
+/community/map
+/community/:id
+/community/experiences
+/community/ai
+
+/genesis                   Proof of engineering
+/gov                       Government dashboard
+/admin                     Admin panel
+
+/world                     Global context
+/world/:country
+/world/:country/:region
+/world/:country/:region/:locality
+
+/world/JP/community
+/world/JP/artisans
+```
+
+---
+
+## 12. DATABASE RESTRUCTURE
+
+### 12.1 Core Tables
+
+```
+USERS
+PREFERENCES
+LOCATIONS
+COUNTRIES
+ADMINISTRATIVE_REGIONS
+MEDIA_ASSETS
+SOURCES
+DATA_COVERAGE
+```
+
+### 12.2 Artisan Tables
+
+```
+ARTISAN_PROFILES
+ARTISAN_VERIFICATION_APPLICATIONS
+ARTISAN_DOCUMENTS
+CRAFTS
+CRAFT_TECHNIQUES
+ARTISAN_EXPERIENCES
+ARTISAN_REVIEWS
+ARTISAN_AI_ANALYSES
+```
+
+### 12.3 Community Tables
+
+```
+COMMUNITIES
+CULTURAL_EXPERIENCES
+CULTURAL_PRACTICES
+FESTIVALS
+FOODS
+PERFORMANCES
+TRADITIONS
+COMMUNITY_AI_ANALYSES
+COMMUNITY_REVIEWS
+```
+
+### 12.4 Global Tables
+
+```
+COUNTRIES
+ADMIN_REGIONS
+LOCALITIES
+CULTURAL_SOURCES
+DATA_COVERAGE
+```
+
+### 12.5 Domain Flag
+
+Every experience explicitly belongs to a domain:
+
+```
+domain_type: ARTISAN | COMMUNITY
+```
+
+But do not solve everything with one generic table. Use domain-specific tables where data semantics differ. This prevents hundreds of nullable fields.
+
+---
+
+## 13. MEDIA ENGINE
+
+```
+MEDIA_ASSETS
+├── id, domain, entity_type, entity_id
+├── country_id, region_id, category
+├── url, cloudinary_public_id, thumbnail_url
+├── media_type, duration
+├── source, creator, license, attribution
+├── alt_text, created_at
+```
+
+Artisan page: `domain = ARTISAN`, craft/location filters.
+Community page: `domain = COMMUNITY`, culture/location filters.
+
+---
+
+## 14. AI/ML IMPLEMENTATION — ARTISAN
+
+### 14.1 Craft Recognition (Multimodal)
+
+**Stack:** CLIP + ViT (fine-tuned on craft dataset) or Gemini Vision (fallback)
+
+```
+Image
+ ↓
+Vision Model (ViT encoder)
+ ↓
+Embedding / Classification
+ ↓
+Craft Candidates (top-K)
+ ↓
+PostgreSQL metadata
+ ↓
+Confidence
+ ↓
+Artisan Results
+```
+
+Research shows CLIP baseline struggles with domain-specific distinctions in intangible cultural heritage, with significant overlap between embroidery, weaving, and batik clusters. Fine-tuned models achieve clear category-wise clustering.
+
+### 14.2 Skill/Technique Analysis (Kinematic)
+
+**Stack:** MediaPipe Pose (33 body landmarks)
+
+```
+Video
+ ↓
+Pose Extraction (MediaPipe — 33 landmarks per frame)
+ ↓
+Feature Extraction (joint angles, velocities, accelerations)
+ ↓
+MLP / LSTM Model
+ ↓
+Technique Analysis
+ ↓
+Assistance Signal (never authenticity proof)
+```
+
+MediaPipe provides production-ready ML solutions for pose estimation, optimized to run in real-time on mobile devices, web browsers, and desktops.
+
+### 14.3 Artisan Recommendation
+
+```
+Candidate Generation (PostgreSQL + Chroma)
+ ↓
+Feature Calculation (similarity, distance, availability, verification, rating, budget_fit, duration_fit, interest_match, accessibility_match)
+ ↓
+Ranking (feature-weighted)
+ ↓
+Recommendation
+```
+
+Later: replace hand-designed weights with learned ranking model when enough interaction data exists.
+
+### 14.4 Demand Forecasting
+
+**Stack:** Time-series Transformer (Encoder-Decoder architecture)
+
+Tourism demand forecasting with Transformers encodes long-term dependencies with the encoder, merges calendar data points in the forecast horizon, and captures short-term dependencies with the decoder. Hybrid BiLSTM + Transformer models address both short-term fluctuations and long-term trends.
+
+### 14.5 Anomaly Detection
+
+**Stack:** Isolation Forest + Autoencoder
+
+Detect:
+- Suspicious review bursts
+- Abnormal listing behavior
+- Duplicate content
+- Unusual booking patterns
+
+**Output:** "Review this listing" — not automatic accusation.
+
+---
+
+## 15. AI/ML IMPLEMENTATION — COMMUNITY
+
+### 15.1 Cultural Knowledge Graph
+
+**Stack:** Neo4j + GraphRAG
+
+Entities:
+```
+Country, Region, Community, Culture, Tradition
+Festival, Food, Dance, Music, Material
+Place, Season, Experience
+```
+
+Relationships:
+```
+PRACTICED_IN, ASSOCIATED_WITH, CELEBRATED_DURING
+ORIGINATES_FROM, USES, PERFORMED_AT, AVAILABLE_IN, RELATED_TO
+```
+
+GraphRAG combines vector search with knowledge graph query to retrieve contextual data that better reflects the interconnection of data from various sources.
+
+### 15.2 Knowledge Graph Neural Network
+
+**Stack:** Knowledge Graph Attention Network (KGAT)
+
+Research shows KGAT combining collaborative knowledge graph with Graph Attention Network enables personalized heritage recommendation, addressing cold-start problem and enabling discovery.
+
+### 15.3 Cultural RAG
+
+```
+Question
+ ↓
+Intent Classification
+ ↓
+Location Extraction
+ ↓
+Community Vector Search (Chroma community_knowledge)
+ ↓
+Knowledge Graph Lookup (Neo4j)
+ ↓
+PostgreSQL Validation
+ ↓
+LLM (Gemini/Groq/OpenAI)
+ ↓
+Answer with Sources
+```
+
+This becomes **Graph + RAG**, not basic RAG.
+
+### 15.4 Seasonal Intelligence
+
+```
+Festival Calendar
++ Weather/Season
++ Historical Demand
++ Local Availability
+        ↓
+Experience Suitability
+```
+
+### 15.5 Crowd/Pressure Intelligence
+
+```
+Demand
+ ↓
+Capacity
+ ↓
+Crowding Indicator
+ ↓
+Recommendation Adjustment
+```
+
+---
+
+## 16. VISIBLE AI TELEMETRY
+
+### 16.1 Agentic Reasoning Terminal
+
+**Artisan Query:**
+```
+ARTISAN AI
+━━━━━━━━━━━━━━━━━━━━━━
+Intent                  ✓
+Craft Recognition       ✓
+Semantic Retrieval      ✓
+Location Filter         ✓
+Trust Filter            ✓
+Recommendation Ranking  ✓
+Explanation             ✓
+```
+
+**Community Query:**
+```
+COMMUNITY AI
+━━━━━━━━━━━━━━━━━━━━━━
+Intent                  ✓
+Cultural Context        ✓
+Season Detection        ✓
+Knowledge Graph         ✓
+RAG Retrieval           ✓
+Safety/Respect Check    ✓
+Experience Ranking      ✓
+Explanation             ✓
+```
+
+### 16.2 Implementation
+
+- WebSocket connection from frontend to backend
+- Backend emits structured events: `{ agent: 'Craft Recognition', action: 'Processing image', status: 'running' }`
+- Frontend renders as live trace tree
+- Each trace node: agent name, action, status badge, duration
+- Collapsible: auto-collapse when run completes
+- Animation: streaming text, pulsing status indicators
+
+---
+
+## 17. GENESIS MODULE — PROOF OF ENGINEERING
+
+### 17.1 Route
+
+`/genesis` — A dedicated, cinematic, scroll-driven storytelling page.
+
+### 17.2 Chapters
+
+| Chapter | Content | Visual Strategy |
+|---------|---------|-----------------|
+| **1. Hero** | "From the Soil of Kolhapur to Autonomous AI" | Kinetic typography, hypercolor gradient |
+| **2. Ground Reality** | Ethnographic research — real photos/videos from Kolhapur artisan meetings | Masonry grid, parallax reveal |
+| **3. Architecture** | Interactive 3D node graph of entire system | React Three Fiber, click nodes |
+| **4. AI Stack** | 5-layer animated pipeline (Perception → Reasoning → Prediction → Privacy → Generation) | SVG flow, data particles |
+| **5. Tech Stack** | Interactive bento grid of all technologies | CSS Grid, hover expand |
+| **6. Impact** | Live animated counters (artisans, income, clusters) | CountUp animation |
+| **7. Future** | Horizontal timeline roadmap | Scroll-snap, milestone cards |
+
+### 17.3 Ethnographic Research Integration
+
+The user has real photos/videos from face-to-face meetings with Kolhapur artisans. Upload to Cloudinary. Organize by category (meetings, workspaces, crafts, interviews). Display in Chapter 2 as masonry grid with parallax reveal.
+
+---
+
+## 18. ADVANCED AI/ML — THE COMPLETE STACK
+
+### 18.1 Artisan AI Stack
+
+| Layer | Technology | Purpose |
+|-------|------------|---------|
+| **Perception** | CLIP + ViT | Craft recognition from images |
+| **Perception** | MediaPipe | Skill/technique analysis from video |
+| **Reasoning** | KGAT | Artisan-craft relationship reasoning |
+| **Reasoning** | RAG (Chroma) | Artisan knowledge retrieval |
+| **Prediction** | Time-series Transformer | Demand forecasting |
+| **Prediction** | Isolation Forest | Anomaly detection |
+| **Privacy** | Federated Learning | Privacy-preserving artisan recommendations |
+| **Explainability** | SHAP + LIME | "Why this recommendation?" |
+
+### 18.2 Community AI Stack
+
+| Layer | Technology | Purpose |
+|-------|------------|---------|
+| **Perception** | CLIP + ViT | Cultural experience image understanding |
+| **Reasoning** | GraphRAG (Neo4j) | Cultural knowledge graph traversal |
+| **Reasoning** | KGAT | Community-culture relationship reasoning |
+| **Prediction** | Time-series Transformer | Seasonal demand forecasting |
+| **Prediction** | Load-balancing algorithm | Crowd/pressure intelligence |
+| **Privacy** | Federated Learning | Privacy-preserving cultural recommendations |
+| **Explainability** | SHAP + LIME | "Why this experience?" |
+
+### 18.3 Federated Learning
+
+Phase-Adaptive Federated Learning (PAFL) dynamically balances privacy and utility through a phase-dependent aggregation mechanism. Experimental results demonstrate 18.7% higher HR@10 and 62% lower membership inference risk compared to state-of-the-art methods.
+
+### 18.4 Explainable AI
+
+Integrate SHAP and LIME to disentangle model decisions. Research shows a 3% increase in recommendation precision when incorporating explainability techniques, with notable increase in user ability to understand and trust suggestions.
+
+---
+
+## 19. IMPLEMENTATION ORDER
+
+**Do not start by building all the fancy AI.**
+
+```
+PHASE 1 — Separate Artisan + Community UX
+          ↓
+PHASE 2 — Separate landing pages/media/maps
+          ↓
+PHASE 3 — Separate routes/components/services
+          ↓
+PHASE 4 — Separate database domain models
+          ↓
+PHASE 5 — Separate RAG/vector collections
+          ↓
+PHASE 6 — Separate recommendation pipelines
+          ↓
+PHASE 7 — Separate knowledge graphs
+          ↓
+PHASE 8 — Global location architecture
+          ↓
+PHASE 9 — Global static data + Coming Soon system
+          ↓
+PHASE 10 — Visible AI telemetry
+          ↓
+PHASE 11 — Multimodal + forecasting + anomaly models
+          ↓
+PHASE 12 — 3D graphs + causal intelligence
+          ↓
+PHASE 13 — Performance + accessibility + security
+          ↓
+PHASE 14 — Final cinematic presentation
+```
+
+**Do not break the current application while doing this.** Existing authentication, booking, multilingual, MapLibre, Cloudinary and other working flows remain shared infrastructure.
+
+---
+
+## 20. THE FINAL ARCHITECTURE
+
+```
+                         KALA SETU 2.0
+                              │
+                    ┌─────────┴─────────┐
+                    │                   │
+             LOCAL ARTISANS       COMMUNITY EXPERIENCES
+                    │                   │
+          ┌─────────┼────────┐  ┌───────┼────────┐
+          │         │        │  │       │        │
+       Artisan    Craft    Artisan  Culture   Festival
+       AI         AI       Map      AI        AI
+          │         │        │       │        │
+          └─────────┼────────┘       └────────┼───────┐
+                    │                         │       │
+               Artisan RAG               Culture RAG  │
+                    │                         │       │
+               Artisan KG                Culture KG   │
+                    │                         │       │
+               Artisan ML                Community ML │
+                    │                         │       │
+                    └──────────┬──────────────┘       │
+                               │                      │
+                       SHARED PLATFORM               │
+                               │                      │
+          ┌────────────────────┼──────────────────────┘
+          │                    │
+       Firebase              PostgreSQL
+       Auth                  / Neon
+          │                    │
+       Redis               Cloudinary
+          │                    │
+       MapLibre             AI Gateway
+          │                    │
+          └────────────┬───────┘
+                       │
+                 GLOBAL LAYER
+                       │
+            Country → Region → Locality
+                       │
+             Global Cultural Graph
+                       │
+              Global Knowledge Base
+                       │
+                 Future World
+```
+
+---
+
+## 21. THE MENTAL MODEL
+
+Think of KALA SETU as **three levels**:
+
+### Level 1 — Two Worlds
+
+```
+🧑‍🎨 MAKERS
+Local Artisans
+
+🌏 COMMUNITIES
+Local Community Experiences
+```
+
+### Level 2 — Intelligence
+
+Each world has its own:
+- RAG
+- Knowledge Graph
+- Semantic Search
+- Recommendation
+- Ranking
+- Vision
+- Prediction
+- Anomaly Detection
+- Explainability
+- Analytics
+
+### Level 3 — World
+
+```
+India today
+   ↓
+Multiple countries tomorrow
+   ↓
+Global local-culture intelligence
+```
+
+---
+
+## 22. THE FINAL PRINCIPLE
+
+**"10 years ahead" should mean the architecture is designed for capabilities that can grow — not that we pretend every research-grade ML component is already production-grade.**
+
+Your judges will be more impressed by **one genuinely working multimodal/graph/forecasting pipeline with visible evidence** than ten labels such as "GNN, federated learning, RL" that only appear in a diagram.
+
+---
+
+**Build KALA SETU 2.0 — the dual-domain cultural intelligence platform that connects the world's local makers and living communities.**
+
+**🚀 Conquer the world. 🇮🇳**

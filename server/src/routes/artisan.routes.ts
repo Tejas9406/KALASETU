@@ -546,6 +546,116 @@ artisanRouter.get('/documents/:docKey', authenticateUser, async (req, res) => {
   }
 });
 
+// Dedicated Artisan Map Clusters (Exclusively craft ateliers & workshops)
+artisanRouter.get('/map/clusters', (req, res) => {
+  try {
+    const geoJson = {
+      type: 'FeatureCollection',
+      features: registeredArtisansList.map(a => ({
+        type: 'Feature',
+        geometry: {
+          type: 'Point',
+          coordinates: [a.lng, a.lat]
+        },
+        properties: {
+          id: a.id,
+          artisan_name: a.artisan_name,
+          craft_type: a.craft_type,
+          trust_score: a.trust_score,
+          gi_certified: a.gi_certified,
+          location: `${a.district}, ${a.state}`,
+          photo_url: a.photo_url,
+          years_experience: a.years_experience,
+          domain: 'ARTISAN'
+        }
+      }))
+    };
+
+    res.json({ success: true, domain: 'ARTISAN', geoJson, artisans: registeredArtisansList });
+  } catch (err: any) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+// Artisan AI Chat Endpoint with Visible Agentic Reasoning Telemetry
+artisanRouter.post('/ai/chat', async (req, res) => {
+  try {
+    const { query, language = 'en', history = [] } = req.body;
+    if (!query) {
+      return res.status(400).json({ success: false, error: 'Query is required' });
+    }
+    const result = await AIService.chatWithArtisanAI(query, history, language);
+    res.json({
+      success: true,
+      domain: 'ARTISAN',
+      reply: result.reply,
+      telemetry: result.telemetry
+    });
+  } catch (err: any) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+// Multimodal Craft Recognition (ViT/CLIP & Gemini Vision fallback)
+artisanRouter.post('/ai/recognize-craft', async (req, res) => {
+  try {
+    const { imageUrl, imageBase64, userHint } = req.body;
+    const result = await AIService.recognizeCraftFromImage({ imageUrl, imageBase64, userHint });
+    res.json({
+      success: true,
+      domain: 'ARTISAN',
+      ...result
+    });
+  } catch (err: any) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+// Kinematic Skill / Technique Analysis (MediaPipe landmark simulation)
+artisanRouter.post('/ai/analyze-technique', (req, res) => {
+  try {
+    const { craftCategory = 'Handloom', motionData = {} } = req.body;
+    const result = AIService.analyzeCraftTechniqueKinematics(craftCategory, motionData);
+    res.json({
+      success: true,
+      domain: 'ARTISAN',
+      ...result
+    });
+  } catch (err: any) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+// Time-Series Craft Demand Forecasting
+artisanRouter.get('/ai/forecast', (req, res) => {
+  try {
+    const { cluster = 'Kolhapur Leathercraft Guild' } = req.query;
+    const forecast = AIService.forecastCraftDemand(String(cluster));
+    res.json({
+      success: true,
+      domain: 'ARTISAN',
+      forecast
+    });
+  } catch (err: any) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+// Isolation Forest Anomaly Detection
+artisanRouter.get('/ai/anomalies', (req, res) => {
+  try {
+    const { artisan_id = 'art_kolhapur_01' } = req.query;
+    const report = AIService.detectArtisanAnomalies(String(artisan_id));
+    res.json({
+      success: true,
+      domain: 'ARTISAN',
+      report
+    });
+  } catch (err: any) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
 // Get single artisan profile
 artisanRouter.get('/:id', async (req, res) => {
   try {

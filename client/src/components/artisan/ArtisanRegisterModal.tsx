@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { 
-  X, CheckCircle, ShieldCheck, Award, Upload, 
-  Sparkles, UserCheck, MapPin, AlertCircle, FileText, Image as ImageIcon
+  X, CheckCircle, ShieldCheck, 
+  UserCheck, Image as ImageIcon
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { Artisan } from '../../types';
@@ -18,8 +18,6 @@ export const ArtisanRegisterModal: React.FC<ArtisanRegisterModalProps> = ({
   onClose,
   onRegistered
 }) => {
-  if (!isOpen) return null;
-
   const [step, setStep] = useState(1);
   const [formData, setFormData] = useState({
     name: '',
@@ -52,6 +50,8 @@ export const ArtisanRegisterModal: React.FC<ArtisanRegisterModalProps> = ({
 
   const [submitting, setSubmitting] = useState(false);
   const [submittedApp, setSubmittedApp] = useState<any>(null);
+
+  if (!isOpen) return null;
 
   // Evidence-based trust score calculation
   const getEvidenceScore = () => {
